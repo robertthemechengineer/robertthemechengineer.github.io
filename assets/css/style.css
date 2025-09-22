@@ -14,6 +14,10 @@ img{max-width:100%;height:auto;display:block}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 .container-wide{max-width:1200px}
 
+/* Skip link: visually hidden until keyboard focus */
+.skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
+.skip-link:focus{left:16px;top:16px;width:auto;height:auto;background:var(--brand);color:var(--brand-ink);padding:8px 12px;border-radius:8px;z-index:1000;box-shadow:0 6px 16px var(--ring)}
+
 /* NAVBAR + MENU */
 .site-header{position: sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background: rgba(14,28,20,0.85); border-bottom: 1px solid #2d4736}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
@@ -41,7 +45,15 @@ h3{font-size:20px;margin:0 0 8px}
 .hero{padding:48px 0 24px}
 .subtitle{font-weight:600;color:var(--brand)}
 .lede{color:var(--muted);max-width:900px}
+.lede-aux{opacity:.9}
 .cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
+
+/* Micro‑copy metrics */
+.metrics{padding:12px 0;background:rgba(255,255,255,0.02);border-top:1px solid #2d4736;border-bottom:1px solid #2d4736;margin-top:8px}
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding:12px 0}
+.metric{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid #2d4736;border-radius:12px;padding:12px}
+.metric span{font-weight:800;font-size:1.4rem;color:var(--brand)}
+.metric small{color:var(--muted)}
 
 /* Rhythm & breathing room */
 .section{padding:56px 0}
@@ -50,13 +62,6 @@ h3{font-size:20px;margin:0 0 8px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 @media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:600px){h1{font-size:34px}.grid-3{grid-template-columns:1fr}}
-
-/* METRICS */
-.metrics{padding:12px 0;background:rgba(255,255,255,0.02);border-top:1px solid #2d4736;border-bottom:1px solid #2d4736}
-.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding:12px 0}
-.metric{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid #2d4736;border-radius:12px;padding:12px}
-.metric span{font-weight:800;font-size:1.4rem;color:var(--brand)}
-.metric small{color:var(--muted)}
 
 /* FEATURED full-wide + fancy media */
 .feature-card{background:var(--card);border:1px solid #2d4736;border-radius:14px;padding:20px;box-shadow:0 10px 20px rgba(0,0,0,.25);display:grid;grid-template-columns:1.6fr 1fr;gap:20px;text-decoration:none;color:var(--text);transition:transform .15s ease,border-color .15s ease}
