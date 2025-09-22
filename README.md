@@ -1,18 +1,15 @@
-# Mini Preview Bars (CAD, Personal, Resume)
-This update adds a horizontally scrollable "mini preview bar" to CAD, Personal, and Resume pages.
+# Site Fix + Matching Pages
+This bundle fixes the home link-block styling and includes matching page templates.
 
 Files:
-- cad.html       — updated with preview bar linking to anchors on the page
-- personal.html  — updated with preview bar linking to project sections
-- resume.html    — updated with preview bar linking to resume sections + PDF
-- style-additions-previews.css — new styles for the preview ribbon
+- style.css — consolidated + corrected styling (link blocks now match cards)
+- index.html — cleaned home, single featured project, consistent link blocks
+- projects.html, cad.html, personal.html, resume.html — consistent visuals
 
-How to install:
-1) Upload **cad.html**, **personal.html**, **resume.html** to your repo root (replace existing files).
-2) Open **style.css** → **Edit** → paste the contents of **style-additions-previews.css** at the end → Save.
-3) (Optional) Add thumbnails in **images/** and update the `src` in the preview cards.
-   - Example: images/cad_assembly_thumb.jpg, images/personal_tracker_thumb.jpg
+Install:
+1) Upload/replace style.css and index.html at your repo root.
+2) Replace the other pages if you like (or diff them against your current ones).
+3) Add images for: images/featured_placeholder.jpg, images/lb_cad.jpg, lb_personal.jpg, lb_resume.jpg.
+4) Hard refresh.
 
-Notes:
-- The preview chips use anchors like #cad-assembly-1 or #exp — clicking a chip scrolls users directly to that section.
-- Works with your existing forest-green theme and AOS animations.
+If you already have navbar.js and images/logo.svg in place, you don't need to change them.

@@ -92,7 +92,7 @@ body.scrolled .site-header{box-shadow:0 10px 24px rgba(0,0,0,.25)}
 .chip-meta h4{margin:0;font-size:1rem}
 .chip-meta p{margin:2px 0 0;color:var(--muted);font-size:.9rem}
 
-/* Link Blocks: match featured/card look */
+/* === Link Blocks on Home (2-col card, whole card clickable) === */
 .linkblocks{display:grid;grid-template-columns:1fr;gap:16px}
 .linkblock{
   display:grid;grid-template-columns:1.2fr 1fr;gap:16px;
