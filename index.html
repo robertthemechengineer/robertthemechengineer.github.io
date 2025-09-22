@@ -4,11 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Robert Smith — Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <!-- AOS (Animate on Scroll) for smooth scroll-in effects -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -23,18 +19,14 @@
           <a href="contact.html" class="btn btn-sm">Contact</a>
         </div>
       </nav>
-
       <section class="hero" data-aos="fade-up">
-        <h1 class="reveal">Robert Smith</h1>
+        <h1>Robert Smith</h1>
         <p class="subtitle">Mechanical / Reliability Engineer — Opencast Coal Mining</p>
         <p class="lede">
-          Condition monitoring, oil & filter analysis, RCM, and failure prevention for heavy earthmoving fleets
-          (Cat, Komatsu, Volvo, Hitachi). Focused on MTBF, availability, and cost reduction.
+          Reliability‑driven engineer specialising in condition monitoring, preventive maintenance,
+          and mechanical systems improvement for heavy earthmoving fleets. Focused on extending
+          machine life, reducing failures, and embedding best practice maintenance strategies.
         </p>
-        <div class="cta">
-          <a class="btn" href="projects.html">View Projects</a>
-          <a class="btn btn-ghost" href="resume.html">View Resume</a>
-        </div>
       </section>
     </div>
   </header>
@@ -42,23 +34,11 @@
   <main>
     <section class="section alt">
       <div class="container">
-        <h2 class="section-title">Explore</h2>
+        <h2>Explore</h2>
         <div class="link-grid">
-          <a class="link-card" href="projects.html" data-aos="zoom-in">
-            <h3>Projects</h3>
-            <p>Case studies: oil analysis program, D375 water-pump RCA, undercarriage tracking dashboard.</p>
-            <span class="link-arrow">→</span>
-          </a>
-          <a class="link-card" href="resume.html" data-aos="zoom-in" data-aos-delay="100">
-            <h3>Resume</h3>
-            <p>Experience, skills, and qualifications at a glance — downloadable PDF available.</p>
-            <span class="link-arrow">→</span>
-          </a>
-          <a class="link-card" href="contact.html" data-aos="zoom-in" data-aos-delay="200">
-            <h3>Contact</h3>
-            <p>Get in touch for site audits, reliability projects, or collaboration.</p>
-            <span class="link-arrow">→</span>
-          </a>
+          <a class="link-card" href="projects.html"><h3>Projects</h3></a>
+          <a class="link-card" href="resume.html"><h3>Resume</h3></a>
+          <a class="link-card" href="contact.html"><h3>Contact</h3></a>
         </div>
       </div>
     </section>
@@ -66,12 +46,11 @@
 
   <footer class="site-footer">
     <div class="container">
-      <p>© 2025 Robert Smith • Hosted on GitHub Pages</p>
+      <p>© 2025 Robert Smith</p>
     </div>
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script> AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' }); </script>
-  <script src="script.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
