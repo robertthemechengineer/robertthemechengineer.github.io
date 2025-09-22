@@ -63,3 +63,19 @@ body{
 /* Minimal keyframe reveal for H1 */
 .reveal{opacity:0;transform:translateY(8px);animation:reveal .7s ease forwards}
 @keyframes reveal{to{opacity:1;transform:none}}
+/* === Homepage upgrades === */
+.metrics{padding:8px 0;background:rgba(255,255,255,0.02);border-top:1px solid #2d4736;border-bottom:1px solid #2d4736}
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;padding:12px 0}
+.metric{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid #2d4736;border-radius:12px;padding:10px}
+.metric span{font-weight:800;font-size:1.4rem;color:var(--brand)}
+.metric small{color:var(--muted)}
+
+.featured{display:grid;grid-template-columns:1.3fr 1fr;gap:16px}
+.featured-media{min-height:180px;border-radius:12px;background:#22382c;border:1px solid #2d4736}
+@media (max-width:800px){.featured{grid-template-columns:1fr}}
+
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+
+.center{text-align:center}
+
+.quote{font-size:1.05rem}
