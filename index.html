@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Robert Smith — Portfolio</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robert Smith — Reliability & Maintenance Engineer</title>
+  <meta name="description" content="Reducing downtime and extending component life with RCM, RCA/5-Whys, and condition monitoring for heavy equipment fleets." />
+  <meta property="og:title" content="Robert Smith — Reliability & Maintenance Engineer">
+  <meta property="og:description" content="Reducing downtime and extending component life with RCM, RCA/5-Whys, and condition monitoring.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 </head>
 <body>
   <header class="site-header">
@@ -24,64 +28,75 @@
       </nav>
     </div>
   </header>
-  <section class="hero" data-aos="fade-up">
+
+  <section class="hero" data-aos="fade-up" aria-label="Intro">
     <div class="container">
       <h1 class="reveal">Robert Smith</h1>
-      <p class="subtitle">Mechanical / Reliability Engineer — Opencast Coal Mining</p>
+      <p class="subtitle">Reliability & Maintenance Engineering for Heavy Equipment Fleets</p>
       <p class="lede">
-        Reliability‑driven engineer specialising in condition monitoring, preventive maintenance,
-        and mechanical systems improvement for heavy earthmoving fleets. Focused on extending
-        machine life, reducing failures, and embedding best practice maintenance strategies.
+        I reduce unplanned downtime and extend component life using RCM, RCA/5‑Whys, and data‑driven
+        condition monitoring across dozers, ADTs, and excavators.
       </p>
       <div class="cta">
-        <a class="btn" href="projects.html">View Projects</a>
+        <a class="btn" href="projects.html">See Case Studies</a>
         <a class="btn btn-ghost" href="resume.html">View Resume</a>
       </div>
     </div>
   </section>
 
-  <main>
-    <section class="section alt">
-      <div class="container">
-        <h2 class="section-title">Explore</h2>
-        <div class="link-grid">
-          <a class="link-card tilt" href="projects.html" data-aos="zoom-in">
-            <h3>Projects</h3>
-            <p>Reliability, maintenance, and monitoring case studies.</p>
-            <span class="link-arrow">→</span>
-          </a>
-          <a class="link-card tilt" href="cad.html" data-aos="zoom-in" data-aos-delay="100">
-            <h3>CAD Portfolio</h3>
-            <p>SolidWorks models and drawings — selected work.</p>
-            <span class="link-arrow">→</span>
-          </a>
-          <a class="link-card tilt" href="personal.html" data-aos="zoom-in" data-aos-delay="200">
-            <h3>Personal Projects</h3>
-            <p>Side builds, tools, and experiments.</p>
-            <span class="link-arrow">→</span>
-          </a>
-          <a class="link-card tilt" href="resume.html" data-aos="zoom-in" data-aos-delay="300">
-            <h3>Resume</h3>
-            <p>Embedded viewer + PDF download.</p>
-            <span class="link-arrow">→</span>
-          </a>
-          <a class="link-card tilt" href="contact.html" data-aos="zoom-in" data-aos-delay="400">
-            <h3>Contact</h3>
-            <p>robertthemechengineer@gmail.com • LinkedIn</p>
-            <span class="link-arrow">→</span>
-          </a>
-        </div>
+  <section class="metrics" aria-label="Impact metrics">
+    <div class="container metrics-row">
+      <div class="metric" data-aos="zoom-in"><span>33%</span><small>↑ service accuracy</small></div>
+      <div class="metric" data-aos="zoom-in" data-aos-delay="100"><span>200+</span><small>machines monitored</small></div>
+      <div class="metric" data-aos="zoom-in" data-aos-delay="200"><span>0→near‑0</span><small>repeat failures (targeted)</small></div>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up" aria-label="Featured case study">
+    <div class="container featured">
+      <div class="featured-text">
+        <h2>Featured: Water Pump RCA on Komatsu D375</h2>
+        <p>Identified root causes behind repeated driven‑gear damage, added preventative actions,
+           and protected engines from contamination — cutting repeat incidents.</p>
+        <a class="btn" href="projects.html">Read the Case Study</a>
       </div>
-    </section>
-  </main>
+      <div class="featured-media placeholder" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <section class="section alt" data-aos="fade-up" aria-label="Core capabilities">
+    <div class="container grid-3">
+      <div class="card"><h3>Reliability</h3><p>RCM, RCA/5‑Whys, failure prevention, lifecycle analysis.</p></div>
+      <div class="card"><h3>Condition Monitoring</h3><p>Oil & filter analysis, magnetic plugs, machine health.</p></div>
+      <div class="card"><h3>Planning & KPIs</h3><p>MTBF, availability, service planning (Power BI).</p></div>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up" aria-label="Testimonial">
+    <div class="container quote card">
+      <p>“Robert’s RCA work and service planning cut surprise downtime and gave us reliable schedules.”</p>
+      <p class="note">— Mechanical Foreman, Opencast Coal Mining</p>
+    </div>
+  </section>
+
+  <section class="section" data-aos="fade-up" aria-label="Contact call to action">
+    <div class="container center">
+      <h2>Let’s improve your fleet’s reliability</h2>
+      <p class="lede">Available for site audits, reliability projects, and maintenance program upgrades.</p>
+      <div class="cta">
+        <a class="btn" href="contact.html">Contact Me</a>
+        <a class="btn btn-ghost" href="projects.html">Browse Projects</a>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="container">
       <p>© 2025 Robert Smith</p>
     </div>
   </footer>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="script.js"></script>
-
 </body>
 </html>
