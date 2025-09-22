@@ -106,20 +106,53 @@ h3{font-size:20px;margin:0 0 8px}
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
 
-/* Certification logos */
+/* Container widened */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container-wide { max-width: 1200px; }
+
+/* Wider feature grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 800px) {
+  .feature-grid { grid-template-columns: 1fr; }
+  .feature-media { min-height: 220px; }
+}
+@media (max-width: 480px) {
+  .feature-media { min-height: 180px; }
+}
+
+/* Three cards side by side */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+
+/* Cert logos fixed size */
 .cert-logos {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-top: 8px;
   align-items: center;
 }
-
 .cert-logos img {
-  max-width: 100px;   /* width cap */
-  max-height: 60px;   /* height cap */
+  max-width: 100px;
+  max-height: 60px;
   object-fit: contain;
-  border-radius: 6px;
   background: #fff;
   padding: 4px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,.15);
+}
+
+/* Ghost button brighter */
+.btn-ghost {
+  background: transparent;
+  color: #f0fff5;
+  border: 1px solid #2d4736;
 }
