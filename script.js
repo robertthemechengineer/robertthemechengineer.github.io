@@ -1,14 +1,13 @@
-// Optional extra micro-animations
+// Subtle tilt effect on .tilt cards
 document.addEventListener('DOMContentLoaded', () => {
-  // Add a tiny tilt on link-cards when moving mouse
-  const cards = document.querySelectorAll('.link-card');
+  const cards = document.querySelectorAll('.tilt');
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rx = ((y / rect.height) - 0.5) * -3;
-      const ry = ((x / rect.width) - 0.5) * 3;
+      const r = card.getBoundingClientRect();
+      const x = e.clientX - r.left;
+      const y = e.clientY - r.top;
+      const rx = ((y / r.height) - 0.5) * -4;
+      const ry = ((x / r.width) - 0.5) * 4;
       card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-3px)`;
     });
     card.addEventListener('mouseleave', () => {

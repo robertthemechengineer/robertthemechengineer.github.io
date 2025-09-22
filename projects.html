@@ -1,1 +1,73 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><title>Projects</title><link rel='stylesheet' href='style.css'></head><body><h1>Projects</h1><p>Reliability, preventive maintenance, and condition monitoring case studies.</p></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Projects — Robert Smith</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <nav class="nav">
+        <a class="brand" href="index.html">RS</a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="cad.html">CAD</a>
+          <a href="personal.html">Personal</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html" class="btn btn-sm">Contact</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  <section class="subhero" data-aos="fade-up">
+    <div class="container">
+      <h1>Selected Projects</h1>
+      <p class="lede">Examples across reliability engineering, preventive maintenance, and monitoring.</p>
+    </div>
+  </section>
+
+  <main class="section">
+    <div class="container">
+      <div class="projects">
+        <article class="project-card" data-aos="fade-up">
+          <div class="project-body">
+            <h3>Preventive Maintenance Upgrade</h3>
+            <p>Redesigned preventive maintenance schedules using RCA and life cycle analysis. Improved component lifespans and reduced unplanned breakdowns.</p>
+            <ul class="tags"><li>Preventive Maintenance</li><li>RCM</li><li>Lifecycle Analysis</li></ul>
+          </div>
+        </article>
+
+        <article class="project-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="project-body">
+            <h3>Komatsu D375 — Water Pump Failure RCA</h3>
+            <p>Led RCA on repeated water‑pump failures, implementing solutions that reduced recurrence and safeguarded engines from contamination.</p>
+            <ul class="tags"><li>RCA / 5‑Whys</li><li>Reliability</li><li>OEM Collaboration</li></ul>
+          </div>
+        </article>
+
+        <article class="project-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="project-body">
+            <h3>Service Planning Dashboard</h3>
+            <p>Developed Power BI system to track services, hours and locations, leading to a 33% increase in service accuracy and reduced planning effort.</p>
+            <ul class="tags"><li>Power BI</li><li>Planning</li><li>Reliability Metrics</li></ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© 2025 Robert Smith</p>
+    </div>
+  </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
+  <script src="script.js"></script>
+
+</body>
+</html>
