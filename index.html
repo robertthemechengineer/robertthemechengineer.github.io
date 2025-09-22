@@ -8,137 +8,58 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <!-- AOS (Animate on Scroll) for smooth scroll-in effects -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <nav class="nav">
-        <a class="brand" href="#">RS</a>
+        <a class="brand" href="index.html">RS</a>
         <div class="nav-links">
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact" class="btn btn-sm">Contact</a>
+          <a href="index.html">Home</a>
+          <a href="projects.html">Projects</a>
+          <a href="resume.html">Resume</a>
+          <a href="contact.html" class="btn btn-sm">Contact</a>
         </div>
       </nav>
-      <section class="hero">
-        <h1>Robert Smith</h1>
-        <p class="subtitle">Mechanical / Reliability Engineer — Opencast Coal Mining (South Africa)</p>
+
+      <section class="hero" data-aos="fade-up">
+        <h1 class="reveal">Robert Smith</h1>
+        <p class="subtitle">Mechanical / Reliability Engineer — Opencast Coal Mining</p>
         <p class="lede">
-          I specialise in condition monitoring, oil & filter analysis, and reliability‑centred maintenance for heavy earthmoving fleets
-          (Cat D6/D9/D10, Komatsu D375/D65, Volvo A40/EC750, Hitachi ZX670–ZX890).
+          Condition monitoring, oil & filter analysis, RCM, and failure prevention for heavy earthmoving fleets
+          (Cat, Komatsu, Volvo, Hitachi). Focused on MTBF, availability, and cost reduction.
         </p>
         <div class="cta">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn btn-ghost" href="#about">Learn more</a>
+          <a class="btn" href="projects.html">View Projects</a>
+          <a class="btn btn-ghost" href="resume.html">View Resume</a>
         </div>
       </section>
     </div>
   </header>
 
   <main>
-    <section id="about" class="section">
+    <section class="section alt">
       <div class="container">
-        <h2>About</h2>
-        <p>
-          I’m a data‑driven engineer focused on improving MTBF, availability, and total cost of ownership through
-          practical reliability methods: RCA/5‑Whys, RCM, and continuous condition monitoring. I work closely with
-          OEMs and site teams to turn oil sample trends, magnetic plug findings, and undercarriage wear reports into
-          clear actions that prevent failures and reduce downtime.
-        </p>
-        <div class="highlights">
-          <div class="card">
-            <h3>Condition Monitoring</h3>
-            <p>Oil, filter & magnetic‑plug analysis, machine health systems, contamination control.</p>
-          </div>
-          <div class="card">
-            <h3>Reliability</h3>
-            <p>RCM, RCA/5‑Whys, preventive & predictive maintenance planning, failure reporting.</p>
-          </div>
-          <div class="card">
-            <h3>Fleet & Workshop</h3>
-            <p>Dozers, ADTs, excavators; buy‑in for oil sampling, housekeeping standards, cost reduction.</p>
-          </div>
+        <h2 class="section-title">Explore</h2>
+        <div class="link-grid">
+          <a class="link-card" href="projects.html" data-aos="zoom-in">
+            <h3>Projects</h3>
+            <p>Case studies: oil analysis program, D375 water-pump RCA, undercarriage tracking dashboard.</p>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-card" href="resume.html" data-aos="zoom-in" data-aos-delay="100">
+            <h3>Resume</h3>
+            <p>Experience, skills, and qualifications at a glance — downloadable PDF available.</p>
+            <span class="link-arrow">→</span>
+          </a>
+          <a class="link-card" href="contact.html" data-aos="zoom-in" data-aos-delay="200">
+            <h3>Contact</h3>
+            <p>Get in touch for site audits, reliability projects, or collaboration.</p>
+            <span class="link-arrow">→</span>
+          </a>
         </div>
-      </div>
-    </section>
-
-    <section id="projects" class="section alt">
-      <div class="container">
-        <h2>Selected Projects</h2>
-
-        <div class="projects">
-          <article class="project-card">
-            <div class="project-body">
-              <h3>Oil Analysis Program — Contamination Control Upgrade</h3>
-              <p>
-                Designed and rolled out a site‑wide oil sampling and cleanliness program with improved sampling points,
-                filter inspections, and ISO code targets. Reduced abnormal wear flags and improved decision speed on
-                interventions.
-              </p>
-              <ul class="tags">
-                <li>Oil Analysis</li><li>ISO Cleanliness</li><li>Predictive Maintenance</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-body">
-              <h3>Komatsu D375 — Water Pump Failure RCA</h3>
-              <p>
-                Led a structured RCA on repeated water‑pump failures (driven‑gear damage). Compiled evidence, vendor
-                feedback, and preventative actions to reduce recurrence and protect engines from cross‑contamination.
-              </p>
-              <ul class="tags">
-                <li>RCA / 5‑Whys</li><li>Failure Analysis</li><li>OEM Collaboration</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <div class="project-body">
-              <h3>Undercarriage Wear Tracking — Reporting Dashboard</h3>
-              <p>
-                Consolidated undercarriage inspection data across dozers and excavators into a single view with
-                %‑worn trends and forecasted replacements. Improved planning accuracy and minimised surprise downtime.
-              </p>
-              <ul class="tags">
-                <li>Condition Monitoring</li><li>Data Visualisation</li><li>Planning</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="section">
-      <div class="container">
-        <h2>Skills</h2>
-        <div class="skill-columns">
-          <ul>
-            <li>Condition Monitoring: oil, filter, magnetic‑plug, machine health</li>
-            <li>Reliability: RCM, RCA/5‑Whys, FMEA basics</li>
-            <li>Maintenance KPIs: MTBF, availability, cost reduction</li>
-          </ul>
-          <ul>
-            <li>Heavy Equipment: Cat D6/D9/D10, Komatsu D375/D65, Volvo A40/EC750</li>
-            <li>Reporting: dashboards, inspection sheets, work instructions</li>
-            <li>Stakeholder Comms: OEM engagement, foreman workshops</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section alt">
-      <div class="container">
-        <h2>Contact</h2>
-        <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener">linkedin.com/in/yourprofile</a></p>
-        <div class="cta">
-          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download Resume (PDF)</a>
-          <a class="btn btn-ghost" href="mailto:your.email@example.com">Email Me</a>
-        </div>
-        <p class="note">Tip: replace the email, LinkedIn link, and upload your <code>resume.pdf</code> to this repo.</p>
       </div>
     </section>
   </main>
@@ -148,5 +69,9 @@
       <p>© 2025 Robert Smith • Hosted on GitHub Pages</p>
     </div>
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script> AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' }); </script>
+  <script src="script.js"></script>
 </body>
 </html>

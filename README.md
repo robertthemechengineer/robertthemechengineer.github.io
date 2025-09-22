@@ -1,11 +1,5 @@
-# Portfolio (GitHub Pages)
+# Multi‑page Portfolio
 
-This repository contains a single-page portfolio for Robert Smith.
+Upload all these files to your GitHub Pages repo.
 
-## Replace these placeholders
-- Email in the Contact section
-- LinkedIn URL
-- Optionally upload `resume.pdf` to the repo and keep the button link
-
-## How to deploy (already live if this is in `yourusername.github.io`)
-- Settings → Pages → Deploy from branch (main / root)
+Edit email/LinkedIn in contact.html and add resume.pdf if you have one.
