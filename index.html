@@ -9,34 +9,33 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="style.css" />
+  <!-- IMPORTANT: point to the consolidated stylesheet in /assets/css/ -->
+  <link rel="stylesheet" href="/assets/css/style.css?v=3" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Sticky navbar with logo -->
   <header class="site-header">
     <div class="container">
       <nav class="nav" aria-label="Primary">
-        <a class="brand-logo" href="index.html" aria-label="Go to home">
-          <img src="images/logo.svg" alt="RS logo">
+        <a class="brand-logo" href="/index.html" aria-label="Go to home">
+          <img src="/assets/img/logo.svg" alt="RS logo">
           <span class="brand-text">Robert Smith</span>
         </a>
         <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
           <span class="bar"></span><span class="bar"></span><span class="bar"></span>
         </button>
         <div id="nav-links" class="nav-links">
-          <a href="index.html" class="active">Home</a>
-          <a href="projects.html">Projects</a>
-          <a href="cad.html">CAD</a>
-          <a href="personal.html">Personal</a>
-          <a href="resume.html">Resume</a>
-          <a href="contact.html" class="btn btn-sm">Contact</a>
+          <a href="/index.html" class="active">Home</a>
+          <a href="/pages/projects.html">Projects</a>
+          <a href="/pages/cad.html">CAD</a>
+          <a href="/pages/personal.html">Personal</a>
+          <a href="/pages/resume.html">Resume</a>
+          <a href="/pages/contact.html" class="btn btn-sm">Contact</a>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero" data-aos="fade-up" aria-label="Intro">
     <div class="container">
       <h1 class="reveal">Robert Smith</h1>
@@ -46,13 +45,12 @@
         condition monitoring across dozers, ADTs, and excavators.
       </p>
       <div class="cta">
-        <a class="btn" href="projects.html">See Case Studies</a>
-        <a class="btn btn-ghost" href="resume.html">View Resume</a>
+        <a class="btn" href="/pages/projects.html">See Case Studies</a>
+        <a class="btn btn-ghost" href="/pages/resume.html">View Resume</a>
       </div>
     </div>
   </section>
 
-  <!-- Impact metrics -->
   <section class="metrics" aria-label="Impact metrics">
     <div class="container metrics-row">
       <div class="metric" data-aos="zoom-in"><span>33%</span><small>↑ service accuracy</small></div>
@@ -69,56 +67,55 @@
           <h2>Featured: Water Pump RCA on Komatsu D375</h2>
           <p>Identified root causes behind repeated driven‑gear damage, added preventative actions,
              and protected engines from contamination — cutting repeat incidents.</p>
-          <a class="btn" href="projects.html">Read the Case Study</a>
+          <a class="btn" href="/pages/projects.html">Read the Case Study</a>
         </div>
         <div class="feature-media">
-          <img src="images/featured_placeholder.jpg" alt="Featured project image">
+          <img src="/assets/img/featured_placeholder.jpg" alt="Featured project image">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- QUICK LINKS — now using the exact same feature style -->
+  <!-- Quick links styled IDENTICAL to Featured -->
   <section class="section" aria-label="Quick links">
     <div class="container linkblocks">
 
-      <a class="feature-card feature-grid" href="cad.html" data-aos="fade-up">
+      <a class="feature-card feature-grid" href="/pages/cad.html" data-aos="fade-up">
         <div class="feature-text">
           <h3>CAD Portfolio</h3>
           <p>Selected SolidWorks models and drawings: guards, brackets, fixtures.</p>
           <span class="btn">Browse CAD</span>
         </div>
         <div class="feature-media">
-          <img src="images/lb_cad.jpg" alt="CAD cover (replace image)" />
+          <img src="/assets/img/lb_cad.jpg" alt="CAD cover" />
         </div>
       </a>
 
-      <a class="feature-card feature-grid" href="personal.html" data-aos="fade-up" data-aos-delay="100">
+      <a class="feature-card feature-grid" href="/pages/personal.html" data-aos="fade-up" data-aos-delay="100">
         <div class="feature-text">
           <h3>Personal Projects</h3>
           <p>Side tools and experiments (Python, data, planning helpers).</p>
           <span class="btn">See Personal Work</span>
         </div>
         <div class="feature-media">
-          <img src="images/lb_personal.jpg" alt="Personal projects cover (replace image)" />
+          <img src="/assets/img/lb_personal.jpg" alt="Personal projects cover" />
         </div>
       </a>
 
-      <a class="feature-card feature-grid" href="resume.html" data-aos="fade-up" data-aos-delay="200">
+      <a class="feature-card feature-grid" href="/pages/resume.html" data-aos="fade-up" data-aos-delay="200">
         <div class="feature-text">
           <h3>Resume</h3>
           <p>Inline PDF viewer plus a downloadable copy.</p>
           <span class="btn">Open Resume</span>
         </div>
         <div class="feature-media">
-          <img src="images/lb_resume.jpg" alt="Resume cover (replace image)" />
+          <img src="/assets/img/lb_resume.jpg" alt="Resume cover" />
         </div>
       </a>
 
     </div>
   </section>
 
-  <!-- Core capabilities -->
   <section class="section alt" data-aos="fade-up" aria-label="Core capabilities">
     <div class="container grid-3">
       <div class="card"><h3>Reliability</h3><p>RCM, RCA/5‑Whys, failure prevention, lifecycle analysis.</p></div>
@@ -127,7 +124,6 @@
     </div>
   </section>
 
-  <!-- Testimonial -->
   <section class="section" data-aos="fade-up" aria-label="Testimonial">
     <div class="container quote card">
       <p>“Robert’s RCA work and service planning cut surprise downtime and gave us reliable schedules.”</p>
@@ -135,14 +131,13 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="section" data-aos="fade-up" aria-label="Contact call to action">
     <div class="container center">
       <h2>Let’s improve your fleet’s reliability</h2>
       <p class="lede">Available for site audits, reliability projects, and maintenance program upgrades.</p>
       <div class="cta">
-        <a class="btn" href="contact.html">Contact Me</a>
-        <a class="btn btn-ghost" href="projects.html">Browse Projects</a>
+        <a class="btn" href="/pages/contact.html">Contact Me</a>
+        <a class="btn btn-ghost" href="/pages/projects.html">Browse Projects</a>
       </div>
     </div>
   </section>
@@ -155,6 +150,6 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="navbar.js"></script>
+  <script src="/assets/js/navbar.js"></script>
 </body>
 </html>
