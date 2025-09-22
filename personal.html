@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Personal Projects — Robert Smith</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Personal Projects — Robert Smith</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style-additions-previews.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <nav class="nav">
-        <a class="brand" href="index.html">RS</a>
+        <a class="brand-logo" href="index.html"><img src="images/logo.svg" alt="RS logo"><span class="brand-text">Robert Smith</span></a>
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
           <a href="cad.html">CAD</a>
-          <a href="personal.html">Personal</a>
+          <a href="personal.html" class="active">Personal</a>
           <a href="resume.html">Resume</a>
           <a href="contact.html" class="btn btn-sm">Contact</a>
         </div>
       </nav>
     </div>
   </header>
+
   <section class="subhero" data-aos="fade-up">
     <div class="container">
       <h1>Personal Projects</h1>
-      <p class="lede">Side projects, tools, and experiments outside of work.</p>
+      <p class="lede">Side builds, tools, and experiments.</p>
+    </div>
+  </section>
+
+  <!-- MINI PREVIEW BAR -->
+  <section class="preview-bar" aria-label="Personal previews">
+    <div class="container scroll-x">
+      <a class="chip-card" href="#pp-maintenance-tracker">
+        <span class="chip-thumb"><img src="images/personal_tracker_thumb.jpg" alt=""></span>
+        <span class="chip-meta"><h4>Maintenance Tracker</h4><p>Python + CSV exports</p></span>
+      </a>
+      <a class="chip-card" href="#pp-oil-visualizer">
+        <span class="chip-thumb"><img src="images/personal_oil_thumb.jpg" alt=""></span>
+        <span class="chip-meta"><h4>Oil Trend Visualizer</h4><p>Wear flagging</p></span>
+      </a>
+      <a class="chip-card" href="#pp-service-notifier">
+        <span class="chip-thumb"><img src="images/personal_notifier_thumb.jpg" alt=""></span>
+        <span class="chip-meta"><h4>Service Notifier</h4><p>Hours-based alerts</p></span>
+      </a>
     </div>
   </section>
 
   <main class="section">
-    <div class="container">
-      <div class="projects">
-        <article class="project-card" data-aos="fade-up">
-          <div class="project-body">
-            <h3>Maintenance Tracker Script</h3>
-            <p>Python tool to parse WhatsApp logs and build CSVs for planning dashboards.</p>
-            <ul class="tags"><li>Python</li><li>Automation</li><li>Data</li></ul>
-          </div>
-        </article>
-        <article class="project-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-body">
-            <h3>Oil Sample Trend Visualizer</h3>
-            <p>Simple plotting utility that flags abnormal wear markers in historical data.</p>
-            <ul class="tags"><li>Condition Monitoring</li><li>Visualization</li></ul>
-          </div>
-        </article>
-      </div>
+    <div class="container projects">
+      <article class="project-card" id="pp-maintenance-tracker" data-aos="fade-up">
+        <div class="project-body">
+          <h3>Maintenance Tracker Script</h3>
+          <p>Parses chat logs and produces CSVs for planning dashboards.</p>
+          <ul class="tags"><li>Python</li><li>Automation</li><li>Data</li></ul>
+        </div>
+      </article>
+      <article class="project-card" id="pp-oil-visualizer" data-aos="fade-up">
+        <div class="project-body">
+          <h3>Oil Sample Trend Visualizer</h3>
+          <p>Flags abnormal wear markers in historical data.</p>
+          <ul class="tags"><li>Condition Monitoring</li><li>Visualization</li></ul>
+        </div>
+      </article>
+      <article class="project-card" id="pp-service-notifier" data-aos="fade-up">
+        <div class="project-body">
+          <h3>Service Notifier</h3>
+          <p>Simple hours-based reminder for upcoming services.</p>
+          <ul class="tags"><li>Planning</li><li>Alerts</li></ul>
+        </div>
+      </article>
     </div>
   </main>
+
   <footer class="site-footer">
     <div class="container">
       <p>© 2025 Robert Smith</p>
     </div>
   </footer>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="script.js"></script>
-
 </body>
 </html>

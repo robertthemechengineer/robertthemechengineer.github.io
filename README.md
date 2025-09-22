@@ -1,21 +1,18 @@
-# Merged Home + Navbar (Forest Green)
-This package replaces your home page and consolidates styles into ONE file (style.css).
+# Mini Preview Bars (CAD, Personal, Resume)
+This update adds a horizontally scrollable "mini preview bar" to CAD, Personal, and Resume pages.
 
 Files:
-- index.html  — home page with sticky navbar + all upgrades
-- style.css   — forest green theme + navbar + homepage sections (single file)
-- navbar.js   — mobile menu + scroll shadow
-- images/logo.svg — RS logo used in the navbar
+- cad.html       — updated with preview bar linking to anchors on the page
+- personal.html  — updated with preview bar linking to project sections
+- resume.html    — updated with preview bar linking to resume sections + PDF
+- style-additions-previews.css — new styles for the preview ribbon
 
-How to deploy:
-1) Upload all files to your repo root. Overwrite existing index.html and style.css.
-2) Remove any older "style-additions.css" or "style-additions-navbar.css" to avoid conflicts.
-3) Ensure you still have your other pages (projects.html, cad.html, personal.html, resume.html, contact.html).
-4) Optional: add a real image at images/featured_placeholder.jpg and update the src if needed.
-5) Optional: add favicon.ico at repo root and keep <link rel="icon" href="favicon.ico"> in <head>.
+How to install:
+1) Upload **cad.html**, **personal.html**, **resume.html** to your repo root (replace existing files).
+2) Open **style.css** → **Edit** → paste the contents of **style-additions-previews.css** at the end → Save.
+3) (Optional) Add thumbnails in **images/** and update the `src` in the preview cards.
+   - Example: images/cad_assembly_thumb.jpg, images/personal_tracker_thumb.jpg
 
-Common fixes if something looks off:
-- Clear cache (Ctrl+F5). GitHub Pages can cache CSS.
-- Make sure index.html references only "style.css" (remove extra style-additions links).
-- Ensure navbar.js is present and loaded at the bottom of index.html.
-- Confirm "images/logo.svg" path is correct and case matches exactly.
+Notes:
+- The preview chips use anchors like #cad-assembly-1 or #exp — clicking a chip scrolls users directly to that section.
+- Works with your existing forest-green theme and AOS animations.

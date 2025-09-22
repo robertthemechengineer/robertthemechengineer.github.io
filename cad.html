@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>CAD Portfolio — Robert Smith</title>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CAD Portfolio — Robert Smith</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style-additions-previews.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 </head>
 <body>
   <header class="site-header">
     <div class="container">
       <nav class="nav">
-        <a class="brand" href="index.html">RS</a>
+        <a class="brand-logo" href="index.html"><img src="images/logo.svg" alt="RS logo"><span class="brand-text">Robert Smith</span></a>
         <div class="nav-links">
           <a href="index.html">Home</a>
           <a href="projects.html">Projects</a>
-          <a href="cad.html">CAD</a>
+          <a href="cad.html" class="active">CAD</a>
           <a href="personal.html">Personal</a>
           <a href="resume.html">Resume</a>
           <a href="contact.html" class="btn btn-sm">Contact</a>
@@ -24,40 +24,56 @@
       </nav>
     </div>
   </header>
+
   <section class="subhero" data-aos="fade-up">
     <div class="container">
       <h1>CAD Portfolio</h1>
-      <p class="lede">Selected SolidWorks models and drawings (WIP gallery).</p>
+      <p class="lede">Selected SolidWorks models and drawings.</p>
+    </div>
+  </section>
+
+  <!-- MINI PREVIEW BAR -->
+  <section class="preview-bar" aria-label="CAD previews">
+    <div class="container scroll-x">
+      <a class="chip-card" href="#cad-assembly-1">
+        <span class="chip-thumb"><img src="images/cad_assembly_thumb.jpg" alt=""></span>
+        <span class="chip-meta"><h4>Dozer Guard Assembly</h4><p>Exploded view & BOM</p></span>
+      </a>
+      <a class="chip-card" href="#cad-bracket-1">
+        <span class="chip-thumb"><img src="images/cad_bracket_thumb.jpg" alt=""></span>
+        <span class="chip-meta"><h4>Hydraulic Bracket</h4><p>Drawing & tolerances</p></span>
+      </a>
+      <a class="chip-card" href="#cad-jig-1">
+        <span class="chip-thumb"><img src="images/cad_jig_thumb.jpg" alt=""></span>
+        <span class="chip-meta"><h4>Welding Jig</h4><p>Fixture concept</p></span>
+      </a>
     </div>
   </section>
 
   <main class="section">
-    <div class="container">
-      <div class="gallery">
-        <figure class="card" data-aos="fade-up">
-          <div class="thumb placeholder"></div>
-          <figcaption>Assembly: Example — add image to <code>images/</code> and update <code>src</code>.</figcaption>
-        </figure>
-        <figure class="card" data-aos="fade-up" data-aos-delay="100">
-          <div class="thumb placeholder"></div>
-          <figcaption>Part: Bracket — dimensions, tolerances, and exploded view.</figcaption>
-        </figure>
-        <figure class="card" data-aos="fade-up" data-aos-delay="200">
-          <div class="thumb placeholder"></div>
-          <figcaption>Fixture: Jig concept — notes and iterations.</figcaption>
-        </figure>
-      </div>
-      <p class="note">Tip: create an <code>images/</code> folder in your repo and replace the placeholders with your renders/screenshots.</p>
+    <div class="container gallery">
+      <figure class="card" id="cad-assembly-1" data-aos="fade-up">
+        <div class="thumb placeholder"></div>
+        <figcaption>Dozer Guard Assembly — add render to <code>images/</code> and replace thumbnail + this placeholder.</figcaption>
+      </figure>
+      <figure class="card" id="cad-bracket-1" data-aos="fade-up">
+        <div class="thumb placeholder"></div>
+        <figcaption>Hydraulic Bracket — drawing with key tolerances.</figcaption>
+      </figure>
+      <figure class="card" id="cad-jig-1" data-aos="fade-up">
+        <div class="thumb placeholder"></div>
+        <figcaption>Welding Jig Concept — iterations and notes.</figcaption>
+      </figure>
     </div>
   </main>
+
   <footer class="site-footer">
     <div class="container">
       <p>© 2025 Robert Smith</p>
     </div>
   </footer>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="script.js"></script>
-
 </body>
 </html>
