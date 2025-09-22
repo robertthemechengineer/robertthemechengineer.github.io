@@ -9,11 +9,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <!-- IMPORTANT: point to the consolidated stylesheet in /assets/css/ -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=3" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=4" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Sticky navbar with logo -->
   <header class="site-header">
     <div class="container">
       <nav class="nav" aria-label="Primary">
@@ -36,6 +36,7 @@
     </div>
   </header>
 
+  <!-- Hero -->
   <section class="hero" data-aos="fade-up" aria-label="Intro">
     <div class="container">
       <h1 class="reveal">Robert Smith</h1>
@@ -51,6 +52,7 @@
     </div>
   </section>
 
+  <!-- Impact metrics -->
   <section class="metrics" aria-label="Impact metrics">
     <div class="container metrics-row">
       <div class="metric" data-aos="zoom-in"><span>33%</span><small>↑ service accuracy</small></div>
@@ -59,7 +61,7 @@
     </div>
   </section>
 
-  <!-- Featured (reference style) -->
+  <!-- FEATURE 1: Case Study -->
   <section class="section" data-aos="fade-up" aria-label="Featured case study">
     <div class="container feature-grid">
       <div class="feature-card">
@@ -76,46 +78,39 @@
     </div>
   </section>
 
-  <!-- Quick links styled IDENTICAL to Featured -->
-  <section class="section" aria-label="Quick links">
-    <div class="container linkblocks">
-
-      <a class="feature-card feature-grid" href="/pages/cad.html" data-aos="fade-up">
+  <!-- FEATURE 2: CAD Portfolio (same layout as case study) -->
+  <section class="section" data-aos="fade-up" aria-label="Featured CAD">
+    <div class="container feature-grid">
+      <a class="feature-card" href="/pages/cad.html">
         <div class="feature-text">
-          <h3>CAD Portfolio</h3>
-          <p>Selected SolidWorks models and drawings: guards, brackets, fixtures.</p>
+          <h2>Featured: CAD Portfolio</h2>
+          <p>Selected SolidWorks models and drawings for guards, brackets, and fixtures — ready for manufacturing.</p>
           <span class="btn">Browse CAD</span>
         </div>
         <div class="feature-media">
-          <img src="/assets/img/lb_cad.jpg" alt="CAD cover" />
+          <img src="/assets/img/lb_cad.jpg" alt="CAD cover">
         </div>
       </a>
-
-      <a class="feature-card feature-grid" href="/pages/personal.html" data-aos="fade-up" data-aos-delay="100">
-        <div class="feature-text">
-          <h3>Personal Projects</h3>
-          <p>Side tools and experiments (Python, data, planning helpers).</p>
-          <span class="btn">See Personal Work</span>
-        </div>
-        <div class="feature-media">
-          <img src="/assets/img/lb_personal.jpg" alt="Personal projects cover" />
-        </div>
-      </a>
-
-      <a class="feature-card feature-grid" href="/pages/resume.html" data-aos="fade-up" data-aos-delay="200">
-        <div class="feature-text">
-          <h3>Resume</h3>
-          <p>Inline PDF viewer plus a downloadable copy.</p>
-          <span class="btn">Open Resume</span>
-        </div>
-        <div class="feature-media">
-          <img src="/assets/img/lb_resume.jpg" alt="Resume cover" />
-        </div>
-      </a>
-
     </div>
   </section>
 
+  <!-- FEATURE 3: Personal Projects (same layout as case study) -->
+  <section class="section" data-aos="fade-up" aria-label="Featured Personal Projects">
+    <div class="container feature-grid">
+      <a class="feature-card" href="/pages/personal.html">
+        <div class="feature-text">
+          <h2>Featured: Personal Projects</h2>
+          <p>Small tools and experiments: planning helpers, data checks, and condition‑monitoring utilities.</p>
+          <span class="btn">See Personal Work</span>
+        </div>
+        <div class="feature-media">
+          <img src="/assets/img/lb_personal.jpg" alt="Personal projects cover">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Core capabilities -->
   <section class="section alt" data-aos="fade-up" aria-label="Core capabilities">
     <div class="container grid-3">
       <div class="card"><h3>Reliability</h3><p>RCM, RCA/5‑Whys, failure prevention, lifecycle analysis.</p></div>
@@ -124,6 +119,7 @@
     </div>
   </section>
 
+  <!-- Testimonial -->
   <section class="section" data-aos="fade-up" aria-label="Testimonial">
     <div class="container quote card">
       <p>“Robert’s RCA work and service planning cut surprise downtime and gave us reliable schedules.”</p>
@@ -131,6 +127,7 @@
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="section" data-aos="fade-up" aria-label="Contact call to action">
     <div class="container center">
       <h2>Let’s improve your fleet’s reliability</h2>
