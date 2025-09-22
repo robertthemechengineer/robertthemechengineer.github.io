@@ -14,7 +14,7 @@ img{max-width:100%;height:auto;display:block}
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 .container-wide{max-width:1200px}
 
-/* NAVBAR baseline */
+/* NAVBAR + MENU */
 .site-header{position: sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background: rgba(14,28,20,0.85); border-bottom: 1px solid #2d4736}
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
 .brand-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
@@ -25,49 +25,60 @@ img{max-width:100%;height:auto;display:block}
 .nav-links a:hover,.nav-links a.active{opacity:1}
 .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:var(--brand);color:var(--brand-ink);text-decoration:none;font-weight:700;box-shadow:0 10px 30px var(--ring)}
 .btn-ghost{background:transparent;color:#f0fff5;border:1px solid #2d4736}
+.menu-toggle{display:none;background:none;border:0;padding:6px;cursor:pointer}
+.menu-toggle .bar{display:block;width:22px;height:2px;background:var(--text);margin:4px 0;border-radius:2px}
+@media (max-width:900px){
+  .menu-toggle{display:block}
+  .nav-links{position:fixed;right:16px;top:64px;background:var(--card);border:1px solid #2d4736;border-radius:14px;padding:12px;display:none;flex-direction:column;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .nav-links.show{display:flex}
+}
 
-/* HERO */
-.hero{padding:40px 0 24px}
+/* TYPOGRAPHY & SECTIONS */
+h1,h2,h3{line-height:1.2}
+h1{font-size:44px;margin:8px 0}
+h2{font-size:26px;margin:0 0 8px}
+h3{font-size:20px;margin:0 0 8px}
+.hero{padding:48px 0 24px}
 .subtitle{font-weight:600;color:var(--brand)}
 .lede{color:var(--muted);max-width:900px}
 .cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
 
+/* Rhythm & breathing room */
+.section{padding:56px 0}
+.section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0))}
+.cards-equal{align-items:stretch}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:600px){h1{font-size:34px}.grid-3{grid-template-columns:1fr}}
+
 /* METRICS */
-.metrics{padding:8px 0;background:rgba(255,255,255,0.02);border-top:1px solid #2d4736;border-bottom:1px solid #2d4736}
-.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;padding:12px 0}
-.metric{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid #2d4736;border-radius:12px;padding:10px}
+.metrics{padding:12px 0;background:rgba(255,255,255,0.02);border-top:1px solid #2d4736;border-bottom:1px solid #2d4736}
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;padding:12px 0}
+.metric{display:flex;flex-direction:column;align-items:center;background:var(--card);border:1px solid #2d4736;border-radius:12px;padding:12px}
 .metric span{font-weight:800;font-size:1.4rem;color:var(--brand)}
 .metric small{color:var(--muted)}
 
-/* FEATURED full-wide + stylized media */
-.feature-card{background:var(--card);border:1px solid #2d4736;border-radius:14px;padding:16px;box-shadow:0 10px 20px rgba(0,0,0,.25);display:grid;grid-template-columns:1.4fr 1fr;gap:16px;text-decoration:none;color:var(--text);transition:transform .15s ease,border-color .15s ease}
+/* FEATURED full-wide + fancy media */
+.feature-card{background:var(--card);border:1px solid #2d4736;border-radius:14px;padding:20px;box-shadow:0 10px 20px rgba(0,0,0,.25);display:grid;grid-template-columns:1.6fr 1fr;gap:20px;text-decoration:none;color:var(--text);transition:transform .15s ease,border-color .15s ease}
 .feature-card:hover{transform:translateY(-2px);border-color:#355e45}
-.feature-wide{grid-template-columns:1.6fr 1fr}
 .feature-text p{margin:0 0 12px;color:var(--muted)}
-.feature-media{border-radius:12px;overflow:hidden;border:1px solid #2d4736;background:#22382c;position:relative;min-height:320px}
+.feature-media{border-radius:12px;overflow:hidden;border:1px solid #2d4736;background:#22382c;position:relative;min-height:340px}
 .feature-media.fancy img{width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform .3s ease}
 .feature-card:hover .feature-media.fancy img{transform:scale(1.08)}
 .feature-media.fancy::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 100%);pointer-events:none}
 @media (max-width:900px){.feature-card{grid-template-columns:1fr}.feature-media{min-height:220px}}
 @media (max-width:480px){.feature-media{min-height:180px}}
 
-/* TRIPLE CARD GRIDS */
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.grid-3{grid-template-columns:1fr}}
-
-/* Unified card style + equal heights */
+/* Unified card style */
 .card,.info-card{background:var(--card);border:1px solid #2d4736;border-radius:14px;padding:16px;box-shadow:0 10px 20px rgba(0,0,0,.25);display:flex;flex-direction:column}
-.cards-equal > .card{height:100%}
-.info-card.accent-top{border-top:3px solid var(--brand)}
 .info-list{margin:8px 0 0 18px;color:var(--muted)}
 .info-list li{margin:4px 0}
 .info-list.icons{list-style:none;padding-left:0;margin-left:0}
 .info-list.icons li{position:relative;padding-left:28px;margin:6px 0}
 .info-list.icons li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;background-image:url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'none\'><circle cx=\'12\' cy=\'12\' r=\'10\' stroke=\'%234CAF50\' stroke-width=\'2\'/><path d=\'M7 12.5l3 3 7-7\' stroke=\'%234CAF50\' stroke-width=\'2\' stroke-linecap=\'round\' stroke-linejoin=\'round\'/></svg>');background-size:18px 18px;background-repeat:no-repeat}
 
-/* Certification logos — locked size */
-.cert-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:6px}
+/* Certification logos */
+.cert-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
 .cert-logos img{max-width:100px;max-height:60px;object-fit:contain;background:#fff;padding:4px;border-radius:6px;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 
 /* RESUME CARD */
