@@ -9,10 +9,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css?v=6" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=7" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Navbar -->
   <header class="site-header">
     <div class="container">
       <nav class="nav" aria-label="Primary">
@@ -35,38 +36,132 @@
     </div>
   </header>
 
-  <!-- Info card grid (Goals, Certifications, Reliability) -->
-  <section class="section alt" aria-label="Info cards">
-    <div class="container grid-3">
-
-      <!-- Goals & Values -->
-      <div class="card" data-aos="fade-up">
-        <h3>Goals & Values</h3>
-        <p>Reduce downtime, protect critical components, and extend machine life through
-           data-driven engineering. Prioritize safety, reliability, and cost efficiency.</p>
+  <!-- Hero -->
+  <section class="hero" data-aos="fade-up" aria-label="Intro">
+    <div class="container">
+      <h1 class="reveal">Robert Smith</h1>
+      <p class="subtitle">Reliability & Maintenance Engineering for Heavy Equipment Fleets</p>
+      <p class="lede">I reduce unplanned downtime and extend component life using RCM, RCA/5‑Whys, and data‑driven condition monitoring across dozers, ADTs, and excavators.</p>
+      <div class="cta">
+        <a class="btn" href="/pages/projects.html">See Case Studies</a>
+        <a class="btn btn-ghost" href="/pages/resume.html">View Resume</a>
       </div>
+    </div>
+  </section>
 
-      <!-- Certifications -->
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
+  <!-- Metrics (unchanged) -->
+  <section class="metrics" aria-label="Impact metrics">
+    <div class="container metrics-row">
+      <div class="metric" data-aos="zoom-in"><span>33%</span><small>↑ service accuracy</small></div>
+      <div class="metric" data-aos="zoom-in" data-aos-delay="100"><span>200+</span><small>machines monitored</small></div>
+      <div class="metric" data-aos="zoom-in" data-aos-delay="200"><span>0→near‑0</span><small>repeat failures (targeted)</small></div>
+    </div>
+  </section>
+
+  <!-- FEATURE 1: Case Study -->
+  <section class="section" data-aos="fade-up" aria-label="Featured case study">
+    <div class="container feature-grid">
+      <div class="feature-card">
+        <div class="feature-text">
+          <h2>Featured: Water Pump RCA on Komatsu D375</h2>
+          <p>Identified root causes behind repeated driven‑gear damage, added preventative actions,
+             and protected engines from contamination — cutting repeat incidents.</p>
+          <a class="btn" href="/pages/projects.html">Read the Case Study</a>
+        </div>
+        <div class="feature-media">
+          <img src="/assets/img/featured_placeholder.jpg" alt="Featured project image">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO CARD 1: Goals & Values (between Feature 1 and Feature 2) -->
+  <section class="section tight" aria-label="Goals & Values">
+    <div class="container">
+      <div class="info-card" data-aos="fade-up">
+        <h3>Goals & Values</h3>
+        <p>Reduce downtime, protect critical components, and extend machine life through data‑driven engineering.
+           Prioritize safety, reliability, and cost efficiency.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURE 2: CAD -->
+  <section class="section" data-aos="fade-up" aria-label="Featured CAD">
+    <div class="container feature-grid">
+      <a class="feature-card" href="/pages/cad.html">
+        <div class="feature-text">
+          <h2>Featured: CAD Portfolio</h2>
+          <p>SolidWorks models and drawings for guards, brackets, and fixtures — practical, manufacturable components.</p>
+          <span class="btn">Browse CAD</span>
+        </div>
+        <div class="feature-media">
+          <img src="/assets/img/lb_cad.jpg" alt="CAD cover">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- INFO CARD 2: Certifications (between Feature 2 and Feature 3) -->
+  <section class="section tight" aria-label="Certifications">
+    <div class="container">
+      <div class="info-card" data-aos="fade-up">
         <h3>Certifications</h3>
         <div class="cert-logos">
-          <img src="/assets/img/cert_cat1.png" alt="Cat-1 Vibration" />
+          <img src="/assets/img/cert_cat1.png" alt="Cat‑1 Vibration" />
           <img src="/assets/img/cert_sixsigma.png" alt="Lean Six Sigma" />
           <img src="/assets/img/cert_oem.png" alt="OEM Training" />
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Reliability Info -->
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
+  <!-- FEATURE 3: Personal Projects -->
+  <section class="section" data-aos="fade-up" aria-label="Featured Personal Projects">
+    <div class="container feature-grid">
+      <a class="feature-card" href="/pages/personal.html">
+        <div class="feature-text">
+          <h2>Featured: Personal Projects</h2>
+          <p>Small tools: planning helpers, data checks, and condition‑monitoring utilities.</p>
+          <span class="btn">See Personal Work</span>
+        </div>
+        <div class="feature-media">
+          <img src="/assets/img/lb_personal.jpg" alt="Personal projects cover">
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- INFO CARD 3: Reliability Focus (after Feature 3, before Resume) -->
+  <section class="section tight" aria-label="Reliability Focus">
+    <div class="container">
+      <div class="info-card" data-aos="fade-up">
         <h3>Reliability Focus</h3>
-        <ul>
+        <ul class="info-list">
           <li>RCM & Failure Mode Analysis</li>
           <li>Oil & Filter Analysis</li>
           <li>Magnetic Plug Inspections</li>
           <li>Machine Health Monitoring</li>
         </ul>
       </div>
+    </div>
+  </section>
 
+  <!-- Resume (compact card) -->
+  <section class="section" aria-label="Resume">
+    <div class="container">
+      <a class="card resume-card" href="/pages/resume.html" data-aos="fade-up">
+        <div class="resume-grid">
+          <div class="resume-text">
+            <h3>Resume</h3>
+            <p>Inline PDF viewer and a downloadable copy.</p>
+            <span class="btn">Open Resume</span>
+          </div>
+          <div class="resume-media">
+            <img src="/assets/img/lb_resume.jpg" alt="Resume cover" />
+          </div>
+        </div>
+      </a>
     </div>
   </section>
 
