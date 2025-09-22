@@ -36,6 +36,25 @@ body{
 .menu-toggle{display:none;background:none;border:0;padding:6px;cursor:pointer}
 .menu-toggle .bar{display:block;width:22px;height:2px;background:var(--text);margin:4px 0;border-radius:2px}
 body.scrolled .site-header{box-shadow:0 10px 24px rgba(0,0,0,.25)}
+
+/* — Fix link blocks to match .card / Featured — */
+.linkblock{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:16px;
+  text-decoration:none;color:var(--text);
+
+  /* add the missing card chrome ↓ */
+  background: var(--card);
+  border: 1px solid #2d4736;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.25);
+
+  transition: transform .15s ease, border-color .15s ease;
+}
+.linkblock:hover{transform:translateY(-2px);border-color:#355e45}
+.lb-media{border-radius:12px;overflow:hidden;border:1px solid #2d4736;background:#1f3227;min-height:160px}
+@media (max-width:900px){.linkblock{grid-template-columns:1fr}}
+
 @media (max-width:900px){
   .menu-toggle{display:block}
   .nav-links{position:fixed;right:16px;top:64px;background:var(--card);border:1px solid #2d4736;border-radius:14px;padding:12px;display:none;flex-direction:column;gap:12px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
