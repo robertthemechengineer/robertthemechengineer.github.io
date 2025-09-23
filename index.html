@@ -9,6 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="stylesheet" href="/assets/css/style.css?v=23" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
@@ -70,14 +71,15 @@
     <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Featured project">
       <div class="container container-wide">
         <p class="overline">Featured Project</p>
-        <a class="feature-card feature-wide" href="/pages/projects.html">
+        <a class="feature-card feature-wide" href="/pages/projects.html"
+          aria-label="Read the Water Pump RCA case study">
           <div class="feature-text">
             <h2>Water Pump RCA on Komatsu D375</h2>
             <p>Identified root causes behind repeated driven-gear damage, added preventative actions, and protected engines from contamination — cutting repeat incidents.</p>
           </div>
           <div class="feature-media fancy">
             <img src="/assets/img/featured_placeholder.jpg" alt="" loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 480px">
+                 sizes="(max-width: 900px) 100vw, 600px">
           </div>
         </a>
       </div>
@@ -108,14 +110,15 @@
     <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="CAD portfolio">
       <div class="container container-wide">
         <p class="overline">CAD Portfolio</p>
-        <a class="feature-card feature-wide" href="/pages/cad.html">
+        <a class="feature-card feature-wide" href="/pages/cad.html"
+          aria-label="View selected CAD work">
           <div class="feature-text">
             <h2>Selected CAD Work</h2>
             <p>SolidWorks models and drawings for guards, brackets, and fixtures — practical, manufacturable components.</p>
           </div>
           <div class="feature-media fancy">
             <img src="/assets/img/lb_cad.jpg" alt="" loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 480px">
+                 sizes="(max-width: 900px) 100vw, 600px">
           </div>
         </a>
       </div>
@@ -149,14 +152,15 @@
     <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Personal projects">
       <div class="container container-wide">
         <p class="overline">Personal Projects</p>
-        <a class="feature-card feature-wide" href="/pages/personal.html">
+        <a class="feature-card feature-wide" href="/pages/personal.html"
+          aria-label="See personal tools and utilities">
           <div class="feature-text">
             <h2>Tools & Utilities</h2>
             <p>Planning helpers, data checks, and condition-monitoring utilities.</p>
           </div>
           <div class="feature-media fancy">
             <img src="/assets/img/lb_personal.jpg" alt="" loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 480px">
+                 sizes="(max-width: 900px) 100vw, 600px">
           </div>
         </a>
       </div>
@@ -170,22 +174,22 @@
           <div class="card info-card" data-aos="fade-up">
             <h3>RCM</h3>
             <ul class="info-list icons">
-              <li>Failure modes identified</li>
-              <li>Maintenance tasks aligned</li>
+              <li>Identify failure modes</li>
+              <li>Align maintenance tasks</li>
             </ul>
           </div>
           <div class="card info-card" data-aos="fade-up" data-aos-delay="100">
             <h3>Condition Monitoring</h3>
             <ul class="info-list icons">
-              <li>Oil & filter analysis</li>
-              <li>Mag plug inspections</li>
+              <li>Analyze oil &amp; filters</li>
+              <li>Inspect magnetic plugs</li>
             </ul>
           </div>
           <div class="card info-card" data-aos="fade-up" data-aos-delay="200">
             <h3>Planning & KPIs</h3>
             <ul class="info-list icons">
-              <li>Availability & MTBF</li>
-              <li>Power BI service plans</li>
+              <li>Track availability &amp; MTBF</li>
+              <li>Publish Power BI service plans</li>
             </ul>
           </div>
         </div>
@@ -196,7 +200,8 @@
     <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Resume">
       <div class="container container-wide">
         <p class="overline">Resume</p>
-        <a class="feature-card feature-wide" href="/pages/resume.html">
+        <a class="feature-card feature-wide" href="/pages/resume.html"
+          aria-label="Open resume">
           <div class="feature-text">
             <h2>Professional Resume</h2>
             <p>Inline PDF viewer and downloadable copy available.</p>
@@ -204,7 +209,7 @@
           </div>
           <div class="feature-media fancy">
             <img src="/assets/img/lb_resume.jpg" alt="" loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 480px" />
+                 sizes="(max-width: 900px) 100vw, 600px" />
           </div>
         </a>
       </div>
@@ -232,7 +237,7 @@
     </div>
   </footer>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script>
     AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
 
