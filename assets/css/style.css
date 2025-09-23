@@ -207,8 +207,8 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 .info-list.icons li{position:relative;padding-left:28px;margin:6px 0}
 .info-list.icons li::before{
   content:"";position:absolute;left:0;top:2px;width:18px;height:18px;
-  background-image:url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\'><circle cx=\\'12\\' cy=\\'12\\' r=\\'10\\' stroke=\\'%234CAF50\\' stroke-width=\\'2\\'/><path d=\\'M7 12.5l3 3 7-7\\' stroke=\\'%234CAF50\\' stroke-width=\\'2\\' stroke-linecap=\\'round\\' stroke-linejoin=\\'round\\'/></svg>');
-  background-size:18px 18px;background-repeat:no-repeat;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\' fill=\\'%234CAF50\\'><path d=\\'M22 2l-2.59 2.59-3.17-1.06-1.06-3.17L17 0l5 5-0.94 0.94L22 2zM2 22l5-5 3.17 1.06 1.06 3.17L9 24 4 19l0.94-0.94L2 22zM7.5 10.5l6 6 3-3-6-6-3 3z\\'/></svg>');
+    background-size:18px 18px;background-repeat:no-repeat;
 }
 
 /* Certification logos (scale with card size) */
