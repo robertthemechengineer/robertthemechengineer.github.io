@@ -7,11 +7,10 @@
   --brand-ink:#032e12;
   --ring: rgba(76, 175, 80, 0.4);
 
-  /* Softer look */
-  --border:#335a44;              /* lighter border */
-  --shadow: 0 10px 20px rgba(0,0,0,.20); /* softer shadow */
+  --border:#335a44;
+  --shadow: 0 10px 20px rgba(0,0,0,.20);
 
-  /* Polishing additions */
+  /* polish tokens */
   --shadow-soft: 0 8px 16px rgba(0,0,0,.16);
   --ring-strong: 0 0 0 6px rgba(76,175,80,.18);
 }
@@ -30,7 +29,7 @@ body{
 .container{max-width:1200px;margin:0 auto;padding:0 20px}
 .container-wide{max-width:1200px}
 
-/* Skip link: visually hidden until keyboard focus */
+/* Skip link */
 .skip-link{position:absolute;left:-999px;top:auto;width:1px;height:1px;overflow:hidden}
 .skip-link:focus{
   left:16px;top:16px;width:auto;height:auto;
@@ -39,14 +38,13 @@ body{
   box-shadow:0 6px 16px var(--ring)
 }
 
-/* NAVBAR + MENU */
+/* NAVBAR */
 .site-header{
   position: sticky; top:0; z-index:50;
   backdrop-filter:saturate(140%) blur(8px);
   background: rgba(14,28,20,0.85);
   border-bottom: 1px solid var(--border)
 }
-/* Shadow only after scroll */
 .site-header.scrolled{ box-shadow: 0 10px 20px rgba(0,0,0,.18); }
 
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
@@ -56,7 +54,6 @@ body{
 .nav-links{display:flex;align-items:center;gap:16px}
 .nav-links a{color:var(--text);text-decoration:none;opacity:.9;position:relative}
 .nav-links a:hover,.nav-links a.active{opacity:1}
-/* Underline hover animation */
 .nav-links a::after{
   content:""; position:absolute; left:0; bottom:-2px;
   width:0%; height:1px; background:var(--brand); transition:width .18s ease;
@@ -72,7 +69,6 @@ body{
 .btn:hover{transform:translateY(-1px)}
 .btn-sm{padding:8px 12px;font-size:.9rem}
 .btn-ghost{background:transparent;color:#f0fff5;border:1px solid var(--border)}
-/* Consistent focus ring */
 .btn:focus-visible, .btn-ghost:focus-visible { outline:none; box-shadow: var(--ring-strong); }
 
 .menu-toggle{display:none;background:none;border:0;padding:6px;cursor:pointer}
@@ -94,26 +90,40 @@ h2{font-size:clamp(22px, 3.2vw, 32px);margin:0 0 8px}
 h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 
 .hero{
+  position:relative;
   padding:48px 0 24px;
-  /* subtle textured background */
+  /* Layered, more textured background */
   background:
-    radial-gradient(1200px 600px at 10% -20%, rgba(76,175,80,.08), transparent 60%),
-    radial-gradient(1000px 500px at 110% 0%, rgba(3,46,18,.35), transparent 55%);
+    /* broad vignette */
+    radial-gradient(1200px 600px at 10% -20%, rgba(76,175,80,.09), transparent 60%),
+    radial-gradient(1000px 500px at 110% 0%, rgba(3,46,18,.35), transparent 55%),
+    /* soft grid texture */
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.02) 0, rgba(255,255,255,.02) 1px, transparent 1px, transparent 22px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.02) 0, rgba(255,255,255,.02) 1px, transparent 1px, transparent 22px);
   border-bottom: 1px solid var(--border);
 }
+/* subtle noise overlay */
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:.13;
+  background-image:
+    url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3e%3cfilter id='n'%3e%3cfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3e%3cfeColorMatrix type='saturate' values='0'/%3e%3c/filter%3e%3crect width='100%25' height='100%25' filter='url(%23n)' opacity='.35'/%3e%3c/svg%3e");
+  background-size: 300px 300px;
+  mix-blend-mode: overlay;
+}
+
 .subtitle{font-weight:600;color:var(--brand)}
-/* Clamp hero subheadline width for clean wrapping */
 .lede{color:var(--muted);max-width:clamp(520px, 70vw, 900px);text-wrap:balance}
 .lede-aux{opacity:.9}
 .cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
 
-/* Overline (section labels) */
+/* Overline */
 .overline{
   font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
   color:var(--muted);margin:0 0 8px 2px
 }
 
-/* Micro-copy metrics */
+/* Metrics */
 .metrics{
   padding:12px 0;background:rgba(255,255,255,0.02);
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
@@ -131,10 +141,9 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   font-variant-numeric: tabular-nums lining-nums;
 }
 .metric small{color:var(--muted)}
-/* Subtle “pop” after count-up */
 .metric.done{ border-color:#3f7054; box-shadow: var(--shadow-soft); }
 
-/* Rhythm & breathing room */
+/* Sections & layout */
 .section{padding:clamp(44px, 6vw, 72px) 0}
 .section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00))}
 .cards-equal{align-items:stretch}
@@ -142,7 +151,7 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 @media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:600px){.grid-3{grid-template-columns:1fr}}
 
-/* FEATURED full-wide + fancy media */
+/* Features & cards */
 .feature-card{
   background:var(--card);border:1px solid var(--border);border-radius:14px;
   padding:20px;box-shadow:var(--shadow);
@@ -175,7 +184,6 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 @media (max-width:900px){.feature-card{grid-template-columns:1fr}.feature-media{min-height:220px}}
 @media (max-width:480px){.feature-media{min-height:180px}}
 
-/* Unified card style */
 .card,.info-card{
   background:var(--card);border:1px solid var(--border);border-radius:14px;
   padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;
@@ -197,7 +205,7 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   background-size:18px 18px;background-repeat:no-repeat
 }
 
-/* Certification logos */
+/* Certs */
 .cert-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:8px}
 .cert-logos img{
   max-width:100px;max-height:60px;object-fit:contain;
@@ -213,7 +221,7 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 .contact-bar-inner{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}
 .contact-bar .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
 
-/* Footer with quote */
+/* Footer */
 .site-footer{padding:28px 0;background:#0c1913;border-top:1px solid var(--border);text-align:center}
 .footer-quote{font-style:italic;color:var(--muted);margin:0 0 10px}
 .footer-signoff{margin:0 0 6px;color:var(--text);opacity:.9}
