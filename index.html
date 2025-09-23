@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css?v=22" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=23" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -76,30 +76,10 @@
             <p>Identified root causes behind repeated driven-gear damage, added preventative actions, and protected engines from contamination — cutting repeat incidents.</p>
           </div>
           <div class="feature-media fancy">
-            <img src="/assets/img/featured_placeholder.jpg" alt="" loading="lazy" decoding="async">
+            <img src="/assets/img/featured_placeholder.jpg" alt="" loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 480px">
           </div>
         </a>
-      </div>
-    </section>
-
-    <!-- TRIPLET: Goals & Values -->
-    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Goals & Values">
-      <div class="container container-wide">
-        <p class="overline">Goals & Values</p>
-        <div class="grid-3 cards-equal">
-          <div class="card info-card" data-aos="fade-up">
-            <h3>Availability</h3>
-            <p>Prevent repeat failures and stabilize schedules with proactive inspections and service planning.</p>
-          </div>
-          <div class="card info-card" data-aos="fade-up" data-aos-delay="100">
-            <h3>Safety First</h3>
-            <p>Design and procedures that protect people and critical assets on- and off-site.</p>
-          </div>
-          <div class="card info-card" data-aos="fade-up" data-aos-delay="200">
-            <h3>Cost Discipline</h3>
-            <p>Reduce lifetime cost via root-cause elimination and optimized service intervals.</p>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -113,30 +93,31 @@
             <p>SolidWorks models and drawings for guards, brackets, and fixtures — practical, manufacturable components.</p>
           </div>
           <div class="feature-media fancy">
-            <img src="/assets/img/lb_cad.jpg" alt="" loading="lazy" decoding="async">
+            <img src="/assets/img/lb_cad.jpg" alt="" loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 480px">
           </div>
         </a>
       </div>
     </section>
 
-    <!-- TRIPLET: Certifications (icons only) — moved here between CAD and Personal -->
+    <!-- TRIPLET: Certifications (icons only) — between CAD and Personal -->
     <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Certifications">
       <div class="container container-wide">
         <p class="overline">Certifications</p>
         <div class="grid-3 cards-equal">
           <div class="card info-card cert-only" data-aos="fade-up">
             <div class="cert-logos">
-              <img src="/assets/img/cert_cat1.png" alt="Vibration Analysis Cat-1">
+              <img src="/assets/img/cert_cat1.png" alt="Vibration Analysis Cat-1" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="card info-card cert-only" data-aos="fade-up" data-aos-delay="100">
             <div class="cert-logos">
-              <img src="/assets/img/cert_sixsigma.png" alt="Lean Six Sigma">
+              <img src="/assets/img/cert_sixsigma.png" alt="Lean Six Sigma" loading="lazy" decoding="async">
             </div>
           </div>
           <div class="card info-card cert-only" data-aos="fade-up" data-aos-delay="200">
             <div class="cert-logos">
-              <img src="/assets/img/cert_oem.png" alt="OEM Training">
+              <img src="/assets/img/cert_oem.png" alt="OEM Training" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -153,14 +134,15 @@
             <p>Planning helpers, data checks, and condition-monitoring utilities.</p>
           </div>
           <div class="feature-media fancy">
-            <img src="/assets/img/lb_personal.jpg" alt="" loading="lazy" decoding="async">
+            <img src="/assets/img/lb_personal.jpg" alt="" loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 480px">
           </div>
         </a>
       </div>
     </section>
 
-    <!-- TRIPLET: Reliability Focus — moved here between Personal and Resume -->
-    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Reliability Focus">
+    <!-- TRIPLET: Reliability Focus — between Personal and Resume -->
+    <section class="section reliability" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Reliability Focus">
       <div class="container container-wide">
         <p class="overline">Reliability Focus</p>
         <div class="grid-3 cards-equal">
@@ -200,7 +182,8 @@
             <span class="btn">Open Resume</span>
           </div>
           <div class="feature-media fancy">
-            <img src="/assets/img/lb_resume.jpg" alt="" loading="lazy" decoding="async" />
+            <img src="/assets/img/lb_resume.jpg" alt="" loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 480px" />
           </div>
         </a>
       </div>
@@ -273,7 +256,7 @@
           el.closest('.metric')?.classList.add('done');
           return;
         }
-        const dur = 5000; // slowed down
+        const dur = 5000;
         const t0 = performance.now();
         const tick = (now) => {
           const p = Math.min(1, (now - t0)/dur);
@@ -301,7 +284,7 @@
 
     // Stagger helper if AOS not present (progressive enhancement)
     (function(){
-      if (document.querySelector('[href*="aos"]') && window.AOS) return; // AOS present
+      if (document.querySelector('[href*="aos"]') && window.AOS) return;
       document.querySelectorAll('.grid-3 .card, .grid-3 .info-card').forEach((card,i)=>{
         card.style.opacity = 0; card.style.transform = 'translateY(8px)';
         setTimeout(()=>{ card.style.transition='opacity .4s ease, transform .4s ease';
