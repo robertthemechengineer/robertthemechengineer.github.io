@@ -273,7 +273,7 @@
           el.closest('.metric')?.classList.add('done');
           return;
         }
-        const dur = 1600; // was 900ms — slowed for a calmer feel
+        const dur = 3200; // was 900ms — slowed for a calmer feel
         const t0 = performance.now();
         const tick = (now) => {
           const p = Math.min(1, (now - t0)/dur);
