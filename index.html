@@ -240,8 +240,13 @@
   </footer>
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if (window.AOS) {
     AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
+  }
+});
+</script>
 
     // Mobile nav toggle
     const toggle = document.querySelector('.menu-toggle');
