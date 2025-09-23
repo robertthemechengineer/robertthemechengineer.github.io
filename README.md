@@ -1,16 +1,67 @@
-# Info cards section
+# Portfolio Website – Development Checklist
 
-This update adds three card-style boxes on the home page:
+This repository hosts my personal portfolio site.  
+Below is the roadmap of improvements and polish tasks, broken down by page and general site considerations.
 
-1. **Goals & Values** (text card)
-2. **Certifications** (logos inside a card)
-3. **Reliability Focus** (bullet list)
+---
 
-## How to apply
-1. Replace your existing `/index.html` with this one.
-2. Open `/assets/css/style.css` and paste the contents of `style-patch.css` at the bottom.
-3. Add certification logo images into `/assets/img/` with the filenames:
-   - cert_cat1.png
-   - cert_sixsigma.png
-   - cert_oem.png
-4. Commit & push, then hard refresh your site.
+## 🏠 Home Page (`index.html`)
+- [ ] Reduce horizontal spacing (tighten container padding on wide screens).  
+- [ ] Fix cert logo sizing (consistent scaling inside cards).  
+- [ ] Add image to hero bar (background illustration or supporting graphic).  
+- [ ] Increase metric counter bars to 4 (balanced 2×2 grid on desktop, stacked on mobile).  
+
+---
+
+## 📂 Projects Page (`projects.html`)
+- [ ] Convert to card/grid layout consistent with triplets.  
+- [ ] Add `aria-label`s + hover/focus states for accessibility.  
+- [ ] Use consistent overline labels (“Case Study”, “CAD Project”, etc.).  
+- [ ] Consider filters/tags (RCM, CAD, RCA).  
+- [ ] Responsive layout: 2-column on tablets, 1-column on phones.  
+
+---
+
+## 🛠 CAD Page (`cad.html`)
+- [ ] Showcase multiple CAD projects in card layout (thumbnails + short summaries).  
+- [ ] Add lightbox/gallery for detailed CAD images (optional).  
+- [ ] Ensure images have descriptive `alt` text.  
+- [ ] Keep typography and spacing consistent with homepage.  
+- [ ] Add download links for CAD/PDF files (if appropriate).  
+
+---
+
+## 📄 Resume Page (`resume.html`)
+- [ ] Ensure inline PDF viewer works across devices.  
+- [ ] Provide both inline view and clear download link.  
+- [ ] Match styling with homepage feature card.  
+
+---
+
+## 👤 Personal Page (`personal.html`)
+- [ ] Organize projects into themed sections (tools, utilities, experiments).  
+- [ ] Add visuals/screenshots for each project.  
+- [ ] Keep styling consistent with Projects and CAD pages.  
+
+---
+
+## 🌐 General Site Polish
+- [ ] Add Open Graph/Twitter meta tags for better social link previews.  
+- [ ] Check keyboard navigation (focus states, skip link usability).  
+- [ ] Add performance tweaks (preload hero image, defer non-critical JS).  
+- [ ] Verify mobile padding and scaling (reduce excess vertical whitespace).  
+
+---
+
+## 🔒 Security & Verification
+- [ ] Ensure all links to external sites use `rel="noopener noreferrer"` when `target="_blank"`.  
+- [ ] Verify all assets load over HTTPS (no mixed-content warnings).  
+- [ ] Add a **Content Security Policy (CSP)** via `<meta http-equiv="Content-Security-Policy" ...>` if needed.  
+- [ ] Check that forms (if added) use HTTPS and do not expose emails directly.  
+- [ ] Confirm GitHub Pages is enforcing HTTPS (enabled in repo settings).  
+- [ ] Optional: Add a `security.txt` file at `/.well-known/security.txt` to declare security contact info.  
+
+---
+
+### ✅ Progress
+As tasks are completed, tick them off here to track the site’s evolution.
