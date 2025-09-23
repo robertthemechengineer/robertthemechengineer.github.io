@@ -188,6 +188,16 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   pointer-events:none
 }
 
+/* Strong, consistent keyboard focus */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+.feature-card:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25);
+  border-radius: 12px;
+}
+
 /* Unified card style */
 .card,.info-card{
   background:var(--card);border:1px solid var(--border);border-radius:14px;
@@ -205,25 +215,27 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 .info-list.icons li {
   position: relative;
   padding-left: 28px;
-  margin: 6px 0;
+  margin: 4px 0;
 }
 .info-list.icons li::before {
   content: "🔧";
   position: absolute;
-  left: 0; top: 2px;
-  font-size: 16px;
+  left: 0; top: 1px;
+  font-size: 15px;
   line-height: 1;
 }
-
 
 /* Certification logos (scale with card size) */
 .cert-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin-top:8px}
 .cert-logos img{
-  width: clamp(90px, 55%, 160px);
+  width: clamp(100px, 60%, 180px);
   height: auto;
-  max-height: clamp(70px, 55%, 140px);
+  max-height: clamp(80px, 60%, 120px);
   object-fit: contain;
-  background:#fff;padding:6px;border-radius:10px;box-shadow:0 2px 6px rgba(0,0,0,.15)
+  background:#fff;
+  padding:6px;
+  border-radius:10px;
+  box-shadow:0 2px 6px rgba(0,0,0,.15);
 }
 .cert-only{align-items:center;justify-content:center}
 
