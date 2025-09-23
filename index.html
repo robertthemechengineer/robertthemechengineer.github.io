@@ -9,12 +9,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css?v=20" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=21" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Accessible skip link (hidden until keyboard focus) -->
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- Navbar -->
   <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
@@ -101,6 +103,30 @@
       </div>
     </section>
 
+    <!-- TRIPLET: Certifications (icons only) -->
+    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Certifications">
+      <div class="container container-wide">
+        <p class="overline">Certifications</p>
+        <div class="grid-3 cards-equal">
+          <div class="card info-card cert-only" data-aos="fade-up">
+            <div class="cert-logos">
+              <img src="/assets/img/cert_cat1.png" alt="Vibration Analysis Cat-1">
+            </div>
+          </div>
+          <div class="card info-card cert-only" data-aos="fade-up" data-aos-delay="100">
+            <div class="cert-logos">
+              <img src="/assets/img/cert_sixsigma.png" alt="Lean Six Sigma">
+            </div>
+          </div>
+          <div class="card info-card cert-only" data-aos="fade-up" data-aos-delay="200">
+            <div class="cert-logos">
+              <img src="/assets/img/cert_oem.png" alt="OEM Training">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- FEATURE 2: CAD -->
     <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="CAD portfolio">
       <div class="container container-wide">
@@ -112,49 +138,6 @@
           </div>
           <div class="feature-media fancy">
             <img src="/assets/img/lb_cad.jpg" alt="" loading="lazy" decoding="async">
-          </div>
-        </a>
-      </div>
-    </section>
-
-    <!-- TRIPLET: Certifications -->
-    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Certifications">
-      <div class="container container-wide">
-        <p class="overline">Certifications</p>
-        <div class="grid-3 cards-equal">
-          <div class="card info-card" data-aos="fade-up">
-            <h3>Vibration Analysis Cat-1</h3>
-            <div class="cert-logos">
-              <img src="/assets/img/cert_cat1.png" alt="Vibration Analysis Cat-1">
-            </div>
-          </div>
-          <div class="card info-card" data-aos="fade-up" data-aos-delay="100">
-            <h3>Lean Six Sigma</h3>
-            <div class="cert-logos">
-              <img src="/assets/img/cert_sixsigma.png" alt="Lean Six Sigma">
-            </div>
-          </div>
-          <div class="card info-card" data-aos="fade-up" data-aos-delay="200">
-            <h3>OEM Training</h3>
-            <div class="cert-logos">
-              <img src="/assets/img/cert_oem.png" alt="OEM Training">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURE 3: Personal -->
-    <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Personal projects">
-      <div class="container container-wide">
-        <p class="overline">Personal Projects</p>
-        <a class="feature-card feature-wide" href="/pages/personal.html">
-          <div class="feature-text">
-            <h2>Tools & Utilities</h2>
-            <p>Planning helpers, data checks, and condition-monitoring utilities.</p>
-          </div>
-          <div class="feature-media fancy">
-            <img src="/assets/img/lb_personal.jpg" alt="" loading="lazy" decoding="async">
           </div>
         </a>
       </div>
@@ -190,6 +173,22 @@
       </div>
     </section>
 
+    <!-- FEATURE 3: Personal -->
+    <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Personal projects">
+      <div class="container container-wide">
+        <p class="overline">Personal Projects</p>
+        <a class="feature-card feature-wide" href="/pages/personal.html">
+          <div class="feature-text">
+            <h2>Tools & Utilities</h2>
+            <p>Planning helpers, data checks, and condition-monitoring utilities.</p>
+          </div>
+          <div class="feature-media fancy">
+            <img src="/assets/img/lb_personal.jpg" alt="" loading="lazy" decoding="async">
+          </div>
+        </a>
+      </div>
+    </section>
+
     <!-- FEATURE 4: Resume (full-width) -->
     <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Resume">
       <div class="container container-wide">
@@ -220,6 +219,7 @@
     </section>
   </main>
 
+  <!-- Footer with quote & sign-off -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <blockquote class="footer-quote">“Reliable machines aren’t an accident — they’re the result of disciplined maintenance and clear feedback loops.”</blockquote>
@@ -252,7 +252,7 @@
       set(); window.addEventListener('scroll', set, {passive:true});
     })();
 
-    // Count-up for metrics (slowed down a bit)
+    // Count-up for metrics (5000ms per your preference)
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const els = document.querySelectorAll('.metric span[data-count-to]');
@@ -273,7 +273,7 @@
           el.closest('.metric')?.classList.add('done');
           return;
         }
-        const dur = 5000; // was 900ms — slowed for a calmer feel
+        const dur = 5000; // slowed down
         const t0 = performance.now();
         const tick = (now) => {
           const p = Math.min(1, (now - t0)/dur);
@@ -301,7 +301,7 @@
 
     // Stagger helper if AOS not present (progressive enhancement)
     (function(){
-      if (document.querySelector('[href*="aos"]') && window.AOS) return;
+      if (document.querySelector('[href*="aos"]') && window.AOS) return; // AOS present
       document.querySelectorAll('.grid-3 .card, .grid-3 .info-card').forEach((card,i)=>{
         card.style.opacity = 0; card.style.transform = 'translateY(8px)';
         setTimeout(()=>{ card.style.transition='opacity .4s ease, transform .4s ease';
