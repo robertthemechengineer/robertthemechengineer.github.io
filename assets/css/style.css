@@ -200,16 +200,30 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   border-color:#3f7054;
 }
 
-/* Reliability bullet icons (force visible + left align) */
-.info-list{margin:8px 0 0 18px;color:var(--muted)}
-.info-list li{margin:4px 0}
-.info-list.icons{list-style:none;padding-left:0;margin-left:0;text-align:left}
-.info-list.icons li{position:relative;padding-left:28px;margin:6px 0}
-.info-list.icons li::before{
-  content:"";position:absolute;left:0;top:2px;width:18px;height:18px;
-  background-image:url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\' fill=\\'%234CAF50\\'><path d=\\'M22 2l-2.59 2.59-3.17-1.06-1.06-3.17L17 0l5 5-0.94 0.94L22 2zM2 22l5-5 3.17 1.06 1.06 3.17L9 24 4 19l0.94-0.94L2 22zM7.5 10.5l6 6 3-3-6-6-3 3z\\'/></svg>');
-    background-size:18px 18px;background-repeat:no-repeat;
+/* Reliability bullets = wrench icon */
+.info-list.icons{ list-style:none; padding-left:0; margin-left:0; text-align:left; }
+.info-list.icons li{
+  position:relative;
+  padding-left:28px;
+  margin:6px 0;
 }
+
+.info-list.icons li::before{
+  content:"";
+  position:absolute; left:0; top:2px;
+  width:18px; height:18px;
+
+  /* Fallback background-image (ok in most browsers) */
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\'><path fill=\\'%234CAF50\\' d=\\'M21.7 6.3l-3.4 3.4-3-3L18.7 3a6 6 0 00-7.54 7.84L3.3 18.7a1 1 0 001.4 1.4l7.86-7.86A6 6 0 0018.7 3l3 3zM9.5 13.5l1 1-6 6-1-1 6-6z\\'/></svg>');
+  background-repeat:no-repeat;
+  background-size:18px 18px;
+
+  /* Robust approach (WebKit + modern): color via CSS var */
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\'><path d=\\'M21.7 6.3l-3.4 3.4-3-3L18.7 3a6 6 0 00-7.54 7.84L3.3 18.7a1 1 0 001.4 1.4l7.86-7.86A6 6 0 0018.7 3l3 3zM9.5 13.5l1 1-6 6-1-1 6-6z\\'/></svg>') no-repeat center / contain;
+  mask:         url('data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\'><path d=\\'M21.7 6.3l-3.4 3.4-3-3L18.7 3a6 6 0 00-7.54 7.84L3.3 18.7a1 1 0 001.4 1.4l7.86-7.86A6 6 0 0018.7 3l3 3zM9.5 13.5l1 1-6 6-1-1 6-6z\\'/></svg>') no-repeat center / contain;
+  background-color: var(--brand);
+}
+
 
 /* Certification logos (scale with card size) */
 .cert-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin-top:8px}
