@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css?v=18" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=19" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
@@ -41,7 +41,7 @@
 
   <main id="main">
     <!-- Hero -->
-    <section class="hero" data-aos="fade-up" aria-label="Intro">
+    <section class="hero" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Intro">
       <div class="container">
         <p class="overline">Welcome</p>
         <h1>Robert Smith</h1>
@@ -55,19 +55,19 @@
     <section class="metrics" aria-label="Impact metrics">
       <div class="container metrics-row">
         <div class="metric" data-aos="zoom-in">
-          <span>33%</span><small>↑ service accuracy</small>
+          <span data-count-to="33">33%</span><small>↑ service accuracy</small>
         </div>
         <div class="metric" data-aos="zoom-in" data-aos-delay="100">
-          <span>200+</span><small>machines monitored</small>
+          <span data-count-to="200">200+</span><small>machines monitored</small>
         </div>
         <div class="metric" data-aos="zoom-in" data-aos-delay="200">
-          <span>0→near-0</span><small>repeat failures (targeted)</small>
+          <span data-count-to="0">0</span><small>repeat failures (targeted)</small>
         </div>
       </div>
     </section>
 
     <!-- FEATURE 1: Case Study -->
-    <section class="section alt" data-aos="fade-up" aria-label="Featured project">
+    <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Featured project">
       <div class="container container-wide">
         <p class="overline">Featured Project</p>
         <a class="feature-card feature-wide" href="/pages/projects.html">
@@ -83,7 +83,7 @@
     </section>
 
     <!-- TRIPLET: Goals & Values -->
-    <section class="section" aria-label="Goals & Values">
+    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Goals & Values">
       <div class="container container-wide">
         <p class="overline">Goals & Values</p>
         <div class="grid-3 cards-equal">
@@ -104,7 +104,7 @@
     </section>
 
     <!-- FEATURE 2: CAD -->
-    <section class="section alt" data-aos="fade-up" aria-label="CAD portfolio">
+    <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="CAD portfolio">
       <div class="container container-wide">
         <p class="overline">CAD Portfolio</p>
         <a class="feature-card feature-wide" href="/pages/cad.html">
@@ -120,7 +120,7 @@
     </section>
 
     <!-- TRIPLET: Certifications -->
-    <section class="section" aria-label="Certifications">
+    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Certifications">
       <div class="container container-wide">
         <p class="overline">Certifications</p>
         <div class="grid-3 cards-equal">
@@ -147,7 +147,7 @@
     </section>
 
     <!-- FEATURE 3: Personal -->
-    <section class="section alt" data-aos="fade-up" aria-label="Personal projects">
+    <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Personal projects">
       <div class="container container-wide">
         <p class="overline">Personal Projects</p>
         <a class="feature-card feature-wide" href="/pages/personal.html">
@@ -163,7 +163,7 @@
     </section>
 
     <!-- TRIPLET: Reliability Focus -->
-    <section class="section" aria-label="Reliability Focus">
+    <section class="section" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Reliability Focus">
       <div class="container container-wide">
         <p class="overline">Reliability Focus</p>
         <div class="grid-3 cards-equal">
@@ -193,7 +193,7 @@
     </section>
 
     <!-- FEATURE 4: Resume (full-width) -->
-    <section class="section alt" data-aos="fade-up" aria-label="Resume">
+    <section class="section alt" data-aos="fade-up" data-aos-offset="80" data-aos-easing="ease-out-cubic" aria-label="Resume">
       <div class="container container-wide">
         <p class="overline">Resume</p>
         <a class="feature-card feature-wide" href="/pages/resume.html">
@@ -244,6 +244,73 @@
         toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
+
+    // Header shadow on scroll
+    (function(){
+      const header = document.querySelector('.site-header');
+      const set = () => {
+        if (window.scrollY > 8) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+      };
+      set(); window.addEventListener('scroll', set, {passive:true});
+    })();
+
+    // Count-up for metrics (motion-safe & once)
+    (function(){
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const els = document.querySelectorAll('.metric span[data-count-to]');
+      if (!els.length) return;
+
+      const fmt = (n, el) => {
+        const orig = el.textContent.trim();
+        if (orig.includes('+')) return Math.round(n) + '+';
+        if (orig.includes('%')) return Math.round(n) + '%';
+        return Math.round(n);
+      };
+
+      const animate = (el) => {
+        const end = Number(el.getAttribute('data-count-to')) || 0;
+        const start = 0;
+        if (prefersReduced || end === 0) {
+          el.textContent = fmt(end, el);
+          el.closest('.metric')?.classList.add('done');
+          return;
+        }
+        const dur = 900; const t0 = performance.now();
+        const tick = (now) => {
+          const p = Math.min(1, (now - t0)/dur);
+          const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          const val = start + (end - start) * eased;
+          el.textContent = fmt(val, el);
+          if (p < 1) requestAnimationFrame(tick);
+          else el.closest('.metric')?.classList.add('done');
+        };
+        requestAnimationFrame(tick);
+      };
+
+      const section = document.querySelector('.metrics');
+      if (!section) return;
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting){
+            els.forEach(animate);
+            io.disconnect();
+          }
+        });
+      }, {threshold: 0.4});
+      io.observe(section);
+    })();
+
+    // Stagger helper if AOS not present (progressive enhancement)
+    (function(){
+      if (document.querySelector('[href*="aos"]') && window.AOS) return;
+      document.querySelectorAll('.grid-3 .card, .grid-3 .info-card').forEach((card,i)=>{
+        card.style.opacity = 0; card.style.transform = 'translateY(8px)';
+        setTimeout(()=>{ card.style.transition='opacity .4s ease, transform .4s ease';
+          card.style.opacity=1; card.style.transform='translateY(0)';
+        }, 80 * i);
+      });
+    })();
   </script>
 </body>
 </html>
