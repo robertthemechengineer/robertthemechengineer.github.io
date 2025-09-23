@@ -9,14 +9,12 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css?v=19" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=20" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <!-- Accessible skip link (hidden until keyboard focus) -->
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Navbar -->
   <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
@@ -222,7 +220,6 @@
     </section>
   </main>
 
-  <!-- Footer with quote & sign-off -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <blockquote class="footer-quote">“Reliable machines aren’t an accident — they’re the result of disciplined maintenance and clear feedback loops.”</blockquote>
@@ -255,7 +252,7 @@
       set(); window.addEventListener('scroll', set, {passive:true});
     })();
 
-    // Count-up for metrics (motion-safe & once)
+    // Count-up for metrics (slowed down a bit)
     (function(){
       const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       const els = document.querySelectorAll('.metric span[data-count-to]');
@@ -276,7 +273,8 @@
           el.closest('.metric')?.classList.add('done');
           return;
         }
-        const dur = 900; const t0 = performance.now();
+        const dur = 1600; // was 900ms — slowed for a calmer feel
+        const t0 = performance.now();
         const tick = (now) => {
           const p = Math.min(1, (now - t0)/dur);
           const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
