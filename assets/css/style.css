@@ -351,3 +351,32 @@ button:focus-visible,
 .container{ padding: 0 20px; }      /* was 20px */
 .container-wide{ max-width: 1200px; } /* keep width same; you can also reduce if desired */
 
+/* --- Tighter global spacing (paste at end) --- */
+
+/* Reduce vertical space above/below every section */
+.section{
+  /* was: clamp(44px, 6vw, 72px) */
+  padding: clamp(24px, 4vw, 40px) 0;
+}
+
+/* When one section follows another, trim the *top* padding of the next one */
+.section + .section{
+  padding-top: 20px;
+}
+
+/* Feature rows: shrink internal column spacing slightly */
+.feature-card{
+  /* ensures text ↔ image gap is tight */
+  gap: 10px; /* set lower if you want, e.g., 6–8px */
+}
+
+/* Triplets: small, asymmetric gap (row gap, column gap) */
+.grid-3{
+  gap: 6px 8px; /* 6px vertical, 8px horizontal */
+}
+
+/* Optional: narrow page gutters a touch */
+.container{ padding: 0 12px; }  /* was 20px */
+
+/* If you want the CAD/Resume feature blocks closer to the section title */
+.feature-text p{ margin-bottom: 8px; } /* was 12px */
