@@ -225,3 +225,30 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 /* Mobile & motion */
 @media (max-width:900px){ .feature-card{grid-template-columns:1fr} .feature-media{min-height:240px} .metrics-row{gap:12px} }
 @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;scroll-behavior:auto!important} }
+
+/* Tighter global section spacing */
+.section{
+  /* was clamp(24px, 4vw, 40px) */
+  padding: clamp(16px, 3vw, 28px) 0;
+}
+
+/* Tiny gap after metrics strip */
+.metrics{
+  margin-bottom: 8px; /* try 6–10px to taste */
+}
+
+/* Shorter triplet cards site-wide */
+.cards-equal .card,
+.cards-equal .info-card{
+  aspect-ratio: auto;   /* stop forcing squares */
+  min-height: 200px;    /* was 280px */
+  text-align: left;     /* optional: keeps content tidy when shorter */
+}
+
+/* If you want them a hair taller on big screens, use: */
+@media (min-width: 900px){
+  .cards-equal .card,
+  .cards-equal .info-card{
+    min-height: 220px;
+  }
+}
