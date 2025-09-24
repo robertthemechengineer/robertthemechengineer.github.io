@@ -343,11 +343,11 @@ button:focus-visible,
 }
 
 /* Tighten horizontal spacing site-wide */
-.grid-3{ gap: 50px; }                /* triplet/info cards */
-.feature-card{ gap: 50px; }          /* inside feature cards (text ↔ image) */
-.metrics-row{ gap: 80px; }           /* optional: tweak metrics spacing */
+.grid-3{ gap: 18px; }                /* triplet/info cards */
+.feature-card{ gap: 18px; }          /* inside feature cards (text ↔ image) */
+.metrics-row{ gap: 20px; }           /* optional: tweak metrics spacing */
 
 /* Narrow page gutters a bit (left/right) */
-.container{ padding: 0 14px; }      /* was 20px */
+.container{ padding: 0 20px; }      /* was 20px */
 .container-wide{ max-width: 1200px; } /* keep width same; you can also reduce if desired */
 
