@@ -194,7 +194,7 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 .section{padding:clamp(44px, 6vw, 72px) 0}
 .section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00))}
 .cards-equal{align-items:stretch}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 @media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:600px){.grid-3{grid-template-columns:1fr}}
 
