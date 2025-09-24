@@ -23,11 +23,12 @@ Below is the roadmap of improvements and polish tasks, broken down by page and g
 ---
 
 ## 🛠 CAD Page (`cad.html`)
-- [ ] Showcase multiple CAD projects in card layout (thumbnails + short summaries).  
-- [ ] Add lightbox/gallery for detailed CAD images (optional).  
-- [ ] Ensure images have descriptive `alt` text.  
-- [ ] Keep typography and spacing consistent with homepage.  
+- [x] Showcase multiple CAD projects in card layout (thumbnails + short summaries).  
+- [x] Add lightbox/gallery for detailed CAD images.  
+- [x] Ensure images have descriptive `alt` text.  
+- [x] Keep typography and spacing consistent with homepage.  
 - [ ] Add download links for CAD/PDF files (if appropriate).  
+- [ ] Add a single button to download full PDF CAD portfolio.  
 
 ---
 
@@ -50,6 +51,7 @@ Below is the roadmap of improvements and polish tasks, broken down by page and g
 - [ ] Check keyboard navigation (focus states, skip link usability).  
 - [ ] Add performance tweaks (preload hero image, defer non-critical JS).  
 - [ ] Verify mobile padding and scaling (reduce excess vertical whitespace).  
+- [ ] Review all `alt` text and `aria-label`s once proper content/images are added.  
 
 ---
 
