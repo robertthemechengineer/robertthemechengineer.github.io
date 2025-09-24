@@ -8,8 +8,8 @@ Below is the roadmap of improvements and polish tasks, broken down by page and g
 ## 🏠 Home Page (`index.html`)
 - [ ] Reduce horizontal spacing (tighten container padding on wide screens).  
 - [ ] Fix cert logo sizing (consistent scaling inside cards).  
-- [ ] Add image to hero bar (background illustration or supporting graphic).  
-- [ ] Increase metric counter bars to 4 (balanced 2×2 grid on desktop, stacked on mobile).  
+- [x] Add image to hero bar (background illustration or supporting graphic).  
+- [x] Increase metric counter bars to 4 (balanced 2×2 grid on desktop, stacked on mobile).  
 
 ---
 
