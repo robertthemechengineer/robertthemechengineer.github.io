@@ -341,3 +341,13 @@ button:focus-visible,
 @media (prefers-reduced-motion: reduce){
   *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 }
+
+/* Tighten horizontal spacing site-wide */
+.grid-3{ gap: 5px; }                /* triplet/info cards */
+.feature-card{ gap: 5px; }          /* inside feature cards (text ↔ image) */
+.metrics-row{ gap: 8px; }           /* optional: tweak metrics spacing */
+
+/* Narrow page gutters a bit (left/right) */
+.container{ padding: 0 14px; }      /* was 20px */
+.container-wide{ max-width: 1200px; } /* keep width same; you can also reduce if desired */
+
