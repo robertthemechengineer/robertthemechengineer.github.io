@@ -252,3 +252,56 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
     min-height: 220px;
   }
 }
+
+/* ===== CAD Gallery ===== */
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+.gallery-grid .card{
+  padding: 12px;
+  display:flex; flex-direction:column; gap:8px;
+}
+.gallery-grid .thumb{
+  width:100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:#22382c;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease;
+}
+.gallery-link:hover .thumb,
+.gallery-link:focus .thumb{
+  transform: scale(1.02);
+}
+.gallery-grid figcaption{
+  color: var(--muted);
+  font-size: .98rem;
+}
+
+/* Subhero (reuse hero texture but tighter) */
+.subhero.hero{ padding: clamp(16px, 3vw, 28px) 0 }
+
+/* Lightbox (native <dialog>) */
+.lightbox{
+  width:min(96vw, 1100px);
+  border:0; padding:0;
+  background:transparent;
+}
+.lightbox::backdrop{ background: rgba(0,0,0,.65) }
+.lightbox img{
+  display:block; width:100%; height:auto;
+  border-radius:12px; box-shadow: var(--shadow-soft);
+}
+.lightbox-close{
+  position:absolute; right:12px; top:12px;
+  width:36px; height:36px; border:0; border-radius:50%;
+  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1;
+  cursor:pointer;
+}
+.lightbox-close:focus-visible{
+  outline:0; box-shadow: 0 0 0 3px rgba(76,175,80,.45);
+}
