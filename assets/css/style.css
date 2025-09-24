@@ -6,7 +6,6 @@
   --brand:#4CAF50;
   --brand-ink:#032e12;
   --ring: rgba(76, 175, 80, 0.4);
-
   --border:#335a44;
   --shadow: 0 10px 20px rgba(0,0,0,.20);
 
@@ -26,7 +25,7 @@ body{
   line-height:1.7;
 }
 
-.container{max-width:1200px;margin:0 auto;padding:0 20px}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
 .container-wide{max-width:1200px}
 
 /* Skip link */
@@ -71,6 +70,7 @@ body{
 .btn-ghost{background:transparent;color:#f0fff5;border:1px solid var(--border)}
 .btn:focus-visible, .btn-ghost:focus-visible { outline:none; box-shadow: var(--ring-strong); }
 
+/* Mobile menu */
 .menu-toggle{display:none;background:none;border:0;padding:6px;cursor:pointer}
 .menu-toggle .bar{display:block;width:22px;height:2px;background:var(--text);margin:4px 0;border-radius:2px}
 @media (max-width:900px){
@@ -89,7 +89,12 @@ h1{font-size:clamp(36px, 6vw, 56px);margin:8px 0}
 h2{font-size:clamp(22px, 3.2vw, 32px);margin:0 0 8px}
 h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 
-/* HERO: textured */
+/* Sections */
+.section{padding:clamp(24px, 4vw, 40px) 0}
+.section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00))}
+.cards-equal{align-items:stretch}
+
+/* HERO: textured + media */
 .hero{
   position:relative;
   padding:48px 0 24px;
@@ -108,47 +113,23 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   background-size: 300px 300px;
   mix-blend-mode: overlay;
 }
-
 .subtitle{font-weight:600;color:var(--brand)}
 .lede{color:var(--muted);max-width:clamp(520px, 70vw, 900px);text-wrap:balance}
 .lede-aux{opacity:.9}
-.cta{margin-top:16px;display:flex;gap:12px;flex-wrap:wrap}
 
-/* Hero two-column layout on desktop */
-.hero-grid{
-  display: grid;
-  gap: 20px;
-}
+/* Hero layout */
+.hero-grid{display:grid;gap:16px}
 .hero-media{
   border-radius:12px; overflow:hidden; border:1px solid var(--border);
-  background:#22382c; position:relative; min-height: 300px;
-  box-shadow: var(--shadow);
+  background:#22382c; position:relative; min-height:300px; box-shadow:var(--shadow);
 }
-.hero-media img{
-  width:100%; height:100%; object-fit:cover;
-  transform: scale(1.02);
-  transition: transform .3s ease;
-}
+.hero-media img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .3s ease}
 .hero-grid:hover .hero-media img{ transform: scale(1.05); }
-
-/* Desktop: split copy/media columns */
-@media (min-width: 900px){
-  .hero-grid{ grid-template-columns: 1.2fr 1fr; align-items: center; }
-}
-
-/* Mobile: stack with spacing */
-@media (max-width: 899.98px){
-  .hero-copy{ margin-bottom: 12px; }
-  .hero-media{ min-height: 220px; }
-}
-
-
+@media (min-width:900px){ .hero-grid{ grid-template-columns: 1.2fr 1fr; align-items:center } }
+@media (max-width:899.98px){ .hero-copy{ margin-bottom:12px } .hero-media{ min-height:220px } }
 
 /* Overline */
-.overline{
-  font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--muted);margin:0 0 8px 2px
-}
+.overline{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 8px 2px}
 
 /* Metrics */
 .metrics{
@@ -156,58 +137,34 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
   margin-top:8px
 }
-/* Metrics layout: 4 across desktop, 2x2 on mobile */
-.metrics-row{
-  display:grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap:10px;
-  padding:12px 0;
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:12px 0}
+@media (max-width:900px){ .metrics-row{ grid-template-columns:repeat(2,1fr);gap:12px } }
+.metric{
+  display:flex;flex-direction:column;align-items:center;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:12px;padding:12px;box-shadow:var(--shadow);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-@media (max-width: 900px){
-  .metrics-row{
-    grid-template-columns: repeat(2, 1fr);
-    gap:12px;
+.metric span{font-weight:800;font-size:1.4rem;color:var(--brand);font-variant-numeric:tabular-nums lining-nums}
+.metric small{color:var(--muted)}
+.metric.done{ border-color:#3f7054; box-shadow: var(--shadow-soft) }
+
+/* Triplet grids */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+@media (max-width:900px){ .grid-3{ grid-template-columns:repeat(2,1fr) } }
+@media (max-width:600px){ .grid-3{ grid-template-columns:1fr } }
+
+/* Triplet cards: squared desktop, relaxed mobile */
+.cards-equal .card, .cards-equal .info-card{
+  min-height:280px; aspect-ratio:1/1; justify-content:center; text-align:center;
+}
+@media (max-width:600px){
+  .cards-equal .card, .cards-equal .info-card{
+    aspect-ratio:auto; min-height:220px; text-align:left; padding:16px;
   }
 }
 
-/* Metric card box */
-.metric{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:12px;
-  box-shadow:var(--shadow);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-
-.metric span{
-  font-weight:800;font-size:1.4rem;color:var(--brand);
-  font-variant-numeric: tabular-nums lining-nums;
-}
-.metric small{color:var(--muted)}
-.metric.done{ border-color:#3f7054; box-shadow: var(--shadow-soft); }
-
-/* Sections & layout */
-.section{padding:clamp(44px, 6vw, 72px) 0}
-.section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00))}
-.cards-equal{align-items:stretch}
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-@media (max-width:900px){.grid-3{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:600px){.grid-3{grid-template-columns:1fr}}
-
-/* Triplet cards: taller + squared */
-.cards-equal .card,
-.cards-equal .info-card{
-  min-height: 280px;
-  aspect-ratio: 1 / 1;
-  justify-content: center;
-  text-align: center;
-}
-
-/* Features & cards */
+/* Feature cards */
 .feature-card{
   background:var(--card);border:1px solid var(--border);border-radius:14px;
   padding:20px;box-shadow:var(--shadow);
@@ -215,38 +172,14 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   text-decoration:none;color:var(--text);
   transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.feature-card:hover,
-.feature-card:focus-within{
-  transform:translateY(-2px);
-  border-color:#3f7054;
-  box-shadow: var(--shadow-soft);
+.feature-card:hover, .feature-card:focus-within{
+  transform:translateY(-2px); border-color:#3f7054; box-shadow:var(--shadow-soft);
 }
-.feature-text p{margin:0 0 12px;color:var(--muted)}
-.feature-media{
-  border-radius:12px;overflow:hidden;border:1px solid var(--border);
-  background:#22382c;position:relative;min-height:340px
-}
-.feature-media.fancy img{
-  width:100%;height:100%;object-fit:cover;
-  transform: scale(1.03) rotate(0deg);
-  transition:transform .3s ease;
-}
-.feature-card:hover .feature-media.fancy img{ transform: scale(1.07) rotate(1.5deg); }
-.feature-media.fancy::after{
-  content:"";position:absolute;inset:0;
-  background:linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 100%);
-  pointer-events:none
-}
-
-/* Strong, consistent keyboard focus */
-a:focus-visible,
-button:focus-visible,
-[role="button"]:focus-visible,
-.feature-card:focus-visible {
-  outline: 0;
-  box-shadow: 0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25);
-  border-radius: 12px;
-}
+.feature-text p{margin:0 0 10px;color:var(--muted)}
+.feature-media{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#22382c;position:relative;min-height:340px}
+.feature-media.fancy img{width:100%;height:100%;object-fit:cover;transform:scale(1.03) rotate(0);transition:transform .3s ease}
+.feature-card:hover .feature-media.fancy img{ transform:scale(1.07) rotate(1.5deg) }
+.feature-media.fancy::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 100%);pointer-events:none}
 
 /* Unified card style */
 .card,.info-card{
@@ -254,45 +187,25 @@ button:focus-visible,
   padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.card:hover,.card:focus-within,
-.info-card:hover,.info-card:focus-within{
-  box-shadow: var(--shadow-soft);
-  border-color:#3f7054;
+.card:hover,.card:focus-within,.info-card:hover,.info-card:focus-within{ box-shadow:var(--shadow-soft); border-color:#3f7054 }
+
+/* Strong keyboard focus */
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-card:focus-visible{
+  outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25); border-radius:12px;
 }
 
-/* Reliability bullets = pure-text emoji (CSP-safe) */
-.info-list.icons { list-style: none; padding-left: 0; margin-left: 0; text-align: left; }
-.info-list.icons li {
-  position: relative;
-  padding-left: 28px;
-  margin: 4px 0;
-}
-.info-list.icons li::before {
-  content: "🔧";
-  position: absolute;
-  left: 0; top: 1px;
-  font-size: 15px;
-  line-height: 1;
-}
+/* Emoji wrench bullets (CSP-safe) */
+.info-list.icons{ list-style:none; padding-left:0; margin-left:0; text-align:left }
+.info-list.icons li{ position:relative; padding-left:28px; margin:4px 0 }
+.info-list.icons li::before{ content:"🔧"; position:absolute; left:0; top:1px; font-size:15px; line-height:1 }
 
-/* Certification logos (scale with card size) */
+/* Certification logos */
 .cert-logos{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;margin-top:8px}
 .cert-logos img{
-  width: 95%;
-  height: auto;
-  max-height: 250px;
-  object-fit: contain;
-  background:#fff;
-  padding:8px;
-  border-radius:10px;
-  box-shadow:0 2px 6px rgba(0,0,0,.15);
+  width:95%; height:auto; max-height:250px; object-fit:contain;
+  background:#fff; padding:8px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,.15)
 }
-
-.cert-only {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.cert-only{ display:flex; align-items:center; justify-content:center }
 
 /* Contact bar */
 .contact-bar{
@@ -309,74 +222,6 @@ button:focus-visible,
 .footer-signoff{margin:0 0 6px;color:var(--text);opacity:.9}
 .copyright{margin:0;color:var(--muted);font-size:.9rem}
 
-/* --- Mobile optimizations --- */
-@media (max-width:900px){
-  .feature-card{grid-template-columns:1fr}
-  .feature-media{min-height:240px}
-  .metrics-row{gap:12px}
-}
-@media (max-width:600px){
-  .section{padding:32px 0}
-  .hero{padding:36px 0 18px}
-  .hero::before{opacity:.09} /* lighter noise on small screens */
-  .metrics-row{grid-template-columns:repeat(2,1fr)}
-  .metric{padding:10px}
-  /* Triplets: drop strict square to improve scan & reduce scroll */
-  .cards-equal .card,
-  .cards-equal .info-card{
-    aspect-ratio:auto;
-    min-height:220px;
-    text-align:left;
-    padding:16px;
-  }
-  .feature-media{min-height:200px}
-  .cert-logos img{
-    width: clamp(80px, 60%, 140px);
-    max-height: 100px;
-    padding:5px;border-radius:8px;
-  }
-}
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce){
-  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-}
-
-/* Tighten horizontal spacing site-wide */
-.grid-3{ gap: 18px; }                /* triplet/info cards */
-.feature-card{ gap: 18px; }          /* inside feature cards (text ↔ image) */
-.metrics-row{ gap: 20px; }           /* optional: tweak metrics spacing */
-
-/* Narrow page gutters a bit (left/right) */
-.container{ padding: 0 20px; }      /* was 20px */
-.container-wide{ max-width: 1200px; } /* keep width same; you can also reduce if desired */
-
-/* --- Tighter global spacing (paste at end) --- */
-
-/* Reduce vertical space above/below every section */
-.section{
-  /* was: clamp(44px, 6vw, 72px) */
-  padding: clamp(16px, 3vw, 28px) 0;
-}
-
-/* When one section follows another, trim the *top* padding of the next one */
-.section + .section{
-  padding-top: 20px;
-}
-
-/* Feature rows: shrink internal column spacing slightly */
-.feature-card{
-  /* ensures text ↔ image gap is tight */
-  gap: 10px; /* set lower if you want, e.g., 6–8px */
-}
-
-/* Triplets: small, asymmetric gap (row gap, column gap) */
-.grid-3{
-  gap: 6px 8px; /* 6px vertical, 8px horizontal */
-}
-
-/* Optional: narrow page gutters a touch */
-.container{ padding: 0 12px; }  /* was 20px */
-
-/* If you want the CAD/Resume feature blocks closer to the section title */
-.feature-text p{ margin-bottom: 8px; } /* was 12px */
+/* Mobile & motion */
+@media (max-width:900px){ .feature-card{grid-template-columns:1fr} .feature-media{min-height:240px} .metrics-row{gap:12px} }
+@media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;scroll-behavior:auto!important} }
