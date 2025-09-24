@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Robert Smith — Reliability & Maintenance Engineer</title>
-  <meta name="description" content="Reducing downtime and extending component life with RCM, RCA/5-Whys, and condition monitoring for heavy equipment fleets." />
+  <title>Robert Smith — CAD Portfolio</title>
+  <meta name="description" content="Selected SolidWorks models and drawings: guards, brackets, fixtures, and practical, manufacturable components." />
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Perf -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Site CSS (bump to bust cache) -->
+  <link rel="stylesheet" href="/assets/css/style.css?v=30" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
         <a class="brand-logo" href="/" aria-label="Go to home">
-          <img src="/assets/img/logo.svg" alt="RS logo">
+          <img src="/assets/img/logo.svg" alt="RS logo" loading="eager" decoding="async">
           <span class="brand-text">Robert Smith</span>
         </a>
         <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
@@ -26,7 +35,7 @@
         <div id="nav-links" class="nav-links">
           <a href="/">Home</a>
           <a href="/pages/projects.html">Projects</a>
-          <a href="/pages/cad.html">CAD</a>
+          <a href="/pages/cad.html" class="active" aria-current="page">CAD</a>
           <a href="/pages/personal.html">Personal</a>
           <a href="/pages/resume.html">Resume</a>
           <a href="/pages/contact.html" class="btn btn-sm">Contact</a>
@@ -34,34 +43,111 @@
       </nav>
     </div>
   </header>
-  <section class="subhero" data-aos="fade-up">
+
+  <!-- Sub-hero -->
+  <section class="subhero hero" data-aos="fade-up" aria-label="CAD intro">
     <div class="container">
-      <h1>CAD Portfolio</h1>
-      <p class="lede">Renders and drawings. Replace placeholders with your images.</p>
+      <p class="overline">CAD Portfolio</p>
+      <h1>Selected Models & Drawings</h1>
+      <p class="lede">Practical, manufacturable components — guards, brackets, fixtures. Click a tile to view larger.</p>
     </div>
   </section>
-  <main class="section">
-    <div class="container gallery">
-      <figure class="card" data-aos="fade-up">
-        <div class="thumb" style="height:220px;background:#22382c;border:1px solid #2d4736;border-radius:12px"></div>
-        <figcaption>Assembly — add image to <code>/assets/img/</code> and update.</figcaption>
-      </figure>
-      <figure class="card" data-aos="fade-up" data-aos-delay="100">
-        <div class="thumb" style="height:220px;background:#22382c;border:1px solid #2d4736;border-radius:12px"></div>
-        <figcaption>Bracket — drawing and tolerances.</figcaption>
-      </figure>
-      <figure class="card" data-aos="fade-up" data-aos-delay="200">
-        <div class="thumb" style="height:220px;background:#22382c;border:1px solid #2d4736;border-radius:12px"></div>
-        <figcaption>Fixture — jig concept.</figcaption>
-      </figure>
+
+  <main id="main" class="section" aria-label="CAD gallery">
+    <div class="container">
+      <div class="gallery-grid">
+        <!-- Example card 1 -->
+        <figure class="card" data-aos="fade-up">
+          <a href="/assets/img/cad/assembly_full.jpg"
+             class="gallery-link"
+             aria-label="Open full view: Assembly rendering">
+            <img class="thumb" src="/assets/img/cad/assembly_thumb.jpg"
+                 alt="Assembly rendering"
+                 loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 320px">
+          </a>
+          <figcaption>Assembly — exploded view and fit checks.</figcaption>
+        </figure>
+
+        <!-- Example card 2 -->
+        <figure class="card" data-aos="fade-up" data-aos-delay="100">
+          <a href="/assets/img/cad/bracket_full.jpg"
+             class="gallery-link"
+             aria-label="Open full view: Bracket drawing with tolerances">
+            <img class="thumb" src="/assets/img/cad/bracket_thumb.jpg"
+                 alt="Bracket drawing with tolerances"
+                 loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 320px">
+          </a>
+          <figcaption>Bracket — drawing and tolerances.</figcaption>
+        </figure>
+
+        <!-- Example card 3 -->
+        <figure class="card" data-aos="fade-up" data-aos-delay="200">
+          <a href="/assets/img/cad/fixture_full.jpg"
+             class="gallery-link"
+             aria-label="Open full view: Fixture / jig concept">
+            <img class="thumb" src="/assets/img/cad/fixture_thumb.jpg"
+                 alt="Fixture / jig concept"
+                 loading="lazy" decoding="async"
+                 sizes="(max-width: 900px) 100vw, 320px">
+          </a>
+          <figcaption>Fixture — jig concept.</figcaption>
+        </figure>
+
+        <!-- Duplicate/extend more cards as needed -->
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Robert Smith</p></div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><p class="copyright">© 2025 Robert Smith</p></div>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="/assets/js/navbar.js"></script>
+
+  <!-- AOS (deferred) + safe init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
+
+      // Mobile nav toggle
+      const toggle = document.querySelector('.menu-toggle');
+      const links = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          const open = links.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      // Lightweight lightbox (native <dialog>)
+      const dlg = document.createElement('dialog');
+      dlg.className = 'lightbox';
+      dlg.innerHTML = `
+        <button class="lightbox-close" aria-label="Close">×</button>
+        <img alt="">
+      `;
+      document.body.appendChild(dlg);
+      const imgEl = dlg.querySelector('img');
+      const closeBtn = dlg.querySelector('.lightbox-close');
+
+      document.querySelectorAll('.gallery-link').forEach(a => {
+        a.addEventListener('click', (e) => {
+          e.preventDefault();
+          const full = a.getAttribute('href');
+          const alt = a.querySelector('img')?.alt || 'CAD image';
+          imgEl.src = full; imgEl.alt = alt;
+          if (typeof dlg.showModal === 'function') dlg.showModal();
+          else window.open(full, '_blank', 'noopener'); // fallback
+        });
+      });
+
+      dlg.addEventListener('click', (e) => {
+        if (e.target === dlg) dlg.close();
+      });
+      closeBtn.addEventListener('click', () => dlg.close());
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && dlg.open) dlg.close(); });
+    });
+  </script>
 </body>
 </html>
