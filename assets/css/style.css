@@ -372,7 +372,7 @@ button:focus-visible,
 
 /* Triplets: small, asymmetric gap (row gap, column gap) */
 .grid-3{
-  gap: 6px 8px; /* 6px vertical, 8px horizontal */
+  gap: 4px 8px; /* 6px vertical, 8px horizontal */
 }
 
 /* Optional: narrow page gutters a touch */
