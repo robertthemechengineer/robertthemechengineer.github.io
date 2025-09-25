@@ -305,3 +305,17 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .lightbox-close:focus-visible{
   outline:0; box-shadow: 0 0 0 3px rgba(76,175,80,.45);
 }
+
+/* ===== Resume page ===== */
+.subhero.hero { padding: clamp(16px, 3vw, 28px) 0; }
+
+.pdf-embed { padding: 0; overflow: hidden; }
+.pdf-embed object,
+.pdf-embed iframe{
+  width: 100%;
+  height: clamp(60vh, 80vh, 900px); /* responsive height */
+  border: 0;
+  display: block;
+}
+
+.note { color: var(--muted); margin-top: 10px; }
