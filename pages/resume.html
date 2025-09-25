@@ -5,19 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Robert Smith — Reliability & Maintenance Engineer</title>
   <meta name="description" content="Reducing downtime and extending component life with RCM, RCA/5-Whys, and condition monitoring for heavy equipment fleets." />
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Perf -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- CSS (cache-bust if needed) -->
+  <link rel="stylesheet" href="/assets/css/style.css?v=30" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
         <a class="brand-logo" href="/" aria-label="Go to home">
-          <img src="/assets/img/logo.svg" alt="RS logo">
+          <img src="/assets/img/logo.svg" alt="RS logo" loading="eager" decoding="async">
           <span class="brand-text">Robert Smith</span>
         </a>
         <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
@@ -28,35 +36,60 @@
           <a href="/pages/projects.html">Projects</a>
           <a href="/pages/cad.html">CAD</a>
           <a href="/pages/personal.html">Personal</a>
-          <a href="/pages/resume.html">Resume</a>
+          <a href="/pages/resume.html" class="active" aria-current="page">Resume</a>
           <a href="/pages/contact.html" class="btn btn-sm">Contact</a>
         </div>
       </nav>
     </div>
   </header>
-  <section class="subhero" data-aos="fade-up">
+
+  <!-- Subhero (reuse hero texture spacing) -->
+  <section class="subhero hero" data-aos="fade-up" aria-label="Resume intro">
     <div class="container">
-      <h1>Resume</h1>
-      <p class="lede">Inline viewer below, or download the PDF.</p>
+      <p class="overline">Resume</p>
+      <h1>Professional Resume</h1>
+      <p class="lede">Inline viewer below. Prefer a file? Use the download button.</p>
       <p class="cta"><a class="btn" href="/assets/pdf/resume.pdf" target="_blank" rel="noopener">Download PDF</a></p>
     </div>
   </section>
-  <main class="section">
+
+  <main id="main" class="section" aria-label="Resume viewer">
     <div class="container">
       <div class="pdf-embed card" data-aos="fade-up">
-        <object data="/assets/pdf/resume.pdf" type="application/pdf" width="100%" height="800">
-          <iframe src="/assets/pdf/resume.pdf" width="100%" height="800"></iframe>
+        <!-- Object first, iframe as fallback; height handled in CSS -->
+        <object data="/assets/pdf/resume.pdf" type="application/pdf" width="100%" height="0">
+          <iframe src="/assets/pdf/resume.pdf" width="100%" height="0" title="Resume PDF"></iframe>
         </object>
       </div>
-      <p class="note">If the embedded viewer doesn’t load, use the download button above.</p>
+      <p class="note">If the embedded viewer doesn’t load, use the “Download PDF” button above.</p>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Robert Smith</p></div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><p class="copyright">© 2025 Robert Smith</p></div>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="/assets/js/navbar.js"></script>
+
+  <!-- AOS (deferred) + safe init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
+
+      // Mobile nav toggle (reused)
+      const toggle = document.querySelector('.menu-toggle');
+      const links = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          const open = links.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      // Header shadow on scroll (consistency)
+      const header = document.querySelector('.site-header');
+      const setShadow = () => { header.classList.toggle('scrolled', window.scrollY > 8); };
+      setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
+    });
+  </script>
 </body>
 </html>
