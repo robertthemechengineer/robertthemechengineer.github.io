@@ -389,3 +389,96 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 
 /* (Optional) tighter section spacing for this page */
 .subhero.hero{ padding: clamp(16px, 3vw, 28px) 0 }
+
+/* ===== Projects index (6 cards) ===== */
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.project-card{
+  padding: 12px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+.project-open{
+  display: grid; gap: 10px;
+  text-align: left;
+  background: transparent; border: 0; padding: 0;
+  color: inherit; cursor: pointer;
+}
+.project-open:focus-visible{
+  outline: 0; box-shadow: 0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25);
+  border-radius: 12px;
+}
+.project-card .thumb{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #22382c;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease;
+}
+.project-open:hover .thumb,
+.project-open:focus-visible .thumb{ transform: scale(1.02) }
+
+.project-body h3{ margin: 0 0 6px }
+.project-body .summary{ color: var(--muted); margin: 6px 0 0 }
+.linkhint{ display:inline-block; margin-top:6px; font-weight:700; color: var(--brand) }
+
+.tags{
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin: 0 0 4px; padding: 0; list-style: none;
+}
+.tags li{
+  font-size: .85rem; line-height: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+}
+
+/* ===== Case dialog ===== */
+.case-dialog{
+  width: min(96vw, 980px);
+  border: 0; padding: 0;
+  background: transparent;
+}
+.case-dialog::backdrop{ background: rgba(0,0,0,.65) }
+
+.case-close{
+  position: absolute; right: 12px; top: 12px;
+  width: 36px; height: 36px; border: 0; border-radius: 50%;
+  background: rgba(0,0,0,.55); color: #fff; font-size: 20px; line-height: 1;
+  cursor: pointer;
+}
+.case-close:focus-visible{
+  outline: 0; box-shadow: 0 0 0 3px rgba(76,175,80,.45);
+}
+
+.case-media{
+  display: block;
+  max-height: 50vh;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+.case-media img{
+  display: block; width: 100%; height: auto;
+  border-radius: 12px; box-shadow: var(--shadow-soft);
+}
+
+.case-body{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  color: var(--text);
+}
+.case-body h2{ margin-top: 0 }
+.case-body p{ margin: 8px 0 }
