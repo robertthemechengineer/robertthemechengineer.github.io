@@ -3,21 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Robert Smith — Reliability & Maintenance Engineer</title>
-  <meta name="description" content="Reducing downtime and extending component life with RCM, RCA/5-Whys, and condition monitoring for heavy equipment fleets." />
+  <title>Robert Smith — Projects & Case Studies</title>
+  <meta name="description" content="Reliability engineering projects and case studies: Problem → Analysis → Action → Outcome." />
+
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-  <link rel="stylesheet" href="/assets/css/style.css" />
+
+  <!-- Perf -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Site CSS (bump to bust cache) -->
+  <link rel="stylesheet" href="/assets/css/style.css?v=31" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <header class="site-header">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
         <a class="brand-logo" href="/" aria-label="Go to home">
-          <img src="/assets/img/logo.svg" alt="RS logo">
+          <img src="/assets/img/logo.svg" alt="RS logo" loading="eager" decoding="async">
           <span class="brand-text">Robert Smith</span>
         </a>
         <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
@@ -25,7 +34,7 @@
         </button>
         <div id="nav-links" class="nav-links">
           <a href="/">Home</a>
-          <a href="/pages/projects.html">Projects</a>
+          <a href="/pages/projects.html" class="active" aria-current="page">Projects</a>
           <a href="/pages/cad.html">CAD</a>
           <a href="/pages/personal.html">Personal</a>
           <a href="/pages/resume.html">Resume</a>
@@ -34,40 +43,94 @@
       </nav>
     </div>
   </header>
-  <section class="subhero" data-aos="fade-up">
+
+  <!-- Subhero -->
+  <section class="subhero hero" data-aos="fade-up" aria-label="Projects intro">
     <div class="container">
+      <p class="overline">Projects</p>
       <h1>Projects & Case Studies</h1>
       <p class="lede">Problem → Analysis → Action → Outcome</p>
     </div>
   </section>
-  <main class="section">
-    <div class="container projects">
-      <article class="project-card card" data-aos="fade-up">
-        <div class="project-body">
-          <h3>Komatsu D375 — Water Pump Failure RCA</h3>
-          <h4>Problem</h4><p>Repeated driven-gear damage leading to contamination risk and unplanned downtime.</p>
-          <h4>Analysis</h4><p>RCA (5‑Whys), teardown with OEM; checked clearances, wear patterns, and contamination routes.</p>
-          <h4>Action</h4><p>Updated service intervals, parts quality checks, contamination barriers, and operator checks.</p>
-          <h4>Outcome</h4><p>Repeat incidents reduced; improved engine protection and availability.</p>
-        </div>
-      </article>
-      <article class="project-card card" data-aos="fade-up" data-aos-delay="100">
-        <div class="project-body">
-          <h3>Service Planning Dashboard</h3>
-          <h4>Problem</h4><p>Fragmented data caused missed or late services.</p>
-          <h4>Analysis</h4><p>Data audit + hour tracking; identified bottlenecks.</p>
-          <h4>Action</h4><p>Built Power BI tracker (services, hours, locations).</p>
-          <h4>Outcome</h4><p>~33% increase in service accuracy and faster planning.</p>
-        </div>
-      </article>
+
+  <main id="main" class="section" aria-label="Projects list">
+    <div class="container container-wide">
+      <div class="project-grid">
+        <!-- Card 1 -->
+        <article class="project-card card" data-aos="fade-up">
+          <img class="thumb" src="/assets/img/projects/d375_thumb.jpg"
+               alt="Komatsu D375 water pump assembly"
+               loading="lazy" decoding="async"
+               sizes="(max-width: 900px) 100vw, 360px">
+          <div class="project-body">
+            <h3>Komatsu D375 — Water Pump Failure RCA</h3>
+            <ul class="tags" aria-label="Tags">
+              <li>RCA</li><li>RCM</li><li>Contamination Control</li>
+            </ul>
+            <p class="summary"><strong>Problem:</strong> Repeated driven-gear damage risking contamination and downtime. <strong>Action:</strong> Teardown with OEM, task alignment, quality checks, contamination barriers. <strong>Outcome:</strong> Repeat incidents down; engine protection up.</p>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="100">
+          <img class="thumb" src="/assets/img/projects/service_dash_thumb.jpg"
+               alt="Service planning dashboard in Power BI"
+               loading="lazy" decoding="async"
+               sizes="(max-width: 900px) 100vw, 360px">
+          <div class="project-body">
+            <h3>Service Planning Dashboard</h3>
+            <ul class="tags" aria-label="Tags">
+              <li>Power BI</li><li>Planning</li><li>KPI</li>
+            </ul>
+            <p class="summary"><strong>Problem:</strong> Fragmented data caused missed/late services. <strong>Action:</strong> Built tracker for hours, locations, service due. <strong>Outcome:</strong> ~33% ↑ service accuracy; faster planning.</p>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="200">
+          <img class="thumb" src="/assets/img/projects/condition_thumb.jpg"
+               alt="Condition monitoring activity"
+               loading="lazy" decoding="async"
+               sizes="(max-width: 900px) 100vw, 360px">
+          <div class="project-body">
+            <h3>Condition Monitoring Program</h3>
+            <ul class="tags" aria-label="Tags">
+              <li>Oil Analysis</li><li>Mag Plugs</li><li>Trend</li>
+            </ul>
+            <p class="summary"><strong>Problem:</strong> Unclear failure precursors. <strong>Action:</strong> Routine inspections, oil/filter analysis, mag plug checks. <strong>Outcome:</strong> Earlier detection; fewer surprises.</p>
+          </div>
+        </article>
+
+        <!-- Duplicate more cards as needed -->
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container"><p>© 2025 Robert Smith</p></div>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><p class="copyright">© 2025 Robert Smith</p></div>
   </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
-  <script src="/assets/js/navbar.js"></script>
+
+  <!-- AOS (deferred) + safe init -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
+
+      // Mobile nav toggle
+      const toggle = document.querySelector('.menu-toggle');
+      const links = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          const open = links.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      // Header shadow on scroll
+      const header = document.querySelector('.site-header');
+      const setShadow = () => header.classList.toggle('scrolled', window.scrollY > 8);
+      setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
+    });
+  </script>
 </body>
 </html>
