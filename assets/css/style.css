@@ -345,3 +345,47 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   box-shadow: var(--shadow-soft);
   border-color:#3f7054;
 }
+
+/* ===== Projects index ===== */
+.project-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.project-card{
+  padding: 12px;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 10px;
+}
+.project-card .thumb{
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #22382c;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease;
+}
+.project-card:hover .thumb,
+.project-card:focus-within .thumb{ transform: scale(1.02) }
+
+.project-body h3{ margin: 0 0 6px }
+.project-body .summary{ color: var(--muted); margin: 6px 0 0 }
+
+.tags{
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin: 0 0 4px; padding: 0; list-style: none;
+}
+.tags li{
+  font-size: .85rem; line-height: 1;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255,255,255,.03);
+  color: var(--text);
+}
+
+/* (Optional) tighter section spacing for this page */
+.subhero.hero{ padding: clamp(16px, 3vw, 28px) 0 }
