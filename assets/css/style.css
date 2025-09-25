@@ -319,3 +319,29 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 }
 
 .note { color: var(--muted); margin-top: 10px; }
+
+/* ===== Contact page ===== */
+.contact-cards{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 10px;
+}
+.linkish{
+  text-decoration: none;
+  color: var(--text);
+}
+.contact-icon{
+  font-size: 1.6rem;
+  opacity: .95;
+  margin-bottom: 6px;
+}
+
+/* subtle tilt hover (matches your card hover aesthetic) */
+.tilt{
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.tilt:hover, .tilt:focus-visible{
+  transform: translateY(-2px) rotate(.4deg);
+  box-shadow: var(--shadow-soft);
+  border-color:#3f7054;
+}
