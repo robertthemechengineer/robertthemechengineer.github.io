@@ -482,3 +482,80 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 }
 .case-body h2{ margin-top: 0 }
 .case-body p{ margin: 8px 0 }
+
+/* ===== Projects index: 3-up grid, PAAO previews ===== */
+.project-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 across */
+  gap:10px;
+}
+@media (max-width: 1000px){
+  .project-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px){
+  .project-grid{ grid-template-columns: 1fr; }
+}
+
+.project-card{
+  padding:12px;
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:10px;
+}
+.project-open{
+  display:grid; gap:10px;
+  text-align:left; background:transparent; border:0; padding:0;
+  color:inherit; cursor:pointer;
+}
+.project-open:focus-visible{
+  outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25);
+  border-radius:12px;
+}
+.project-card .thumb{
+  width:100%; aspect-ratio:4/3; object-fit:cover;
+  border:1px solid var(--border); border-radius:12px;
+  background:#22382c; box-shadow:var(--shadow);
+  transition:transform .25s ease;
+}
+.project-open:hover .thumb,
+.project-open:focus-visible .thumb{ transform:scale(1.02) }
+
+.project-body h3{ margin:0 0 6px }
+.project-body .preview{ color:var(--muted); margin:6px 0 0; line-height:1.5 }
+
+/* ===== Case dialog with Next/Prev + multi-image ===== */
+.case-dialog{
+  width:min(96vw, 980px);
+  border:0; padding:0; background:transparent;
+}
+.case-dialog::backdrop{ background:rgba(0,0,0,.65) }
+
+.case-close, .case-prev, .case-next{
+  position:absolute; top:12px;
+  width:36px; height:36px; border:0; border-radius:50%;
+  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1;
+  cursor:pointer;
+}
+.case-close{ right:12px }
+.case-prev{ left:12px }
+.case-next{ right:56px }
+.case-close:focus-visible, .case-prev:focus-visible, .case-next:focus-visible{
+  outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45);
+}
+
+.case-media{
+  display:block; max-height:50vh; overflow:hidden;
+  border-radius:12px; margin-bottom:10px;
+}
+.case-media img{
+  display:block; width:100%; height:auto;
+  border-radius:12px; box-shadow:var(--shadow-soft);
+}
+
+.case-body{
+  background:var(--card); border:1px solid var(--border);
+  border-radius:12px; padding:16px; box-shadow:var(--shadow);
+  color:var(--text);
+}
+.case-body h2{ margin-top:0 }
+.case-body p{ margin:8px 0 }
