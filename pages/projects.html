@@ -14,14 +14,13 @@
   <!-- Perf -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
 
-  <!-- Site CSS (bump to bust cache) -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=32" />
+  <!-- Site CSS (bump cache) -->
+  <link rel="stylesheet" href="/assets/css/style.css?v=33" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
@@ -49,7 +48,7 @@
     <div class="container">
       <p class="overline">Projects</p>
       <h1>Projects & Case Studies</h1>
-      <p class="lede">Problem → Analysis → Action → Outcome</p>
+      <p class="lede">PAAO: <strong>Problem</strong> → <strong>Analysis</strong> → <strong>Action</strong> → <strong>Outcome</strong></p>
     </div>
   </section>
 
@@ -58,108 +57,153 @@
       <div class="project-grid">
         <!-- 1 -->
         <article class="project-card card" data-aos="fade-up" data-case="d375">
-          <button class="project-open" aria-label="Open: Komatsu D375 — Water Pump Failure RCA">
-            <img class="thumb" src="/assets/img/projects/d375_thumb.jpg"
-                 alt="Komatsu D375 water pump assembly"
-                 loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 360px">
+          <button class="project-open" aria-label="Open case study: Komatsu D375 — Water Pump Failure RCA">
+            <img class="thumb" src="/assets/img/projects/d375_thumb.jpg" alt="Komatsu D375 water pump assembly"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
             <div class="project-body">
-              <h3>Komatsu D375 — Water Pump Failure RCA</h3>
-              <ul class="tags" aria-label="Tags">
-                <li>RCA</li><li>RCM</li><li>Contamination Control</li>
-              </ul>
-              <p class="summary">Repeated driven-gear damage; contamination risk; downtime pressure.</p>
-              <span class="linkhint">Read case study</span>
+              <h3>Komatsu D375 — Water Pump RCA</h3>
+              <p class="preview">
+                <strong>P:</strong> Repeat driven-gear damage. 
+                <strong>Ana:</strong> Teardown + service history. 
+                <strong>Act:</strong> Tasks aligned, contamination barriers. 
+                <strong>Out:</strong> Repeat reduced; engines protected.
+              </p>
             </div>
           </button>
         </article>
 
         <!-- 2 -->
-        <article class="project-card card" data-aos="fade-up" data-aos-delay="60" data-case="service">
-          <button class="project-open" aria-label="Open: Service Planning Dashboard">
-            <img class="thumb" src="/assets/img/projects/service_dash_thumb.jpg"
-                 alt="Service planning dashboard in Power BI"
-                 loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 360px">
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="40" data-case="service">
+          <button class="project-open" aria-label="Open case study: Service Planning Dashboard">
+            <img class="thumb" src="/assets/img/projects/service_dash_thumb.jpg" alt="Service planning dashboard"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
             <div class="project-body">
               <h3>Service Planning Dashboard</h3>
-              <ul class="tags" aria-label="Tags">
-                <li>Power BI</li><li>Planning</li><li>KPI</li>
-              </ul>
-              <p class="summary">Fragmented data caused missed/late services; tracking needed.</p>
-              <span class="linkhint">Read case study</span>
+              <p class="preview">
+                <strong>P:</strong> Missed/late services. 
+                <strong>Ana:</strong> Data sources mapped. 
+                <strong>Act:</strong> BI tracker + due windows. 
+                <strong>Out:</strong> ~33% ↑ accuracy.
+              </p>
             </div>
           </button>
         </article>
 
         <!-- 3 -->
-        <article class="project-card card" data-aos="fade-up" data-aos-delay="120" data-case="condition">
-          <button class="project-open" aria-label="Open: Condition Monitoring Program">
-            <img class="thumb" src="/assets/img/projects/condition_thumb.jpg"
-                 alt="Condition monitoring activity"
-                 loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 360px">
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="80" data-case="condition">
+          <button class="project-open" aria-label="Open case study: Condition Monitoring Program">
+            <img class="thumb" src="/assets/img/projects/condition_thumb.jpg" alt="Condition monitoring checks"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
             <div class="project-body">
               <h3>Condition Monitoring Program</h3>
-              <ul class="tags" aria-label="Tags">
-                <li>Oil Analysis</li><li>Mag Plugs</li><li>Trend</li>
-              </ul>
-              <p class="summary">Unclear failure precursors; needed earlier detection.</p>
-              <span class="linkhint">Read case study</span>
+              <p class="preview">
+                <strong>P:</strong> Unclear precursors. 
+                <strong>Ana:</strong> Failures reviewed; signals defined. 
+                <strong>Act:</strong> Oil/filter analysis; mag plugs; trends. 
+                <strong>Out:</strong> Earlier alerts.
+              </p>
             </div>
           </button>
         </article>
 
         <!-- 4 -->
-        <article class="project-card card" data-aos="fade-up" data-aos-delay="180" data-case="undercarriage">
-          <button class="project-open" aria-label="Open: Dozer Undercarriage Life Planning">
-            <img class="thumb" src="/assets/img/projects/undercarriage_thumb.jpg"
-                 alt="Dozer undercarriage components"
-                 loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 360px">
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="120" data-case="undercarriage">
+          <button class="project-open" aria-label="Open case study: Dozer Undercarriage Life Planning">
+            <img class="thumb" src="/assets/img/projects/undercarriage_thumb.jpg" alt="Dozer undercarriage"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
             <div class="project-body">
-              <h3>Dozer Undercarriage Life Planning</h3>
-              <ul class="tags" aria-label="Tags">
-                <li>Planning</li><li>Cost</li><li>Availability</li>
-              </ul>
-              <p class="summary">Unpredictable UC replacements; budget and downtime spikes.</p>
-              <span class="linkhint">Read case study</span>
+              <h3>Undercarriage Life Planning</h3>
+              <p class="preview">
+                <strong>P:</strong> Unpredictable UC replacements. 
+                <strong>Ana:</strong> Wear vs hours; soil; behavior. 
+                <strong>Act:</strong> Forecast + staggered swaps. 
+                <strong>Out:</strong> Smoother budgets, ↑ availability.
+              </p>
             </div>
           </button>
         </article>
 
         <!-- 5 -->
-        <article class="project-card card" data-aos="fade-up" data-aos-delay="240" data-case="componentqa">
-          <button class="project-open" aria-label="Open: Component Tracking & QA">
-            <img class="thumb" src="/assets/img/projects/componentqa_thumb.jpg"
-                 alt="Component teardown & quality checks"
-                 loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 360px">
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="160" data-case="componentqa">
+          <button class="project-open" aria-label="Open case study: Component Tracking & QA">
+            <img class="thumb" src="/assets/img/projects/componentqa_thumb.jpg" alt="Component QA checks"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
             <div class="project-body">
               <h3>Component Tracking & QA</h3>
-              <ul class="tags" aria-label="Tags">
-                <li>QA</li><li>Traceability</li><li>RCA</li>
-              </ul>
-              <p class="summary">No traceability on sub-assembly work; repeat issues.</p>
-              <span class="linkhint">Read case study</span>
+              <p class="preview">
+                <strong>P:</strong> No traceability on sub-assemblies. 
+                <strong>Ana:</strong> History + modes mapped. 
+                <strong>Act:</strong> IDs; QA checklists; receiving insp. 
+                <strong>Out:</strong> Fewer repeats.
+              </p>
             </div>
           </button>
         </article>
 
         <!-- 6 -->
-        <article class="project-card card" data-aos="fade-up" data-aos-delay="300" data-case="tasklib">
-          <button class="project-open" aria-label="Open: Preventive Task Library (RCM)">
-            <img class="thumb" src="/assets/img/projects/tasklib_thumb.jpg"
-                 alt="Maintenance task library (RCM basis)"
-                 loading="lazy" decoding="async"
-                 sizes="(max-width: 900px) 100vw, 360px">
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="200" data-case="tasklib">
+          <button class="project-open" aria-label="Open case study: Preventive Task Library (RCM)">
+            <img class="thumb" src="/assets/img/projects/tasklib_thumb.jpg" alt="Preventive task library"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
             <div class="project-body">
               <h3>Preventive Task Library (RCM)</h3>
-              <ul class="tags" aria-label="Tags">
-                <li>RCM</li><li>Library</li><li>Standard Work</li>
-              </ul>
-              <p class="summary">Inconsistent preventive tasks across machines/teams.</p>
-              <span class="linkhint">Read case study</span>
+              <p class="preview">
+                <strong>P:</strong> Inconsistent tasks. 
+                <strong>Ana:</strong> OEM vs actuals compared. 
+                <strong>Act:</strong> Standard library + intervals. 
+                <strong>Out:</strong> Fewer misses.
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 7 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="240" data-case="rcmhaul">
+          <button class="project-open" aria-label="Open case study: ADT Haul Cycle RCM">
+            <img class="thumb" src="/assets/img/projects/rcmhaul_thumb.jpg" alt="ADT haul cycle"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>ADT Haul Cycle RCM</h3>
+              <p class="preview">
+                <strong>P:</strong> Haul cycle downtime. 
+                <strong>Ana:</strong> Modes across drivetrain. 
+                <strong>Act:</strong> Tasks + intervals tuned. 
+                <strong>Out:</strong> Availability ↑.
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 8 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="280" data-case="filterskid">
+          <button class="project-open" aria-label="Open case study: Filter Skid & Contamination Barriers">
+            <img class="thumb" src="/assets/img/projects/filterskid_thumb.jpg" alt="Filter skid"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Filter Skid & Contamination Barriers</h3>
+              <p class="preview">
+                <strong>P:</strong> Particulate ingress. 
+                <strong>Ana:</strong> Failure traces; ports. 
+                <strong>Act:</strong> Skid; quick-connects; seals. 
+                <strong>Out:</strong> Cleaner systems.
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 9 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="320" data-case="spares">
+          <button class="project-open" aria-label="Open case study: Critical Spares Planning">
+            <img class="thumb" src="/assets/img/projects/spares_thumb.jpg" alt="Critical spares planning board"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Critical Spares Planning</h3>
+              <p class="preview">
+                <strong>P:</strong> Stockouts on critical parts. 
+                <strong>Ana:</strong> MTBF + lead time review. 
+                <strong>Act:</strong> Min/Max; vendor agreements. 
+                <strong>Out:</strong> Fewer delays.
+              </p>
             </div>
           </button>
         </article>
@@ -171,32 +215,36 @@
     <div class="container"><p class="copyright">© 2025 Robert Smith</p></div>
   </footer>
 
-  <!-- Hidden templates for modal content -->
+  <!-- ===== Hidden templates (full write-ups with multiple images) ===== -->
+  <!-- Example: put multiple <img> inside each template; the modal will create a mini-carousel -->
   <template id="case-d375">
     <h2>Komatsu D375 — Water Pump Failure RCA</h2>
     <p><strong>Problem:</strong> Repeated driven-gear damage risking contamination and downtime.</p>
-    <p><strong>Analysis:</strong> Joint teardown with OEM; inspected wear patterns; reviewed service history; checked tolerances and contamination paths.</p>
+    <p><strong>Analysis:</strong> Teardown with OEM; inspected wear patterns; reviewed history; checked tolerances and contamination paths.</p>
     <p><strong>Action:</strong> Aligned tasks (inspection intervals, torque specs), added contamination barriers & QA checklists; vendor feedback loop.</p>
     <p><strong>Outcome:</strong> Repeat incidents down; earlier detection; engine protection up.</p>
-    <img src="/assets/img/projects/d375_full.jpg" alt="Komatsu D375 water pump, teardown inspection">
+    <img src="/assets/img/projects/d375_full_1.jpg" alt="Water pump teardown overview">
+    <img src="/assets/img/projects/d375_full_2.jpg" alt="Driven gear wear pattern close-up">
   </template>
 
   <template id="case-service">
     <h2>Service Planning Dashboard</h2>
-    <p><strong>Problem:</strong> Fragmented data caused missed/late services.</p>
-    <p><strong>Analysis:</strong> Mapped data sources (hours, locations, due dates); identified bottlenecks and failure to signal upcoming services.</p>
-    <p><strong>Action:</strong> Built Power BI dashboard showing machine hours, due windows, locations; added KPI tiles and daily refresh.</p>
-    <p><strong>Outcome:</strong> ~33% ↑ service accuracy; clearer plan; reduced fire-drills.</p>
-    <img src="/assets/img/projects/service_dash_full.jpg" alt="Service planning dashboard detail">
+    <p><strong>Problem:</strong> Missed/late services due to fragmented data.</p>
+    <p><strong>Analysis:</strong> Mapped sources (hours, locations, due windows) and failure to surface upcoming services.</p>
+    <p><strong>Action:</strong> Built Power BI dashboard with KPI tiles and daily refresh.</p>
+    <p><strong>Outcome:</strong> ~33% ↑ service accuracy; fewer fire-drills.</p>
+    <img src="/assets/img/projects/service_dash_full_1.jpg" alt="Dashboard overview">
+    <img src="/assets/img/projects/service_dash_full_2.jpg" alt="KPI tiles detail">
   </template>
 
   <template id="case-condition">
     <h2>Condition Monitoring Program</h2>
-    <p><strong>Problem:</strong> Unclear failure precursors for critical systems.</p>
-    <p><strong>Analysis:</strong> Reviewed past failures; defined signals (wear metals, debris on mag plugs, temperature trends).</p>
+    <p><strong>Problem:</strong> Unclear failure precursors.</p>
+    <p><strong>Analysis:</strong> Reviewed past failures; defined signals (wear metals, mag plug debris, temp trends).</p>
     <p><strong>Action:</strong> Routine inspections; oil & filter analysis cadence; mag plug photo log; trend dashboards.</p>
-    <p><strong>Outcome:</strong> Earlier alerts; fewer surprises; component life extended.</p>
-    <img src="/assets/img/projects/condition_full.jpg" alt="Mag plug inspection and oil sample review">
+    <p><strong>Outcome:</strong> Earlier alerts; extended component life.</p>
+    <img src="/assets/img/projects/condition_full_1.jpg" alt="Oil sample analysis">
+    <img src="/assets/img/projects/condition_full_2.jpg" alt="Mag plug debris photo log">
   </template>
 
   <template id="case-undercarriage">
@@ -205,30 +253,65 @@
     <p><strong>Analysis:</strong> Tracked wear vs. hours; soil conditions; operator behavior; vendor specs.</p>
     <p><strong>Action:</strong> Forecast model; staggered replacements; stock planning; vendor agreements.</p>
     <p><strong>Outcome:</strong> Smoother budgets; availability ↑; fewer critical outages.</p>
-    <img src="/assets/img/projects/undercarriage_full.jpg" alt="Dozer undercarriage wear tracking">
+    <img src="/assets/img/projects/undercarriage_full_1.jpg" alt="Roller/sprocket wear log">
+    <img src="/assets/img/projects/undercarriage_full_2.jpg" alt="Forecast replacement curve">
   </template>
 
   <template id="case-componentqa">
     <h2>Component Tracking & QA</h2>
     <p><strong>Problem:</strong> No traceability on sub-assembly work; repeats not linked to root fixes.</p>
-    <p><strong>Analysis:</strong> Mapped component history; failure modes; vendor work orders.</p>
-    <p><strong>Action:</strong> Introduced unique IDs; QA checklists; receiving inspections with photo evidence.</p>
+    <p><strong>Analysis:</strong> Mapped component history and failure modes across vendors.</p>
+    <p><strong>Action:</strong> Unique IDs; QA checklists; receiving inspections with photo evidence.</p>
     <p><strong>Outcome:</strong> Better vendor quality; reduced repeats; clearer accountability.</p>
-    <img src="/assets/img/projects/componentqa_full.jpg" alt="Component rebuild QA checklist">
+    <img src="/assets/img/projects/componentqa_full_1.jpg" alt="QA checklist example">
+    <img src="/assets/img/projects/componentqa_full_2.jpg" alt="Receiving inspection photos">
   </template>
 
   <template id="case-tasklib">
     <h2>Preventive Task Library (RCM)</h2>
     <p><strong>Problem:</strong> Inconsistent preventive tasks across machines/teams.</p>
-    <p><strong>Analysis:</strong> Compared OEM manuals vs. actuals; identified gaps & overlaps.</p>
-    <p><strong>Action:</strong> Built standard task library with intervals and torque/spec data; trained planners/techs.</p>
+    <p><strong>Analysis:</strong> Compared OEM manuals vs. actuals; gaps & overlaps identified.</p>
+    <p><strong>Action:</strong> Standard task library with intervals and torque/spec data; trained planners/techs.</p>
     <p><strong>Outcome:</strong> Fewer misses; clearer expectations; faster onboarding.</p>
-    <img src="/assets/img/projects/tasklib_full.jpg" alt="Standard preventive task library view">
+    <img src="/assets/img/projects/tasklib_full_1.jpg" alt="Task library index">
+    <img src="/assets/img/projects/tasklib_full_2.jpg" alt="Standard work details">
   </template>
 
-  <!-- Modal dialog -->
-  <dialog class="case-dialog">
+  <template id="case-rcmhaul">
+    <h2>ADT Haul Cycle RCM</h2>
+    <p><strong>Problem:</strong> Haul cycle downtime and variability.</p>
+    <p><strong>Analysis:</strong> Failure modes across drivetrain/axles; usage patterns.</p>
+    <p><strong>Action:</strong> Task tuning and intervals aligned to usage; operator feedback loop.</p>
+    <p><strong>Outcome:</strong> Availability up; fewer mid-shift failures.</p>
+    <img src="/assets/img/projects/rcmhaul_full_1.jpg" alt="RCM worksheet">
+    <img src="/assets/img/projects/rcmhaul_full_2.jpg" alt="Intervals vs usage trend">
+  </template>
+
+  <template id="case-filterskid">
+    <h2>Filter Skid & Contamination Barriers</h2>
+    <p><strong>Problem:</strong> Particulate ingress causing accelerated wear.</p>
+    <p><strong>Analysis:</strong> Contamination paths; port protection gaps.</p>
+    <p><strong>Action:</strong> Filtration skid; quick-connects; improved seals.</p>
+    <p><strong>Outcome:</strong> Cleaner systems; reduced wear rates.</p>
+    <img src="/assets/img/projects/filterskid_full_1.jpg" alt="Filter skid in use">
+    <img src="/assets/img/projects/filterskid_full_2.jpg" alt="Quick-connect detail">
+  </template>
+
+  <template id="case-spares">
+    <h2>Critical Spares Planning</h2>
+    <p><strong>Problem:</strong> Stockouts on critical parts delaying repairs.</p>
+    <p><strong>Analysis:</strong> MTBF, lead time, and usage variability reviewed.</p>
+    <p><strong>Action:</strong> Min/Max stocking; vendor agreements; review cadence.</p>
+    <p><strong>Outcome:</strong> Fewer delays; repairs start on time.</p>
+    <img src="/assets/img/projects/spares_full_1.jpg" alt="Spares planning board">
+    <img src="/assets/img/projects/spares_full_2.jpg" alt="Min/Max settings in tool">
+  </template>
+
+  <!-- ===== Modal dialog with Next/Prev ===== -->
+  <dialog class="case-dialog" aria-label="Project case study">
     <button class="case-close" aria-label="Close case study">×</button>
+    <button class="case-prev" aria-label="Previous project">‹</button>
+    <button class="case-next" aria-label="Next project">›</button>
     <div class="case-media"><img alt=""></div>
     <div class="case-body"><!-- populated from template --></div>
   </dialog>
@@ -254,47 +337,94 @@
       const setShadow = () => header.classList.toggle('scrolled', window.scrollY > 8);
       setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
 
-      // ===== Case dialog wiring =====
+      // ===== Case dialog wiring (Next/Prev + multi-image) =====
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+      const ids = cards.map(c => c.getAttribute('data-case'));
       const dlg = document.querySelector('.case-dialog');
       const dlgImg = dlg.querySelector('.case-media img');
       const dlgBody = dlg.querySelector('.case-body');
-      const closeBtn = dlg.querySelector('.case-close');
+      const btnClose = dlg.querySelector('.case-close');
+      const btnPrev = dlg.querySelector('.case-prev');
+      const btnNext = dlg.querySelector('.case-next');
+      let currentIndex = 0;
+      let gallery = []; // list of image {src, alt}
+      let galleryIdx = 0;
 
-      function openCase(id){
+      function loadCase(id){
         const tpl = document.getElementById('case-' + id);
         if (!tpl) return;
+
         // Reset content
-        dlgImg.src = '';
-        dlgImg.alt = '';
         dlgBody.innerHTML = '';
+        gallery = [];
+        galleryIdx = 0;
 
-        // Pull the last <img> inside the template as the hero image (optional)
+        // Clone template
         const frag = tpl.content.cloneNode(true);
-        const img = frag.querySelector('img');
-        if (img){
-          dlgImg.src = img.getAttribute('src');
-          dlgImg.alt = img.getAttribute('alt') || '';
-          img.remove(); // prevent duplicate inside body
-        }
-        dlgBody.appendChild(frag);
 
-        if (typeof dlg.showModal === 'function') dlg.showModal();
-        else alert('Dialog not supported. Please open the detailed PDF or image instead.');
+        // Extract images for gallery
+        frag.querySelectorAll('img').forEach(img => {
+          gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+          img.remove(); // keep only text inside body; media goes to header image
+        });
+
+        // Set first image (if any)
+        if (gallery.length) {
+          dlgImg.src = gallery[0].src;
+          dlgImg.alt = gallery[0].alt;
+          galleryIdx = 0;
+        } else {
+          dlgImg.src = '';
+          dlgImg.alt = '';
+        }
+
+        // Body text
+        dlgBody.appendChild(frag);
       }
 
-      document.querySelectorAll('.project-card').forEach(card => {
-        const id = card.getAttribute('data-case');
+      function openCaseAt(index){
+        currentIndex = (index + ids.length) % ids.length;
+        loadCase(ids[currentIndex]);
+        if (typeof dlg.showModal === 'function') dlg.showModal();
+      }
+
+      function stepCase(dir){ openCaseAt(currentIndex + dir); }
+
+      function stepImage(dir){
+        if (!gallery.length) return;
+        galleryIdx = (galleryIdx + dir + gallery.length) % gallery.length;
+        dlgImg.src = gallery[galleryIdx].src;
+        dlgImg.alt = gallery[galleryIdx].alt || '';
+      }
+
+      // Wire cards (button inside each)
+      cards.forEach((card, i) => {
         const btn = card.querySelector('.project-open');
-        if (!btn || !id) return;
-        btn.addEventListener('click', () => openCase(id));
-        // Also open on Enter when focused
-        btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCase(id); }});
+        if (!btn) return;
+        btn.addEventListener('click', () => openCaseAt(i));
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseAt(i); }
+        });
       });
 
-      // Close interactions
-      closeBtn.addEventListener('click', () => dlg.close());
+      // Controls
+      btnClose.addEventListener('click', () => dlg.close());
+      btnPrev.addEventListener('click', () => stepCase(-1));
+      btnNext.addEventListener('click', () => stepCase(1));
+
+      // Click image to cycle to next; Shift+Click for previous
+      dlgImg.addEventListener('click', (e) => stepImage(e.shiftKey ? -1 : 1));
+
+      // Backdrop & keys
       dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && dlg.open) dlg.close(); });
+      document.addEventListener('keydown', (e) => {
+        if (!dlg.open) return;
+        if (e.key === 'Escape') dlg.close();
+        if (e.key === 'ArrowRight') stepCase(1);
+        if (e.key === 'ArrowLeft') stepCase(-1);
+        if (e.key === 'PageDown') stepImage(1);
+        if (e.key === 'PageUp') stepImage(-1);
+      });
     });
   </script>
 </body>
