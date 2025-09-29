@@ -91,139 +91,246 @@
   </template>
 
   <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function(){
-    if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // AOS (optional if you're using it)
+  if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
 
-    // Mobile nav toggle
-    const toggle = document.querySelector('.menu-toggle');
-    const links = document.getElementById('nav-links');
-    if (toggle && links) {
-      toggle.addEventListener('click', () => {
-        const open = links.classList.toggle('show');
-        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-      });
-    }
+  // Header shadow
+  const header = document.querySelector('.site-header');
+  const setShadow = () => header && header.classList.toggle('scrolled', window.scrollY > 8);
+  setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
 
-    // Header shadow
-    const header = document.querySelector('.site-header');
-    const setShadow = () => header.classList.toggle('scrolled', window.scrollY > 8);
-    setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
+  // Mobile nav toggle
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.getElementById('nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('show');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+  }
 
-    const cards = Array.from(document.querySelectorAll('.project-card'));
-    const ids = cards.map(c => c.getAttribute('data-case'));
+  // Cards & IDs
+  const cards = Array.from(document.querySelectorAll('.project-card'));
+  const ids = cards.map(c => c.getAttribute('data-case')).filter(Boolean);
 
-    const dlg = document.querySelector('.case-dialog');
-    const dlgImg = dlg.querySelector('.case-media img');
-    const dlgBody = dlg.querySelector('.case-body');
-    const btnClose = dlg.querySelector('.case-close');
-    const btnPrev = dlg.querySelector('.case-prev');
-    const btnNext = dlg.querySelector('.case-next');
+  // Dialog elements (guarded)
+  const dlg = document.querySelector('.case-dialog');
+  const dlgImg  = dlg ? dlg.querySelector('.case-media img') : null;
+  const dlgBody = dlg ? dlg.querySelector('.case-body') : null;
+  const btnClose= dlg ? dlg.querySelector('.case-close') : null;
+  const btnPrev = dlg ? dlg.querySelector('.case-prev') : null;
+  const btnNext = dlg ? dlg.querySelector('.case-next') : null;
 
-    let currentIndex = 0;
-    let gallery = [];
-    let galleryIdx = 0;
-    let lastFocus = null;
+  let currentIndex = 0;
+  let gallery = [];
+  let galleryIdx = 0;
+  let lastFocus = null;
 
-    function loadCase(id){
-      const tpl = document.getElementById('case-' + id);
-      if (!tpl) return;
-      dlgBody.innerHTML = ''; gallery = []; galleryIdx = 0;
-      const frag = tpl.content.cloneNode(true);
-      frag.querySelectorAll('img').forEach(img => {
-        gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt')||'' });
-        img.remove();
-      });
-      if (gallery.length){
-        dlgImg.src = gallery[0].src; dlgImg.alt = gallery[0].alt; galleryIdx=0;
-      } else { dlgImg.src=''; dlgImg.alt=''; }
-      dlgBody.appendChild(frag);
-    }
-    function openCaseAt(i){
-      currentIndex = (i+ids.length)%ids.length;
-      loadCase(ids[currentIndex]);
-      lastFocus=document.activeElement;
-      dlg.showModal(); setHashForCurrent(); btnClose.focus();
-    }
-    function stepCase(d){ openCaseAt(currentIndex+d); }
-    function stepImage(d){ if(!gallery.length)return; galleryIdx=(galleryIdx+d+gallery.length)%gallery.length;
-      dlgImg.src=gallery[galleryIdx].src; dlgImg.alt=gallery[galleryIdx].alt||''; }
+  function loadCase(id){
+    if (!dlg || !dlgBody) return;
+    const tpl = document.getElementById('case-' + id);
+    if (!tpl) return;
 
-    cards.forEach((card,i)=>{ card.querySelector('.project-open')
-      .addEventListener('click',()=>openCaseAt(i)); });
+    dlgBody.innerHTML = '';
+    gallery = [];
+    galleryIdx = 0;
 
-    btnClose.addEventListener('click',()=>closeDialog());
-    btnPrev.addEventListener('click',()=>stepCase(-1));
-    btnNext.addEventListener('click',()=>stepCase(1));
-    dlgImg.addEventListener('click',(e)=>stepImage(e.shiftKey?-1:1));
-    function closeDialog(){ dlg.close(); clearHashCase(); if(lastFocus) lastFocus.focus(); }
-
-    dlg.addEventListener('click',e=>{ if(e.target===dlg) closeDialog(); });
-    document.addEventListener('keydown',e=>{
-      if(!dlg.open)return;
-      if(e.key==='Escape')closeDialog();
-      if(e.key==='ArrowRight')stepCase(1);
-      if(e.key==='ArrowLeft')stepCase(-1);
-      if(e.key==='PageDown')stepImage(1);
-      if(e.key==='PageUp')stepImage(-1);
+    const frag = tpl.content.cloneNode(true);
+    frag.querySelectorAll('img').forEach(img => {
+      gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+      img.remove(); // keep images only for the gallery
     });
 
-    // Filtering
-    const chips=Array.from(document.querySelectorAll('.project-filters .chip'));
-    const status=document.getElementById('filterStatus');
-    function applyFilter(t){
-      t=(t||'all').toLowerCase();
-      const params=new URLSearchParams(location.search);
-      if(t==='all')params.delete('filter'); else params.set('filter',t);
-      history.replaceState({},'',location.pathname+(params.toString()?'?'+params.toString():'')+location.hash);
-      let vis=0;
-      cards.forEach(c=>{
-        const tags=(c.getAttribute('data-tags')||'').toLowerCase();
-        const show=(t==='all')||tags.split(',').map(s=>s.trim()).includes(t);
-        c.hidden=!show; if(show)vis++;
-        if(!c.querySelector('.card-tags')){
-          const wrap=document.createElement('div'); wrap.className='card-tags';
-          c.insertBefore(wrap,c.querySelector('.project-brief'));
-          (c.getAttribute('data-tags')||'').split(',').forEach(tag=>{
-            if(tag.trim()){const b=document.createElement('span');b.className='card-tag';
-              b.textContent=tag.trim()[0].toUpperCase()+tag.trim().slice(1);wrap.appendChild(b);} });
-        }
-      });
-      chips.forEach(c=>{const on=c.dataset.filter===t||(t==='all'&&c.dataset.filter==='all');
-        c.classList.toggle('is-active',on);c.setAttribute('aria-pressed',on?'true':'false');});
-      if(status)status.textContent=`${vis} project${vis===1?'':'s'} shown for filter: ${t}.`;
+    if (dlgImg) {
+      if (gallery.length) {
+        dlgImg.src = gallery[0].src;
+        dlgImg.alt = gallery[0].alt;
+      } else {
+        dlgImg.src = '';
+        dlgImg.alt = '';
+      }
     }
-    chips.forEach(ch=>ch.addEventListener('click',()=>applyFilter(ch.dataset.filter)));
 
-    // Deep-link
-    function setHashForCurrent(){const id=ids[currentIndex];
-      const params=new URLSearchParams(location.search);
-      history.replaceState({},'',location.pathname+(params.toString()?'?'+params.toString():'')+'#case-'+id);}
-    function clearHashCase(){const params=new URLSearchParams(location.search);
-      history.replaceState({},'',location.pathname+(params.toString()?'?'+params.toString():''): '');}
-    function openFromUrl(){
-      const params=new URLSearchParams(location.search);
-      const filter=params.get('filter'); if(filter)applyFilter(filter); else applyFilter('all');
-      const hash=location.hash||'';const m=hash.match(/^#case-([a-z0-9_-]+)$/i);
-      const q=params.get('case');const wanted=m?m[1]:(q||null);
-      if(wanted){const idx=ids.indexOf(wanted);if(idx>=0)openCaseAt(idx);}
-    }
-    window.addEventListener('hashchange',()=>{const m=(location.hash||'').match(/^#case-([a-z0-9_-]+)$/i);
-      if(!m){if(dlg.open)closeDialog();return;}const idx=ids.indexOf(m[1]);if(idx>=0)openCaseAt(idx);});
-    openFromUrl();
+    dlgBody.appendChild(frag);
+  }
 
-    // Reformat briefs as Problem→Analysis→Action→Outcome
-    cards.forEach(card=>{
-      const brief=card.querySelector('.project-brief'); if(!brief)return;
-      const raw=brief.textContent.trim();
-      const parts=raw.split(/[.;]/).filter(Boolean);
-      const wrap=document.createElement('div');wrap.className='paao-inline';
-      const mk=(lbl,txt)=>txt?`<span class="lbl">${lbl}:</span> <span class="txt">${txt.trim()}</span>`:'';
-      const items=[mk('Problem',parts[0]||''),mk('Analysis',parts[1]||''),mk('Action',parts[2]||''),mk('Outcome',parts[3]||'')].filter(Boolean);
-      if(items.length){wrap.innerHTML=items.join('<span class="sep">→</span>');brief.innerHTML='';brief.appendChild(wrap);}
+  function openCaseAt(i){
+    if (!dlg) return;
+    currentIndex = (i + ids.length) % ids.length;
+    loadCase(ids[currentIndex]);
+    lastFocus = document.activeElement;
+    if (typeof dlg.showModal === 'function') dlg.showModal();
+    setHashForCurrent();
+    if (btnClose) btnClose.focus();
+  }
+
+  function closeDialog(){
+    if (!dlg) return;
+    dlg.close();
+    clearHashCase();
+    if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+  }
+
+  function stepCase(d){ openCaseAt(currentIndex + d); }
+  function stepImage(d){
+    if (!dlgImg || !gallery.length) return;
+    galleryIdx = (galleryIdx + d + gallery.length) % gallery.length;
+    dlgImg.src = gallery[galleryIdx].src;
+    dlgImg.alt = gallery[galleryIdx].alt || '';
+  }
+
+  // Wire up card open buttons
+  cards.forEach((card, i) => {
+    const btn = card.querySelector('.project-open');
+    if (!btn) return;
+    btn.addEventListener('click', () => openCaseAt(i));
+    btn.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseAt(i); }
     });
   });
-  </script>
+
+  // Dialog controls (guarded)
+  if (btnClose) btnClose.addEventListener('click', closeDialog);
+  if (btnPrev)  btnPrev.addEventListener('click', () => stepCase(-1));
+  if (btnNext)  btnNext.addEventListener('click', () => stepCase(1));
+  if (dlg && dlgImg) {
+    dlgImg.addEventListener('click', e => stepImage(e.shiftKey ? -1 : 1));
+    dlg.addEventListener('click', e => { if (e.target === dlg) closeDialog(); });
+  }
+  document.addEventListener('keydown', e => {
+    if (!dlg || !dlg.open) return;
+    if (e.key === 'Escape') closeDialog();
+    if (e.key === 'ArrowRight') stepCase(1);
+    if (e.key === 'ArrowLeft')  stepCase(-1);
+    if (e.key === 'PageDown')   stepImage(1);
+    if (e.key === 'PageUp')     stepImage(-1);
+  });
+
+  // ----- Tag badges (from data-tags) -----
+  function normalizeTags(str){
+    return (str || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+  }
+  function ensureTagBadges(card){
+    if (card.querySelector('.card-tags')) return;
+    const tags = normalizeTags(card.getAttribute('data-tags'));
+    if (!tags.length) return;
+    const wrap = document.createElement('div');
+    wrap.className = 'card-tags';
+    const brief = card.querySelector('.project-brief');
+    const head  = card.querySelector('.card-head');
+    if (brief && brief.parentNode) brief.parentNode.insertBefore(wrap, brief);
+    else if (head) head.after(wrap);
+    else card.prepend(wrap);
+    tags.forEach(t => {
+      const s = document.createElement('span');
+      s.className = 'card-tag';
+      s.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+      wrap.appendChild(s);
+    });
+  }
+  cards.forEach(ensureTagBadges);
+
+  // ----- Filtering -----
+  const chips  = Array.from(document.querySelectorAll('.project-filters .chip'));
+  const status = document.getElementById('filterStatus');
+
+  function applyFilter(tag){
+    const t = (tag || 'all').toLowerCase();
+    // update URL (no syntax bug here!)
+    const params = new URLSearchParams(location.search);
+    if (t === 'all') params.delete('filter'); else params.set('filter', t);
+    const newUrl = location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash;
+    try { history.replaceState({}, '', newUrl); } catch(_) {}
+
+    // show/hide
+    let visible = 0;
+    cards.forEach(card => {
+      const tags = normalizeTags(card.getAttribute('data-tags'));
+      const show = (t === 'all') || tags.includes(t);
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    // chip UI + live region
+    chips.forEach(c => {
+      const on = c.dataset.filter === t || (t === 'all' && c.dataset.filter === 'all');
+      c.classList.toggle('is-active', on);
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    if (status) status.textContent = `${visible} project${visible === 1 ? '' : 's'} shown for filter: ${t}.`;
+  }
+  chips.forEach(ch => ch.addEventListener('click', () => applyFilter(ch.dataset.filter)));
+
+  // ----- Deep-linking -----
+  function setHashForCurrent(){
+    const id = ids[currentIndex];
+    const params = new URLSearchParams(location.search);
+    const url = location.pathname + (params.toString() ? '?' + params.toString() : '') + '#case-' + id;
+    try { history.replaceState({}, '', url); } catch(_) {}
+  }
+  function clearHashCase(){
+    const params = new URLSearchParams(location.search);
+    const url = location.pathname + (params.toString() ? '?' + params.toString() : '');
+    try { history.replaceState({}, '', url); } catch(_) {}
+  }
+  function openFromUrl(){
+    const params = new URLSearchParams(location.search);
+    const filter = params.get('filter');
+    applyFilter(filter || 'all');
+
+    const hash = location.hash || '';
+    const m = hash.match(/^#case-([a-z0-9_-]+)$/i);
+    const q = params.get('case');
+    const wanted = m ? m[1] : (q || null);
+    if (wanted) {
+      const idx = ids.indexOf(wanted);
+      if (idx >= 0) openCaseAt(idx);
+    }
+  }
+  window.addEventListener('hashchange', () => {
+    const m = (location.hash || '').match(/^#case-([a-z0-9_-]+)$/i);
+    if (!m) { if (dlg && dlg.open) closeDialog(); return; }
+    const idx = ids.indexOf(m[1]);
+    if (idx >= 0) openCaseAt(idx);
+  });
+
+  openFromUrl();
+
+  // ----- Reformat brief as Problem → Analysis → Action → Outcome -----
+  cards.forEach(card => {
+    const brief = card.querySelector('.project-brief');
+    if (!brief) return;
+    const raw = brief.textContent.replace(/\s+/g, ' ').trim();
+
+    let p='', ana='', act='', out='';
+    const pMatch   = raw.match(/(?:^|\b)P(?:roblem)?\s*[:–-]\s*([^]*?)(?=(?:\bA(?:nalysis|ction)?\s*[:–-])|$)/i);
+    const anaMatch = raw.match(/\bA(?:nalysis)?\s*[:–-]\s*([^]*?)(?=(?:\bA(?:ction)?\s*[:–-])|$)/i);
+    const actMatch = raw.match(/\bA(?:ction)\s*[:–-]\s*([^]*?)(?=(?:\bO(?:utcome)?\s*[:–-])|$)/i);
+    const oMatch   = raw.match(/\bO(?:utcome)?\s*[:–-]\s*([^]*?)$/i);
+
+    if (pMatch)   p   = pMatch[1].trim();
+    if (anaMatch) ana = anaMatch[1].trim();
+    if (actMatch) act = actMatch[1].trim();
+    if (oMatch)   out = oMatch[1].trim();
+
+    if (!(p || ana || act || out)) {
+      const parts = raw.split(/\s*[.;]\s*/).filter(Boolean);
+      [p, ana, act, out] = [parts[0]||'', parts[1]||'', parts[2]||'', parts[3]||''];
+    }
+
+    const wrap = document.createElement('div');
+    wrap.className = 'paao-inline';
+    const mk = (label, text) => text ? `<span class="lbl">${label}:</span> <span class="txt">${text}</span>` : '';
+    const items = [mk('Problem', p), mk('Analysis', ana), mk('Action', act), mk('Outcome', out)].filter(Boolean);
+    if (items.length) {
+      wrap.innerHTML = items.join('<span class="sep">→</span>');
+      brief.innerHTML = '';
+      brief.appendChild(wrap);
+    }
+  });
+});
+</script>
 </body>
 </html>
