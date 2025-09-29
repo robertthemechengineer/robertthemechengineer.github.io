@@ -1,336 +1,590 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Projects</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Robert Smith — Projects & Case Studies</title>
+  <meta name="description" content="Reliability engineering projects and case studies: Problem → Analysis → Action → Outcome." />
 
-  <!-- Existing stylesheet link -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
 
-  <!-- Page-scoped styles for filters, badges, and PAAO formatting -->
+  <!-- Perf -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+
+  <!-- Site CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css?v=33" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Page-scoped additions: filter chips, tag badges, and PAAO formatting -->
   <style>
+    /* Filter chips */
     .project-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.25rem}
-    .project-filters .chip{border:1px solid var(--border,rgba(0,0,0,.12));background:var(--card,#fff);
-      padding:.4rem .75rem;border-radius:999px;cursor:pointer;font:inherit}
-    .project-filters .chip.is-active{box-shadow:0 0 0 2px var(--accent, #0a7f51) inset;color:var(--accent-ink,#0a7f51)}
+    .project-filters .chip{
+      border:1px solid var(--border,rgba(0,0,0,.12));
+      background:var(--card,#fff);
+      padding:.4rem .75rem;border-radius:999px;cursor:pointer;font:inherit
+    }
+    .project-filters .chip.is-active{
+      box-shadow:0 0 0 2px var(--accent,#0a7f51) inset;color:var(--accent-ink,#0a7f51)
+    }
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+    /* Tag badges per card (generated from data-tags) */
+    .card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+    .card-tag{
+      font-size:.75rem;line-height:1;border:1px solid var(--border,rgba(0,0,0,.14));
+      background:var(--card,#fff);padding:.25rem .5rem;border-radius:999px;white-space:nowrap
+    }
+
+    /* Nicer in-card P → A → A → O line */
+    .preview.paao .sep{opacity:.6;padding:0 .25rem}
+    /* Hide when filtered out */
     .project-card[hidden]{display:none !important}
+
+    /* Modal sizing tweak */
     .case-dialog{max-width:min(980px,95vw)}
     .case-dialog .case-media{display:flex;justify-content:center;align-items:center;min-height:240px;margin:0 0 .75rem}
     .case-dialog .case-media img{max-width:100%;height:auto;cursor:pointer}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
-
-    /* Tag badges generated from data-tags */
-    .card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
-    .card-tag{font-size:.75rem;line-height:1;border:1px solid var(--border,rgba(0,0,0,.14));
-      background:var(--card,#fff);padding:.25rem .5rem;border-radius:999px;white-space:nowrap}
-
-    /* Nicer P→A→A→O label styling inside brief */
-    .paao-inline{display:block;font-weight:600;margin:.25rem 0 .25rem}
-    .paao-inline .sep{opacity:.6;padding:0 .25rem}
-    .project-brief{margin:.5rem 0 0}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <button class="menu-toggle" aria-expanded="false">Menu</button>
-    <nav id="nav-links"></nav>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" role="banner">
+    <div class="container">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand-logo" href="/" aria-label="Go to home">
+          <img src="/assets/img/logo.svg" alt="RS logo" loading="eager" decoding="async">
+          <span class="brand-text">Robert Smith</span>
+        </a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+        <div id="nav-links" class="nav-links">
+          <a href="/">Home</a>
+          <a href="/pages/projects.html" class="active" aria-current="page">Projects</a>
+          <a href="/pages/cad.html">CAD</a>
+          <a href="/pages/personal.html">Personal</a>
+          <a href="/pages/resume.html">Resume</a>
+          <a href="/pages/contact.html" class="btn btn-sm">Contact</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <main class="container container-wide">
-    <!-- Filter bar -->
-    <div class="project-filters" role="group" aria-label="Filter projects">
-      <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
-      <button class="chip" data-filter="rcm" aria-pressed="false">RCM</button>
-      <button class="chip" data-filter="condition" aria-pressed="false">Condition</button>
-      <button class="chip" data-filter="planning" aria-pressed="false">Planning</button>
-      <button class="chip" data-filter="dashboards" aria-pressed="false">Dashboards</button>
-      <button class="chip" data-filter="qa" aria-pressed="false">QA</button>
+  <!-- Subhero -->
+  <section class="subhero hero" data-aos="fade-up" aria-label="Projects intro">
+    <div class="container">
+      <p class="overline">Projects</p>
+      <h1>Projects & Case Studies</h1>
+      <p class="lede">PAAO: <strong>Problem</strong> → <strong>Analysis</strong> → <strong>Action</strong> → <strong>Outcome</strong></p>
     </div>
-    <p class="sr-only" aria-live="polite" id="filterStatus"></p>
+  </section>
 
-    <!-- Projects grid -->
-    <section class="grid projects-grid">
-      <article class="project-card card" data-tags="condition,rca" data-case="d375pump">
-        <header class="card-head"><h3 class="card-title">D375 Water Pump Failures</h3></header>
-        <p class="project-brief">P: Hydraulic failures on D375. A: Trend oil Fe ppm; inspect. A: Flush, filter change, torque checks. O: MTBF ↑</p>
-        <button class="project-open">Open</button>
-      </article>
+  <main id="main" class="section" aria-label="Projects list">
+    <div class="container container-wide">
 
-      <article class="project-card card" data-tags="dashboards,planning" data-case="oiltrack">
-        <header class="card-head"><h3 class="card-title">Oil Tracking Dashboard</h3></header>
-        <p class="project-brief">P: Scattered sampling data. A: Consolidated DB schema. A: PowerBI dashboards with auto-alerts. O: Faster root cause detection</p>
-        <button class="project-open">Open</button>
-      </article>
+      <!-- Filter bar -->
+      <div class="project-filters" role="group" aria-label="Filter projects">
+        <button class="chip is-active" data-filter="all" aria-pressed="true">All</button>
+        <button class="chip" data-filter="rcm" aria-pressed="false">RCM</button>
+        <button class="chip" data-filter="condition" aria-pressed="false">Condition</button>
+        <button class="chip" data-filter="planning" aria-pressed="false">Planning</button>
+        <button class="chip" data-filter="dashboards" aria-pressed="false">Dashboards</button>
+        <button class="chip" data-filter="qa" aria-pressed="false">QA</button>
+      </div>
+      <p class="sr-only" aria-live="polite" id="filterStatus"></p>
 
-      <!-- …repeat other 7 cards with data-tags and brief… -->
-    </section>
+      <div class="project-grid">
+        <!-- 1 -->
+        <article class="project-card card" data-aos="fade-up" data-case="d375" data-tags="condition,qa">
+          <button class="project-open" aria-label="Open case study: Komatsu D375 — Water Pump Failure RCA">
+            <img class="thumb" src="/assets/img/projects/d375_thumb.jpg" alt="Komatsu D375 water pump assembly"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Komatsu D375 — Water Pump RCA</h3>
 
-    <!-- Dialog for cases -->
-    <dialog class="case-dialog">
-      <div class="case-media"><img alt=""></div>
-      <div class="case-body"></div>
-      <button class="case-close">Close</button>
-      <button class="case-prev">Prev</button>
-      <button class="case-next">Next</button>
-    </dialog>
+              <!-- tag badges will be injected here by JS -->
+              <p class="preview paao">
+                <strong>Problem:</strong> Repeat driven-gear damage
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> Teardown + service history
+                <span class="sep">→</span>
+                <strong>Action:</strong> Aligned tasks; contamination barriers
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Repeats reduced; engines protected
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 2 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="40" data-case="service" data-tags="dashboards,planning">
+          <button class="project-open" aria-label="Open case study: Service Planning Dashboard">
+            <img class="thumb" src="/assets/img/projects/service_dash_thumb.jpg" alt="Service planning dashboard"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Service Planning Dashboard</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Missed/late services
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> Data sources mapped
+                <span class="sep">→</span>
+                <strong>Action:</strong> BI tracker + due windows
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> ~33% ↑ accuracy
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 3 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="80" data-case="condition" data-tags="condition">
+          <button class="project-open" aria-label="Open case study: Condition Monitoring Program">
+            <img class="thumb" src="/assets/img/projects/condition_thumb.jpg" alt="Condition monitoring checks"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Condition Monitoring Program</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Unclear precursors
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> Failure signals defined (oil/filter, mag plugs)
+                <span class="sep">→</span>
+                <strong>Action:</strong> Trend cadence; inspections; dashboards
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Earlier alerts
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 4 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="120" data-case="undercarriage" data-tags="planning">
+          <button class="project-open" aria-label="Open case study: Dozer Undercarriage Life Planning">
+            <img class="thumb" src="/assets/img/projects/undercarriage_thumb.jpg" alt="Dozer undercarriage"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Undercarriage Life Planning</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Unpredictable UC replacements
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> Wear vs hours; soil; behavior
+                <span class="sep">→</span>
+                <strong>Action:</strong> Forecast + staggered swaps
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Smoother budgets; ↑ availability
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 5 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="160" data-case="componentqa" data-tags="qa">
+          <button class="project-open" aria-label="Open case study: Component Tracking & QA">
+            <img class="thumb" src="/assets/img/projects/componentqa_thumb.jpg" alt="Component QA checks"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Component Tracking & QA</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> No traceability on sub-assemblies
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> History + modes mapped
+                <span class="sep">→</span>
+                <strong>Action:</strong> IDs; QA checklists; receiving insp.
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Fewer repeats
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 6 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="200" data-case="tasklib" data-tags="rcm">
+          <button class="project-open" aria-label="Open case study: Preventive Task Library (RCM)">
+            <img class="thumb" src="/assets/img/projects/tasklib_thumb.jpg" alt="Preventive task library"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Preventive Task Library (RCM)</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Inconsistent tasks
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> OEM vs actuals compared
+                <span class="sep">→</span>
+                <strong>Action:</strong> Standard library + intervals
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Fewer misses
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 7 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="240" data-case="rcmhaul" data-tags="rcm,planning">
+          <button class="project-open" aria-label="Open case study: ADT Haul Cycle RCM">
+            <img class="thumb" src="/assets/img/projects/rcmhaul_thumb.jpg" alt="ADT haul cycle"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>ADT Haul Cycle RCM</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Haul cycle downtime
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> Modes across drivetrain
+                <span class="sep">→</span>
+                <strong>Action:</strong> Tasks + intervals tuned
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Availability ↑
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 8 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="280" data-case="filterskid" data-tags="condition,qa">
+          <button class="project-open" aria-label="Open case study: Filter Skid & Contamination Barriers">
+            <img class="thumb" src="/assets/img/projects/filterskid_thumb.jpg" alt="Filter skid"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Filter Skid & Contamination Barriers</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Particulate ingress
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> Failure traces; ports
+                <span class="sep">→</span>
+                <strong>Action:</strong> Skid; quick-connects; seals
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Cleaner systems
+              </p>
+            </div>
+          </button>
+        </article>
+
+        <!-- 9 -->
+        <article class="project-card card" data-aos="fade-up" data-aos-delay="320" data-case="spares" data-tags="planning">
+          <button class="project-open" aria-label="Open case study: Critical Spares Planning">
+            <img class="thumb" src="/assets/img/projects/spares_thumb.jpg" alt="Critical spares planning board"
+                 loading="lazy" decoding="async" sizes="(max-width: 900px) 100vw, 360px">
+            <div class="project-body">
+              <h3>Critical Spares Planning</h3>
+              <p class="preview paao">
+                <strong>Problem:</strong> Stockouts on critical parts
+                <span class="sep">→</span>
+                <strong>Analysis:</strong> MTBF + lead time review
+                <span class="sep">→</span>
+                <strong>Action:</strong> Min/Max; vendor agreements
+                <span class="sep">→</span>
+                <strong>Outcome:</strong> Fewer delays
+              </p>
+            </div>
+          </button>
+        </article>
+      </div>
+    </div>
   </main>
 
-  <!-- Case templates (example) -->
-  <template id="case-d375pump">
-    <h2>D375 Water Pump Failures</h2>
-    <p>Full write-up here with multiple images and details…</p>
-    <img src="img/pump1.jpg" alt="Damaged driven gear">
-    <img src="img/pump2.jpg" alt="Second failure gear">
+  <footer class="site-footer" role="contentinfo">
+    <div class="container"><p class="copyright">© 2025 Robert Smith</p></div>
+  </footer>
+
+  <!-- ===== Hidden templates (full write-ups with multiple images) ===== -->
+  <template id="case-d375">
+    <h2>Komatsu D375 — Water Pump Failure RCA</h2>
+    <p><strong>Problem:</strong> Repeated driven-gear damage risking contamination and downtime.</p>
+    <p><strong>Analysis:</strong> Teardown with OEM; inspected wear patterns; reviewed history; checked tolerances and contamination paths.</p>
+    <p><strong>Action:</strong> Aligned tasks (inspection intervals, torque specs), added contamination barriers & QA checklists; vendor feedback loop.</p>
+    <p><strong>Outcome:</strong> Repeat incidents down; earlier detection; engine protection up.</p>
+    <img src="/assets/img/projects/d375_full_1.jpg" alt="Water pump teardown overview">
+    <img src="/assets/img/projects/d375_full_2.jpg" alt="Driven gear wear pattern close-up">
   </template>
 
-  <template id="case-oiltrack">
-    <h2>Oil Tracking Dashboard</h2>
-    <p>Write-up here with visuals…</p>
-    <img src="img/dashboard1.png" alt="Dashboard example">
+  <template id="case-service">
+    <h2>Service Planning Dashboard</h2>
+    <p><strong>Problem:</strong> Missed/late services due to fragmented data.</p>
+    <p><strong>Analysis:</strong> Mapped sources (hours, locations, due windows) and failure to surface upcoming services.</p>
+    <p><strong>Action:</strong> Built Power BI dashboard with KPI tiles and daily refresh.</p>
+    <p><strong>Outcome:</strong> ~33% ↑ service accuracy; fewer fire-drills.</p>
+    <img src="/assets/img/projects/service_dash_full_1.jpg" alt="Dashboard overview">
+    <img src="/assets/img/projects/service_dash_full_2.jpg" alt="KPI tiles detail">
   </template>
 
-  <!-- Scripts -->
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  // AOS (optional if you're using it)
-  if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
+  <template id="case-condition">
+    <h2>Condition Monitoring Program</h2>
+    <p><strong>Problem:</strong> Unclear failure precursors.</p>
+    <p><strong>Analysis:</strong> Reviewed past failures; defined signals (wear metals, mag plug debris, temp trends).</p>
+    <p><strong>Action:</strong> Routine inspections; oil & filter analysis cadence; mag plug photo log; trend dashboards.</p>
+    <p><strong>Outcome:</strong> Earlier alerts; extended component life.</p>
+    <img src="/assets/img/projects/condition_full_1.jpg" alt="Oil sample analysis">
+    <img src="/assets/img/projects/condition_full_2.jpg" alt="Mag plug debris photo log">
+  </template>
 
-  // Header shadow
-  const header = document.querySelector('.site-header');
-  const setShadow = () => header && header.classList.toggle('scrolled', window.scrollY > 8);
-  setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
+  <template id="case-undercarriage">
+    <h2>Dozer Undercarriage Life Planning</h2>
+    <p><strong>Problem:</strong> Unpredictable replacements causing cost spikes and downtime.</p>
+    <p><strong>Analysis:</strong> Tracked wear vs. hours; soil conditions; operator behavior; vendor specs.</p>
+    <p><strong>Action:</strong> Forecast model; staggered replacements; stock planning; vendor agreements.</p>
+    <p><strong>Outcome:</strong> Smoother budgets; availability ↑; fewer critical outages.</p>
+    <img src="/assets/img/projects/undercarriage_full_1.jpg" alt="Roller/sprocket wear log">
+    <img src="/assets/img/projects/undercarriage_full_2.jpg" alt="Forecast replacement curve">
+  </template>
 
-  // Mobile nav toggle
-  const toggle = document.querySelector('.menu-toggle');
-  const links = document.getElementById('nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('show');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-  }
+  <template id="case-componentqa">
+    <h2>Component Tracking & QA</h2>
+    <p><strong>Problem:</strong> No traceability on sub-assembly work; repeats not linked to root fixes.</p>
+    <p><strong>Analysis:</strong> Mapped component history and failure modes across vendors.</p>
+    <p><strong>Action:</strong> Unique IDs; QA checklists; receiving inspections with photo evidence.</p>
+    <p><strong>Outcome:</strong> Better vendor quality; reduced repeats; clearer accountability.</p>
+    <img src="/assets/img/projects/componentqa_full_1.jpg" alt="QA checklist example">
+    <img src="/assets/img/projects/componentqa_full_2.jpg" alt="Receiving inspection photos">
+  </template>
 
-  // Cards & IDs
-  const cards = Array.from(document.querySelectorAll('.project-card'));
-  const ids = cards.map(c => c.getAttribute('data-case')).filter(Boolean);
+  <template id="case-tasklib">
+    <h2>Preventive Task Library (RCM)</h2>
+    <p><strong>Problem:</strong> Inconsistent preventive tasks across machines/teams.</p>
+    <p><strong>Analysis:</strong> Compared OEM manuals vs. actuals; gaps & overlaps identified.</p>
+    <p><strong>Action:</strong> Standard task library with intervals and torque/spec data; trained planners/techs.</p>
+    <p><strong>Outcome:</strong> Fewer misses; clearer expectations; faster onboarding.</p>
+    <img src="/assets/img/projects/tasklib_full_1.jpg" alt="Task library index">
+    <img src="/assets/img/projects/tasklib_full_2.jpg" alt="Standard work details">
+  </template>
 
-  // Dialog elements (guarded)
-  const dlg = document.querySelector('.case-dialog');
-  const dlgImg  = dlg ? dlg.querySelector('.case-media img') : null;
-  const dlgBody = dlg ? dlg.querySelector('.case-body') : null;
-  const btnClose= dlg ? dlg.querySelector('.case-close') : null;
-  const btnPrev = dlg ? dlg.querySelector('.case-prev') : null;
-  const btnNext = dlg ? dlg.querySelector('.case-next') : null;
+  <template id="case-rcmhaul">
+    <h2>ADT Haul Cycle RCM</h2>
+    <p><strong>Problem:</strong> Haul cycle downtime and variability.</p>
+    <p><strong>Analysis:</strong> Failure modes across drivetrain/axles; usage patterns.</p>
+    <p><strong>Action:</strong> Task tuning and intervals aligned to usage; operator feedback loop.</p>
+    <p><strong>Outcome:</strong> Availability up; fewer mid-shift failures.</p>
+    <img src="/assets/img/projects/rcmhaul_full_1.jpg" alt="RCM worksheet">
+    <img src="/assets/img/projects/rcmhaul_full_2.jpg" alt="Intervals vs usage trend">
+  </template>
 
-  let currentIndex = 0;
-  let gallery = [];
-  let galleryIdx = 0;
-  let lastFocus = null;
+  <template id="case-filterskid">
+    <h2>Filter Skid & Contamination Barriers</h2>
+    <p><strong>Problem:</strong> Particulate ingress causing accelerated wear.</p>
+    <p><strong>Analysis:</strong> Contamination paths; port protection gaps.</p>
+    <p><strong>Action:</strong> Filtration skid; quick-connects; improved seals.</p>
+    <p><strong>Outcome:</strong> Cleaner systems; reduced wear rates.</p>
+    <img src="/assets/img/projects/filterskid_full_1.jpg" alt="Filter skid in use">
+    <img src="/assets/img/projects/filterskid_full_2.jpg" alt="Quick-connect detail">
+  </template>
 
-  function loadCase(id){
-    if (!dlg || !dlgBody) return;
-    const tpl = document.getElementById('case-' + id);
-    if (!tpl) return;
+  <template id="case-spares">
+    <h2>Critical Spares Planning</h2>
+    <p><strong>Problem:</strong> Stockouts on critical parts delaying repairs.</p>
+    <p><strong>Analysis:</strong> MTBF, lead time, and usage variability reviewed.</p>
+    <p><strong>Action:</strong> Min/Max stocking; vendor agreements; review cadence.</p>
+    <p><strong>Outcome:</strong> Fewer delays; repairs start on time.</p>
+    <img src="/assets/img/projects/spares_full_1.jpg" alt="Spares planning board">
+    <img src="/assets/img/projects/spares_full_2.jpg" alt="Min/Max settings in tool">
+  </template>
 
-    dlgBody.innerHTML = '';
-    gallery = [];
-    galleryIdx = 0;
+  <!-- ===== Modal dialog with Next/Prev ===== -->
+  <dialog class="case-dialog" aria-label="Project case study">
+    <button class="case-close" aria-label="Close case study">×</button>
+    <button class="case-prev" aria-label="Previous project">‹</button>
+    <button class="case-next" aria-label="Next project">›</button>
+    <div class="case-media"><img alt=""></div>
+    <div class="case-body"><!-- populated from template --></div>
+  </dialog>
 
-    const frag = tpl.content.cloneNode(true);
-    frag.querySelectorAll('img').forEach(img => {
-      gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
-      img.remove(); // keep images only for the gallery
-    });
+  <!-- AOS (deferred) + modal/filter wiring -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
 
-    if (dlgImg) {
-      if (gallery.length) {
-        dlgImg.src = gallery[0].src;
-        dlgImg.alt = gallery[0].alt;
-      } else {
-        dlgImg.src = '';
-        dlgImg.alt = '';
+      // Mobile nav toggle
+      const toggle = document.querySelector('.menu-toggle');
+      const links = document.getElementById('nav-links');
+      if (toggle && links) {
+        toggle.addEventListener('click', () => {
+          const open = links.classList.toggle('show');
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
       }
-    }
 
-    dlgBody.appendChild(frag);
-  }
+      // Header shadow on scroll
+      const header = document.querySelector('.site-header');
+      const setShadow = () => header && header.classList.toggle('scrolled', window.scrollY > 8);
+      setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
 
-  function openCaseAt(i){
-    if (!dlg) return;
-    currentIndex = (i + ids.length) % ids.length;
-    loadCase(ids[currentIndex]);
-    lastFocus = document.activeElement;
-    if (typeof dlg.showModal === 'function') dlg.showModal();
-    setHashForCurrent();
-    if (btnClose) btnClose.focus();
-  }
+      // ===== Case dialog wiring (Next/Prev + multi-image + focus restore) =====
+      const cards = Array.from(document.querySelectorAll('.project-card'));
+      const ids = cards.map(c => c.getAttribute('data-case')).filter(Boolean);
+      const dlg = document.querySelector('.case-dialog');
+      const dlgImg = dlg.querySelector('.case-media img');
+      const dlgBody = dlg.querySelector('.case-body');
+      const btnClose = dlg.querySelector('.case-close');
+      const btnPrev = dlg.querySelector('.case-prev');
+      const btnNext = dlg.querySelector('.case-next');
+      let currentIndex = 0;
+      let gallery = []; // list of image {src, alt}
+      let galleryIdx = 0;
+      let lastFocus = null;
 
-  function closeDialog(){
-    if (!dlg) return;
-    dlg.close();
-    clearHashCase();
-    if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
-  }
+      function loadCase(id){
+        const tpl = document.getElementById('case-' + id);
+        if (!tpl) return;
 
-  function stepCase(d){ openCaseAt(currentIndex + d); }
-  function stepImage(d){
-    if (!dlgImg || !gallery.length) return;
-    galleryIdx = (galleryIdx + d + gallery.length) % gallery.length;
-    dlgImg.src = gallery[galleryIdx].src;
-    dlgImg.alt = gallery[galleryIdx].alt || '';
-  }
+        dlgBody.innerHTML = '';
+        gallery = [];
+        galleryIdx = 0;
 
-  // Wire up card open buttons
-  cards.forEach((card, i) => {
-    const btn = card.querySelector('.project-open');
-    if (!btn) return;
-    btn.addEventListener('click', () => openCaseAt(i));
-    btn.addEventListener('keydown', e => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseAt(i); }
+        const frag = tpl.content.cloneNode(true);
+
+        // Extract images for gallery
+        frag.querySelectorAll('img').forEach(img => {
+          gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+          img.remove(); // keep only text inside body; media goes to header image
+        });
+
+        // Set first image (if any)
+        if (gallery.length) {
+          dlgImg.src = gallery[0].src;
+          dlgImg.alt = gallery[0].alt;
+          galleryIdx = 0;
+        } else {
+          dlgImg.src = '';
+          dlgImg.alt = '';
+        }
+
+        dlgBody.appendChild(frag);
+      }
+
+      function openCaseAt(index){
+        currentIndex = (index + ids.length) % ids.length;
+        loadCase(ids[currentIndex]);
+        lastFocus = document.activeElement;
+        if (typeof dlg.showModal === 'function') dlg.showModal();
+        setHashForCurrent();
+        btnClose && btnClose.focus();
+      }
+
+      function stepCase(dir){ openCaseAt(currentIndex + dir); }
+
+      function stepImage(dir){
+        if (!gallery.length) return;
+        galleryIdx = (galleryIdx + dir + gallery.length) % gallery.length;
+        dlgImg.src = gallery[galleryIdx].src;
+        dlgImg.alt = gallery[galleryIdx].alt || '';
+      }
+
+      // Wire cards (button inside each)
+      cards.forEach((card, i) => {
+        const btn = card.querySelector('.project-open');
+        if (!btn) return;
+        btn.addEventListener('click', () => openCaseAt(i));
+        btn.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseAt(i); }
+        });
+      });
+
+      // Controls
+      btnClose.addEventListener('click', () => { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); });
+      btnPrev.addEventListener('click', () => stepCase(-1));
+      btnNext.addEventListener('click', () => stepCase(1));
+
+      // Click image to cycle to next; Shift+Click for previous
+      dlgImg.addEventListener('click', (e) => stepImage(e.shiftKey ? -1 : 1));
+
+      // Backdrop & keys
+      dlg.addEventListener('click', (e) => { if (e.target === dlg) { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); }});
+      document.addEventListener('keydown', (e) => {
+        if (!dlg.open) return;
+        if (e.key === 'Escape') { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); }
+        if (e.key === 'ArrowRight') stepCase(1);
+        if (e.key === 'ArrowLeft') stepCase(-1);
+        if (e.key === 'PageDown') stepImage(1);
+        if (e.key === 'PageUp') stepImage(-1);
+      });
+
+      // ===== Tag badges from data-tags =====
+      function normalizeTags(str){
+        return (str || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+      }
+      function ensureTagBadges(card){
+        if (card.querySelector('.card-tags')) return;
+        const tags = normalizeTags(card.getAttribute('data-tags'));
+        if (!tags.length) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'card-tags';
+        const brief = card.querySelector('.preview');
+        const head  = card.querySelector('h3');
+        if (brief && brief.parentNode) brief.parentNode.insertBefore(wrap, brief);
+        else if (head && head.parentNode) head.parentNode.insertBefore(wrap, head.nextSibling);
+        else card.prepend(wrap);
+        tags.forEach(t => {
+          const s = document.createElement('span');
+          s.className = 'card-tag';
+          s.textContent = t.charAt(0).toUpperCase() + t.slice(1);
+          wrap.appendChild(s);
+        });
+      }
+      cards.forEach(ensureTagBadges);
+
+      // ===== Filtering =====
+      const chips  = Array.from(document.querySelectorAll('.project-filters .chip'));
+      const status = document.getElementById('filterStatus');
+
+      function applyFilter(tag){
+        const t = (tag || 'all').toLowerCase();
+        const params = new URLSearchParams(location.search);
+        if (t === 'all') params.delete('filter'); else params.set('filter', t);
+        const newUrl = location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash;
+        try { history.replaceState({}, '', newUrl); } catch(_) {}
+
+        let visible = 0;
+        cards.forEach(card => {
+          const tags = normalizeTags(card.getAttribute('data-tags'));
+          const show = (t === 'all') || tags.includes(t);
+          card.hidden = !show;
+          if (show) visible++;
+        });
+
+        chips.forEach(c => {
+          const on = c.dataset.filter === t || (t === 'all' && c.dataset.filter === 'all');
+          c.classList.toggle('is-active', on);
+          c.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        if (status) status.textContent = `${visible} project${visible === 1 ? '' : 's'} shown for filter: ${t}.`;
+      }
+      chips.forEach(ch => ch.addEventListener('click', () => applyFilter(ch.dataset.filter)));
+
+      // ===== Deep-linking (optional): #case-{id} & ?filter= =====
+      function setHashForCurrent(){
+        const id = ids[currentIndex];
+        const params = new URLSearchParams(location.search);
+        const url = location.pathname + (params.toString() ? '?' + params.toString() : '') + '#case-' + id;
+        try { history.replaceState({}, '', url); } catch(_) {}
+      }
+      function clearHashCase(){
+        const params = new URLSearchParams(location.search);
+        const url = location.pathname + (params.toString() ? '?' + params.toString() : '');
+        try { history.replaceState({}, '', url); } catch(_) {}
+      }
+      function openFromUrl(){
+        const params = new URLSearchParams(location.search);
+        applyFilter(params.get('filter') || 'all');
+
+        const hash = location.hash || '';
+        const m = hash.match(/^#case-([a-z0-9_-]+)$/i);
+        if (m) {
+          const idx = ids.indexOf(m[1]);
+          if (idx >= 0) openCaseAt(idx);
+        }
+      }
+      window.addEventListener('hashchange', () => {
+        const m = (location.hash || '').match(/^#case-([a-z0-9_-]+)$/i);
+        if (!m) { if (dlg && dlg.open) { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); } return; }
+        const idx = ids.indexOf(m[1]);
+        if (idx >= 0) openCaseAt(idx);
+      });
+
+      // Initial
+      applyFilter(new URLSearchParams(location.search).get('filter') || 'all');
+      openFromUrl();
     });
-  });
-
-  // Dialog controls (guarded)
-  if (btnClose) btnClose.addEventListener('click', closeDialog);
-  if (btnPrev)  btnPrev.addEventListener('click', () => stepCase(-1));
-  if (btnNext)  btnNext.addEventListener('click', () => stepCase(1));
-  if (dlg && dlgImg) {
-    dlgImg.addEventListener('click', e => stepImage(e.shiftKey ? -1 : 1));
-    dlg.addEventListener('click', e => { if (e.target === dlg) closeDialog(); });
-  }
-  document.addEventListener('keydown', e => {
-    if (!dlg || !dlg.open) return;
-    if (e.key === 'Escape') closeDialog();
-    if (e.key === 'ArrowRight') stepCase(1);
-    if (e.key === 'ArrowLeft')  stepCase(-1);
-    if (e.key === 'PageDown')   stepImage(1);
-    if (e.key === 'PageUp')     stepImage(-1);
-  });
-
-  // ----- Tag badges (from data-tags) -----
-  function normalizeTags(str){
-    return (str || '').split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
-  }
-  function ensureTagBadges(card){
-    if (card.querySelector('.card-tags')) return;
-    const tags = normalizeTags(card.getAttribute('data-tags'));
-    if (!tags.length) return;
-    const wrap = document.createElement('div');
-    wrap.className = 'card-tags';
-    const brief = card.querySelector('.project-brief');
-    const head  = card.querySelector('.card-head');
-    if (brief && brief.parentNode) brief.parentNode.insertBefore(wrap, brief);
-    else if (head) head.after(wrap);
-    else card.prepend(wrap);
-    tags.forEach(t => {
-      const s = document.createElement('span');
-      s.className = 'card-tag';
-      s.textContent = t.charAt(0).toUpperCase() + t.slice(1);
-      wrap.appendChild(s);
-    });
-  }
-  cards.forEach(ensureTagBadges);
-
-  // ----- Filtering -----
-  const chips  = Array.from(document.querySelectorAll('.project-filters .chip'));
-  const status = document.getElementById('filterStatus');
-
-  function applyFilter(tag){
-    const t = (tag || 'all').toLowerCase();
-    // update URL (no syntax bug here!)
-    const params = new URLSearchParams(location.search);
-    if (t === 'all') params.delete('filter'); else params.set('filter', t);
-    const newUrl = location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash;
-    try { history.replaceState({}, '', newUrl); } catch(_) {}
-
-    // show/hide
-    let visible = 0;
-    cards.forEach(card => {
-      const tags = normalizeTags(card.getAttribute('data-tags'));
-      const show = (t === 'all') || tags.includes(t);
-      card.hidden = !show;
-      if (show) visible++;
-    });
-
-    // chip UI + live region
-    chips.forEach(c => {
-      const on = c.dataset.filter === t || (t === 'all' && c.dataset.filter === 'all');
-      c.classList.toggle('is-active', on);
-      c.setAttribute('aria-pressed', on ? 'true' : 'false');
-    });
-    if (status) status.textContent = `${visible} project${visible === 1 ? '' : 's'} shown for filter: ${t}.`;
-  }
-  chips.forEach(ch => ch.addEventListener('click', () => applyFilter(ch.dataset.filter)));
-
-  // ----- Deep-linking -----
-  function setHashForCurrent(){
-    const id = ids[currentIndex];
-    const params = new URLSearchParams(location.search);
-    const url = location.pathname + (params.toString() ? '?' + params.toString() : '') + '#case-' + id;
-    try { history.replaceState({}, '', url); } catch(_) {}
-  }
-  function clearHashCase(){
-    const params = new URLSearchParams(location.search);
-    const url = location.pathname + (params.toString() ? '?' + params.toString() : '');
-    try { history.replaceState({}, '', url); } catch(_) {}
-  }
-  function openFromUrl(){
-    const params = new URLSearchParams(location.search);
-    const filter = params.get('filter');
-    applyFilter(filter || 'all');
-
-    const hash = location.hash || '';
-    const m = hash.match(/^#case-([a-z0-9_-]+)$/i);
-    const q = params.get('case');
-    const wanted = m ? m[1] : (q || null);
-    if (wanted) {
-      const idx = ids.indexOf(wanted);
-      if (idx >= 0) openCaseAt(idx);
-    }
-  }
-  window.addEventListener('hashchange', () => {
-    const m = (location.hash || '').match(/^#case-([a-z0-9_-]+)$/i);
-    if (!m) { if (dlg && dlg.open) closeDialog(); return; }
-    const idx = ids.indexOf(m[1]);
-    if (idx >= 0) openCaseAt(idx);
-  });
-
-  openFromUrl();
-
-  // ----- Reformat brief as Problem → Analysis → Action → Outcome -----
-  cards.forEach(card => {
-    const brief = card.querySelector('.project-brief');
-    if (!brief) return;
-    const raw = brief.textContent.replace(/\s+/g, ' ').trim();
-
-    let p='', ana='', act='', out='';
-    const pMatch   = raw.match(/(?:^|\b)P(?:roblem)?\s*[:–-]\s*([^]*?)(?=(?:\bA(?:nalysis|ction)?\s*[:–-])|$)/i);
-    const anaMatch = raw.match(/\bA(?:nalysis)?\s*[:–-]\s*([^]*?)(?=(?:\bA(?:ction)?\s*[:–-])|$)/i);
-    const actMatch = raw.match(/\bA(?:ction)\s*[:–-]\s*([^]*?)(?=(?:\bO(?:utcome)?\s*[:–-])|$)/i);
-    const oMatch   = raw.match(/\bO(?:utcome)?\s*[:–-]\s*([^]*?)$/i);
-
-    if (pMatch)   p   = pMatch[1].trim();
-    if (anaMatch) ana = anaMatch[1].trim();
-    if (actMatch) act = actMatch[1].trim();
-    if (oMatch)   out = oMatch[1].trim();
-
-    if (!(p || ana || act || out)) {
-      const parts = raw.split(/\s*[.;]\s*/).filter(Boolean);
-      [p, ana, act, out] = [parts[0]||'', parts[1]||'', parts[2]||'', parts[3]||''];
-    }
-
-    const wrap = document.createElement('div');
-    wrap.className = 'paao-inline';
-    const mk = (label, text) => text ? `<span class="lbl">${label}:</span> <span class="txt">${text}</span>` : '';
-    const items = [mk('Problem', p), mk('Analysis', ana), mk('Action', act), mk('Outcome', out)].filter(Boolean);
-    if (items.length) {
-      wrap.innerHTML = items.join('<span class="sep">→</span>');
-      brief.innerHTML = '';
-      brief.appendChild(wrap);
-    }
-  });
-});
-</script>
+  </script>
 </body>
 </html>
