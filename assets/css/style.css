@@ -614,3 +614,10 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 @media (max-width: 980px){
   .page-personal .gallery-grid{ grid-template-columns: 1fr; } /* phones */
 }
+
+/* PERSONAL — enforce 3px column gap */
+.page-personal .gallery-grid{
+  column-gap: 3px !important;
+}
+
+.page-personal .gallery-grid figure{ margin: 0; }
