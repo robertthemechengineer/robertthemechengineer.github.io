@@ -245,5 +245,25 @@
     });
   });
   </script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.gallery-link').forEach(link => {
+    const wrap = link.querySelector('.thumb-wrap');
+    if (!wrap) return;
+    let n = 1;
+    try {
+      const arr = JSON.parse(link.getAttribute('data-gallery') || '[]');
+      if (Array.isArray(arr) && arr.length) n = arr.length;
+    } catch {}
+    let badge = wrap.querySelector('.album-count');
+    if (!badge) {
+      badge = document.createElement('span');
+      badge.className = 'album-count';
+      wrap.appendChild(badge);
+    }
+    badge.textContent = `${n} photo${n === 1 ? '' : 's'}`;
+  });
+});
+</script>  
 </body>
 </html>
