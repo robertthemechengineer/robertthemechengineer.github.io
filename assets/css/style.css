@@ -688,3 +688,42 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   mask:        url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 4l-1.5 2H5a3 3 0 00-3 3v7a3 3 0 003 3h14a3 3 0 003-3V9a3 3 0 00-3-3h-2.5L15 4H9zm3 12a4 4 0 100-8 4 4 0 000 8z'/%3E%3C/svg%3E") center/14px 14px no-repeat;
   opacity:.95;
 }
+
+
+/* ===== CAD page — 3 columns, larger tiles, 20px column gap ===== */
+.page-cad main .container{
+  max-width: 1440px; /* widen the content so big tiles fit comfortably */
+}
+
+.page-cad .gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(440px, 1fr)); /* big tiles */
+  gap: 28px 20px; /* row-gap 28px, column-gap 20px */
+  align-items: stretch;
+}
+
+@media (max-width: 1280px){
+  .page-cad .gallery-grid{
+    grid-template-columns: repeat(2, minmax(480px, 1fr));
+  }
+}
+@media (max-width: 980px){
+  .page-cad .gallery-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Bigger visual presence for images */
+.page-cad .gallery-grid .card{ padding: 24px; }
+.page-cad .gallery-grid .thumb{
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;   /* taller than 3/2; gives a larger tile face */
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform .25s ease;
+}
+.page-cad .gallery-link:hover .thumb,
+.page-cad .gallery-link:focus .thumb{ transform: scale(1.02); }
