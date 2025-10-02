@@ -648,3 +648,10 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   object-fit: cover;
   border-radius: var(--radius-lg, 12px);
 }
+
+/* PERSONAL PAGE — tighten space between the two columns */
+.page-personal .gallery-grid{
+  row-gap: 32px;      /* keep vertical spacing */
+  column-gap: 18px;   /* was 32px — make it tighter */
+}
+
