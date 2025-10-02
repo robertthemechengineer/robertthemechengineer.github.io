@@ -8,8 +8,6 @@
   --ring: rgba(76, 175, 80, 0.4);
   --border:#335a44;
   --shadow: 0 10px 20px rgba(0,0,0,.20);
-
-  /* polish tokens */
   --shadow-soft: 0 8px 16px rgba(0,0,0,.16);
   --ring-strong: 0 0 0 6px rgba(76,175,80,.18);
 }
@@ -25,6 +23,7 @@ body{
   line-height:1.7;
 }
 
+/* Layout containers */
 .container{max-width:1200px;margin:0 auto;padding:0 16px}
 .container-wide{max-width:1200px}
 
@@ -44,8 +43,7 @@ body{
   background: rgba(14,28,20,0.85);
   border-bottom: 1px solid var(--border)
 }
-.site-header.scrolled{ box-shadow: 0 10px 20px rgba(0,0,0,.18); }
-
+.site-header.scrolled{ box-shadow: 0 10px 20px rgba(0,0,0,.18) }
 .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
 .brand-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text)}
 .brand-logo img{width:34px;height:34px;border-radius:10px;box-shadow:0 6px 16px var(--ring)}
@@ -58,7 +56,6 @@ body{
   width:0%; height:1px; background:var(--brand); transition:width .18s ease;
 }
 .nav-links a:hover::after{ width:100% }
-
 .btn{
   display:inline-block;padding:10px 16px;border-radius:10px;
   background:var(--brand);color:var(--brand-ink);
@@ -89,12 +86,11 @@ h1{font-size:clamp(36px, 6vw, 56px);margin:8px 0}
 h2{font-size:clamp(22px, 3.2vw, 32px);margin:0 0 8px}
 h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 
-/* Sections */
-.section{padding:clamp(24px, 4vw, 40px) 0}
+.section{ padding: clamp(16px, 3vw, 28px) 0 } /* unified tighter spacing */
 .section.alt{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00))}
 .cards-equal{align-items:stretch}
 
-/* HERO: textured + media */
+/* HERO (also used as Subhero) */
 .hero{
   position:relative;
   padding:48px 0 24px;
@@ -113,6 +109,7 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
   background-size: 300px 300px;
   mix-blend-mode: overlay;
 }
+.subhero.hero{ padding: clamp(16px, 3vw, 28px) 0 }
 .subtitle{font-weight:600;color:var(--brand)}
 .lede{color:var(--muted);max-width:clamp(520px, 70vw, 900px);text-wrap:balance}
 .lede-aux{opacity:.9}
@@ -135,7 +132,7 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 .metrics{
   padding:12px 0;background:rgba(255,255,255,0.02);
   border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  margin-top:8px
+  margin: 8px 0;
 }
 .metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:12px 0}
 @media (max-width:900px){ .metrics-row{ grid-template-columns:repeat(2,1fr);gap:12px } }
@@ -154,15 +151,13 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 @media (max-width:900px){ .grid-3{ grid-template-columns:repeat(2,1fr) } }
 @media (max-width:600px){ .grid-3{ grid-template-columns:1fr } }
 
-/* Triplet cards: squared desktop, relaxed mobile */
-.cards-equal .card, .cards-equal .info-card{
-  min-height:280px; aspect-ratio:1/1; justify-content:center; text-align:center;
+/* Cards */
+.card,.info-card{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-@media (max-width:600px){
-  .cards-equal .card, .cards-equal .info-card{
-    aspect-ratio:auto; min-height:220px; text-align:left; padding:16px;
-  }
-}
+.card:hover,.card:focus-within,.info-card:hover,.info-card:focus-within{ box-shadow:var(--shadow-soft); border-color:#3f7054 }
 
 /* Feature cards */
 .feature-card{
@@ -177,24 +172,16 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 }
 .feature-text p{margin:0 0 10px;color:var(--muted)}
 .feature-media{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#22382c;position:relative;min-height:340px}
-.feature-media.fancy img{width:100%;height:100%;object-fit:cover;transform:scale(1.03) rotate(0);transition:transform .3s ease}
+.feature-media.fancy img{width:100%;height:100%;object-fit:cover;transform:scale(1.03);transition:transform .3s ease}
 .feature-card:hover .feature-media.fancy img{ transform:scale(1.07) rotate(1.5deg) }
 .feature-media.fancy::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 100%);pointer-events:none}
 
-/* Unified card style */
-.card,.info-card{
-  background:var(--card);border:1px solid var(--border);border-radius:14px;
-  padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.card:hover,.card:focus-within,.info-card:hover,.info-card:focus-within{ box-shadow:var(--shadow-soft); border-color:#3f7054 }
-
-/* Strong keyboard focus */
+/* Keyboard focus */
 a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-card:focus-visible{
   outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25); border-radius:12px;
 }
 
-/* Emoji wrench bullets (CSP-safe) */
+/* Emoji bullets (CSP-safe) */
 .info-list.icons{ list-style:none; padding-left:0; margin-left:0; text-align:left }
 .info-list.icons li{ position:relative; padding-left:28px; margin:4px 0 }
 .info-list.icons li::before{ content:"🔧"; position:absolute; left:0; top:1px; font-size:15px; line-height:1 }
@@ -222,456 +209,26 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .footer-signoff{margin:0 0 6px;color:var(--text);opacity:.9}
 .copyright{margin:0;color:var(--muted);font-size:.9rem}
 
-/* Mobile & motion */
-@media (max-width:900px){ .feature-card{grid-template-columns:1fr} .feature-media{min-height:240px} .metrics-row{gap:12px} }
+/* Motion prefs */
 @media (prefers-reduced-motion:reduce){ *{animation:none!important;transition:none!important;scroll-behavior:auto!important} }
 
-/* Tighter global section spacing */
-.section{
-  /* was clamp(24px, 4vw, 40px) */
-  padding: clamp(16px, 3vw, 28px) 0;
-}
-
-/* Tiny gap after metrics strip */
-.metrics{
-  margin-bottom: 8px; /* try 6–10px to taste */
-}
-
-/* Shorter triplet cards site-wide */
-.cards-equal .card,
-.cards-equal .info-card{
-  aspect-ratio: auto;   /* stop forcing squares */
-  min-height: 200px;    /* was 280px */
-  text-align: left;     /* optional: keeps content tidy when shorter */
-}
-
-/* If you want them a hair taller on big screens, use: */
-@media (min-width: 900px){
-  .cards-equal .card,
-  .cards-equal .info-card{
-    min-height: 220px;
-  }
-}
-
-/* ===== CAD Gallery ===== */
+/* ===== Generic gallery grid (used by Personal & CAD) ===== */
 .gallery-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 10px;
 }
-.gallery-grid .card{
-  padding: 12px;
-  display:flex; flex-direction:column; gap:8px;
-}
+.gallery-grid .card{ padding: 16px; display:flex; flex-direction:column; gap:8px; margin:0 }
 .gallery-grid .thumb{
-  width:100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border:1px solid var(--border);
-  border-radius:12px;
-  background:#22382c;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease;
+  width:100%; aspect-ratio: 4 / 3; object-fit: cover;
+  border:1px solid var(--border); border-radius:12px; background:#22382c;
+  box-shadow: var(--shadow); transition: transform .25s ease;
 }
-.gallery-link:hover .thumb,
-.gallery-link:focus .thumb{
-  transform: scale(1.02);
-}
-.gallery-grid figcaption{
-  color: var(--muted);
-  font-size: .98rem;
-}
+.gallery-link:hover .thumb, .gallery-link:focus .thumb{ transform: scale(1.02) }
+.gallery-grid figcaption{ color: var(--muted); font-size: .98rem }
 
-/* Subhero (reuse hero texture but tighter) */
-.subhero.hero{ padding: clamp(16px, 3vw, 28px) 0 }
-
-/* Lightbox (native <dialog>) */
-.lightbox{
-  width:min(96vw, 1100px);
-  border:0; padding:0;
-  background:transparent;
-}
-.lightbox::backdrop{ background: rgba(0,0,0,.65) }
-.lightbox img{
-  display:block; width:100%; height:auto;
-  border-radius:12px; box-shadow: var(--shadow-soft);
-}
-.lightbox-close{
-  position:absolute; right:12px; top:12px;
-  width:36px; height:36px; border:0; border-radius:50%;
-  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1;
-  cursor:pointer;
-}
-.lightbox-close:focus-visible{
-  outline:0; box-shadow: 0 0 0 3px rgba(76,175,80,.45);
-}
-
-/* ===== Resume page ===== */
-.subhero.hero { padding: clamp(16px, 3vw, 28px) 0; }
-
-.pdf-embed { padding: 0; overflow: hidden; }
-.pdf-embed object,
-.pdf-embed iframe{
-  width: 100%;
-  height: clamp(60vh, 80vh, 900px); /* responsive height */
-  border: 0;
-  display: block;
-}
-
-.note { color: var(--muted); margin-top: 10px; }
-
-/* ===== Contact page ===== */
-.contact-cards{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 10px;
-}
-.linkish{
-  text-decoration: none;
-  color: var(--text);
-}
-.contact-icon{
-  font-size: 1.6rem;
-  opacity: .95;
-  margin-bottom: 6px;
-}
-
-/* subtle tilt hover (matches your card hover aesthetic) */
-.tilt{
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.tilt:hover, .tilt:focus-visible{
-  transform: translateY(-2px) rotate(.4deg);
-  box-shadow: var(--shadow-soft);
-  border-color:#3f7054;
-}
-
-/* ===== Projects index ===== */
-.project-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 10px;
-}
-.project-card{
-  padding: 12px;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 10px;
-}
-.project-card .thumb{
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #22382c;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease;
-}
-.project-card:hover .thumb,
-.project-card:focus-within .thumb{ transform: scale(1.02) }
-
-.project-body h3{ margin: 0 0 6px }
-.project-body .summary{ color: var(--muted); margin: 6px 0 0 }
-
-.tags{
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin: 0 0 4px; padding: 0; list-style: none;
-}
-.tags li{
-  font-size: .85rem; line-height: 1;
-  padding: 6px 8px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255,255,255,.03);
-  color: var(--text);
-}
-
-/* (Optional) tighter section spacing for this page */
-.subhero.hero{ padding: clamp(16px, 3vw, 28px) 0 }
-
-/* ===== Projects index (6 cards) ===== */
-.project-grid{
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 10px;
-}
-.project-card{
-  padding: 12px;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 10px;
-}
-.project-open{
-  display: grid; gap: 10px;
-  text-align: left;
-  background: transparent; border: 0; padding: 0;
-  color: inherit; cursor: pointer;
-}
-.project-open:focus-visible{
-  outline: 0; box-shadow: 0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25);
-  border-radius: 12px;
-}
-.project-card .thumb{
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  background: #22382c;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease;
-}
-.project-open:hover .thumb,
-.project-open:focus-visible .thumb{ transform: scale(1.02) }
-
-.project-body h3{ margin: 0 0 6px }
-.project-body .summary{ color: var(--muted); margin: 6px 0 0 }
-.linkhint{ display:inline-block; margin-top:6px; font-weight:700; color: var(--brand) }
-
-.tags{
-  display: flex; flex-wrap: wrap; gap: 6px;
-  margin: 0 0 4px; padding: 0; list-style: none;
-}
-.tags li{
-  font-size: .85rem; line-height: 1;
-  padding: 6px 8px;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  background: rgba(255,255,255,.03);
-  color: var(--text);
-}
-
-/* ===== Case dialog ===== */
-.case-dialog{
-  width: min(96vw, 980px);
-  border: 0; padding: 0;
-  background: transparent;
-}
-.case-dialog::backdrop{ background: rgba(0,0,0,.65) }
-
-.case-close{
-  position: absolute; right: 12px; top: 12px;
-  width: 36px; height: 36px; border: 0; border-radius: 50%;
-  background: rgba(0,0,0,.55); color: #fff; font-size: 20px; line-height: 1;
-  cursor: pointer;
-}
-.case-close:focus-visible{
-  outline: 0; box-shadow: 0 0 0 3px rgba(76,175,80,.45);
-}
-
-.case-media{
-  display: block;
-  max-height: 50vh;
-  overflow: hidden;
-  border-radius: 12px;
-  margin-bottom: 10px;
-}
-.case-media img{
-  display: block; width: 100%; height: auto;
-  border-radius: 12px; box-shadow: var(--shadow-soft);
-}
-
-.case-body{
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px;
-  box-shadow: var(--shadow);
-  color: var(--text);
-}
-.case-body h2{ margin-top: 0 }
-.case-body p{ margin: 8px 0 }
-
-/* ===== Projects index: 3-up grid, PAAO previews ===== */
-.project-grid{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 across */
-  gap:10px;
-}
-@media (max-width: 1000px){
-  .project-grid{ grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px){
-  .project-grid{ grid-template-columns: 1fr; }
-}
-
-.project-card{
-  padding:12px;
-  display:grid;
-  grid-template-rows:auto 1fr;
-  gap:10px;
-}
-.project-open{
-  display:grid; gap:10px;
-  text-align:left; background:transparent; border:0; padding:0;
-  color:inherit; cursor:pointer;
-}
-.project-open:focus-visible{
-  outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25);
-  border-radius:12px;
-}
-.project-card .thumb{
-  width:100%; aspect-ratio:4/3; object-fit:cover;
-  border:1px solid var(--border); border-radius:12px;
-  background:#22382c; box-shadow:var(--shadow);
-  transition:transform .25s ease;
-}
-.project-open:hover .thumb,
-.project-open:focus-visible .thumb{ transform:scale(1.02) }
-
-.project-body h3{ margin:0 0 6px }
-.project-body .preview{ color:var(--muted); margin:6px 0 0; line-height:1.5 }
-
-/* ===== Case dialog with Next/Prev + multi-image ===== */
-.case-dialog{
-  width:min(96vw, 980px);
-  border:0; padding:0; background:transparent;
-}
-.case-dialog::backdrop{ background:rgba(0,0,0,.65) }
-
-.case-close, .case-prev, .case-next{
-  position:absolute; top:12px;
-  width:36px; height:36px; border:0; border-radius:50%;
-  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1;
-  cursor:pointer;
-}
-.case-close{ right:12px }
-.case-prev{ left:12px }
-.case-next{ right:56px }
-.case-close:focus-visible, .case-prev:focus-visible, .case-next:focus-visible{
-  outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45);
-}
-
-.case-media{
-  display:block; max-height:50vh; overflow:hidden;
-  border-radius:12px; margin-bottom:10px;
-}
-.case-media img{
-  display:block; width:100%; height:auto;
-  border-radius:12px; box-shadow:var(--shadow-soft);
-}
-
-.case-body{
-  background:var(--card); border:1px solid var(--border);
-  border-radius:12px; padding:16px; box-shadow:var(--shadow);
-  color:var(--text);
-}
-.case-body h2{ margin-top:0 }
-.case-body p{ margin:8px 0 }
-
-/* Place this AFTER your existing chip styles (or at the end of style.css) */
-.project-filters {
-  --accent-ink: #fff;   /* makes .chip.is-active text white */
-}
-.project-filters .chip {
-  color: #fff;          /* makes all chip labels white */
-}
-.project-filters .chip:hover,
-.project-filters .chip:focus-visible {
-  color: #fff;
-}
-
-.gallery-grid .card{ padding: 16px; }
-.gallery-grid .thumb{ aspect-ratio: 16 / 10; }
-
-
-.page-personal main .container{
-  max-width: 1280px; /* keep your wider container */
-}
-
-.page-personal .gallery-grid{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(640px, 1fr));
-  gap: 32px 20px;          /* 32px row-gap, 3px column-gap */
-  align-items: stretch;
-}
-
-@media (max-width: 1280px){
-  .page-personal .gallery-grid{
-    grid-template-columns: repeat(2, minmax(560px, 1fr));
-  }
-}
-@media (max-width: 980px){
-  .page-personal .gallery-grid{ grid-template-columns: 1fr; } /* phones */
-}
-
-/* Card + image sizing (keep this version) */
-.page-personal .gallery-grid .card{ padding: 24px; }
-.page-personal .gallery-grid .thumb{
-  display:block;
-  width:100%;
-  aspect-ratio: 3 / 2;     /* nicer presence; change to 16/10 if you prefer */
-  object-fit: cover;
-  border-radius: var(--radius-lg, 12px);
-}
-  
-@media (max-width: 1280px){
-  .page-personal .gallery-grid{
-    grid-template-columns: repeat(2, minmax(560px, 1fr));
-  }
-}
-@media (max-width: 980px){
-  .page-personal .gallery-grid{ grid-template-columns: 1fr; } /* phones */
-}
-
-/* PERSONAL — enforce 3px column gap */
-.page-personal .gallery-grid{
-  column-gap: 20px !important;
-}
-
-.page-personal .gallery-grid figure{ margin: 0; }
-
-/* PERSONAL — nicer photo-count pill */
-.page-personal .album-count{
-  position:absolute;
-  top:10px;                /* move to top-left; change to bottom:10px if you prefer */
-  left:10px;
-  transform: translateZ(0);/* crisper on some GPUs */
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:6px 10px;
-  font-size:.85rem;
-  font-weight:600;
-  line-height:1;
-  white-space:nowrap;      /* keep “6 photos” on one line */
-  color:#fff;
-
-  /* glassy pill */
-  background: rgba(0,0,0,.45);
-  border: 1px solid rgba(255,255,255,.18);
-  box-shadow:
-    0 4px 12px rgba(0,0,0,.35),
-    inset 0 0 0 1px rgba(255,255,255,.06);
-  backdrop-filter: saturate(120%) blur(6px);
-  -webkit-backdrop-filter: saturate(120%) blur(6px);
-  border-radius:12px;
-}
-
-/* tiny camera icon before the text (pure CSS, no extra markup) */
-.page-personal .album-count::before{
-  content:"";
-  width:14px; height:14px;
-  display:inline-block;
-  background:#fff;
-  /* mask the icon so it inherits the color; crisp on dark bg */
-  -webkit-mask: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 4l-1.5 2H5a3 3 0 00-3 3v7a3 3 0 003 3h14a3 3 0 003-3V9a3 3 0 00-3-3h-2.5L15 4H9zm3 12a4 4 0 100-8 4 4 0 000 8z' fill='%23000'/%3E%3C/svg%3E") center/14px 14px no-repeat;
-  mask:        url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 4l-1.5 2H5a3 3 0 00-3 3v7a3 3 0 003 3h14a3 3 0 003-3V9a3 3 0 00-3-3h-2.5L15 4H9zm3 12a4 4 0 100-8 4 4 0 000 8z' fill='%23000'/%3E%3C/svg%3E") center/14px 14px no-repeat;
-  opacity:.95;
-}
-
-/* subtle hover lift on the image makes the pill feel anchored */
-.page-personal .thumb{
-  transition: transform .25s ease;
-}
-.page-personal .thumb-wrap:hover .thumb{
-  transform: scale(1.015);
-}
-
-
-/* CAD page — same glassy album pill as Personal */
-.page-cad .album-count{
+/* Album-count pill (shared) */
+.gallery-grid .album-count{
   position:absolute; top:10px; left:10px;
   display:inline-flex; align-items:center; gap:8px;
   padding:6px 10px; font-size:.85rem; font-weight:600; line-height:1; white-space:nowrap; color:#fff;
@@ -682,124 +239,125 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   -webkit-backdrop-filter: saturate(120%) blur(6px);
   border-radius:12px;
 }
-.page-cad .album-count::before{
+.gallery-grid .album-count::before{
   content:""; width:14px; height:14px; display:inline-block; background:#fff;
   -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 4l-1.5 2H5a3 3 0 00-3 3v7a3 3 0 003 3h14a3 3 0 003-3V9a3 3 0 00-3-3h-2.5L15 4H9zm3 12a4 4 0 100-8 4 4 0 000 8z'/%3E%3C/svg%3E") center/14px 14px no-repeat;
   mask:        url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9 4l-1.5 2H5a3 3 0 00-3 3v7a3 3 0 003 3h14a3 3 0 003-3V9a3 3 0 00-3-3h-2.5L15 4H9zm3 12a4 4 0 100-8 4 4 0 000 8z'/%3E%3C/svg%3E") center/14px 14px no-repeat;
   opacity:.95;
 }
 
-
-/* ===== CAD page — 3 columns, larger tiles, 20px column gap ===== */
-.page-cad main .container{
-  max-width: 1440px; /* widen the content so big tiles fit comfortably */
+/* Lightbox (native <dialog>) — shared */
+.lightbox{
+  width:min(96vw, 1100px);
+  border:0; padding:0; background:transparent;
+}
+.lightbox::backdrop{ background: rgba(0,0,0,.65) }
+.lightbox img{
+  display:block; width:100%; height:auto;
+  border-radius:12px; box-shadow: var(--shadow-soft);
+}
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next{
+  position:absolute; width:36px; height:36px; border:0; border-radius:50%;
+  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1; cursor:pointer;
+}
+.lightbox-close{ right:12px; top:12px }
+.lightbox-prev{ left:12px; top:50%; transform:translateY(-50%) }
+.lightbox-next{ right:12px; top:50%; transform:translateY(-50%) }
+.lightbox-close:focus-visible,
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible{ outline:0; box-shadow: 0 0 0 3px rgba(76,175,80,.45) }
+.lightbox-caption{
+  margin: 8px 0 12px; color: var(--text); text-align:center; padding: 0 12px;
 }
 
-.page-cad .gallery-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(440px, 1fr)); /* big tiles */
-  gap: 28px 20px; /* row-gap 28px, column-gap 20px */
-  align-items: stretch;
+/* ===== Personal page overrides ===== */
+.page-personal main .container{ max-width: 1280px }
+.page-personal .gallery-grid{
+  grid-template-columns: repeat(2, minmax(640px, 1fr));
+  gap: 32px 20px; align-items: stretch;
 }
-
 @media (max-width: 1280px){
-  .page-cad .gallery-grid{
-    grid-template-columns: repeat(2, minmax(480px, 1fr));
-  }
+  .page-personal .gallery-grid{ grid-template-columns: repeat(2, minmax(560px, 1fr)) }
 }
 @media (max-width: 980px){
-  .page-cad .gallery-grid{
-    grid-template-columns: 1fr;
-  }
+  .page-personal .gallery-grid{ grid-template-columns: 1fr }
 }
+.page-personal .gallery-grid .card{ padding: 24px }
+.page-personal .gallery-grid .thumb{ aspect-ratio: 3 / 2 }
 
-/* Bigger visual presence for images */
-.page-cad .gallery-grid .card{ padding: 24px; }
-.page-cad .gallery-grid .thumb{
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;   /* taller than 3/2; gives a larger tile face */
-  object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease;
-}
-.page-cad .gallery-link:hover .thumb,
-.page-cad .gallery-link:focus .thumb{ transform: scale(1.02); }
-
-/* enforce 20px column gap on CAD */
-.page-cad .gallery-grid { column-gap: 20px !important; }
-
-/* ===== CAD page — 3 columns, bigger tiles, 20px column gap ===== */
-.page-cad main .container{
-  max-width: 1440px; /* widen content area on CAD page only */
-}
-
+/* ===== CAD page overrides ===== */
+.page-cad main .container{ max-width: 1440px }
 .page-cad .gallery-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(440px, 1fr)); /* large tiles */
-  gap: 28px 20px; /* row-gap 28px, column-gap 20px */
-  align-items: stretch;
-}
-
-@media (max-width: 1280px){
-  .page-cad .gallery-grid{
-    grid-template-columns: repeat(2, minmax(480px, 1fr));
-  }
-}
-@media (max-width: 980px){
-  .page-cad .gallery-grid{
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Bigger visual face for images */
-.page-cad .gallery-grid .card{ padding: 24px; }
-.page-cad .gallery-grid .thumb{
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease;
-}
-.page-cad .gallery-link:hover .thumb,
-.page-cad .gallery-link:focus .thumb{ transform: scale(1.02); }
-
-.page-cad .gallery-grid { column-gap: 20px !important; }
-
-/* FINAL OVERRIDE — CAD page: 3 columns, big tiles, 20px column gap */
-.page-cad main .container{ max-width: 1440px; }
-
-.page-cad .gallery-grid{
-  display: grid;
   grid-template-columns: repeat(3, minmax(440px, 1fr));
-  gap: 28px 20px !important;    /* row-gap 28px, column-gap 20px (forced) */
-  align-items: stretch;
+  gap: 28px 20px; align-items: stretch; justify-content:start;
 }
-
 @media (max-width: 1280px){
-  .page-cad .gallery-grid{ grid-template-columns: repeat(2, minmax(480px, 1fr)); }
+  .page-cad .gallery-grid{ grid-template-columns: repeat(2, minmax(480px, 1fr)) }
 }
 @media (max-width: 980px){
-  .page-cad .gallery-grid{ grid-template-columns: 1fr; }
+  .page-cad .gallery-grid{ grid-template-columns: 1fr }
 }
+.page-cad .gallery-grid .card{ padding: 24px }
+.page-cad .gallery-grid .thumb{ aspect-ratio: 4 / 3 }
+.page-cad .gallery-grid figure, .page-cad .gallery-grid .card{ margin:0 }
+.page-cad .gallery-grid > *{ margin-inline:0 }
 
-/* CAD — remove margins that add to the grid gap */
-.page-cad .gallery-grid figure,
-.page-cad .gallery-grid .card{
-  margin: 0 !important;          /* UA default for <figure> is often 1em 40px */
+/* ===== Projects page ===== */
+.project-grid{
+  display:grid; grid-template-columns: repeat(3, 1fr); gap:10px;
 }
+@media (max-width: 1000px){ .project-grid{ grid-template-columns: repeat(2, 1fr) } }
+@media (max-width: 600px){ .project-grid{ grid-template-columns:1fr } }
 
-/* Make sure the grid isn't spreading columns beyond the gap */
-.page-cad .gallery-grid{
-  justify-content: start !important;   /* avoid space-between if set elsewhere */
+.project-card{ padding:12px; display:grid; grid-template-rows:auto 1fr; gap:10px }
+.project-open{
+  display:grid; gap:10px; text-align:left; background:transparent; border:0; padding:0; color:inherit; cursor:pointer;
 }
+.project-open:focus-visible{
+  outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25); border-radius:12px;
+}
+.project-card .thumb{
+  width:100%; aspect-ratio:4/3; object-fit:cover;
+  border:1px solid var(--border); border-radius:12px; background:#22382c; box-shadow:var(--shadow);
+  transition:transform .25s ease;
+}
+.project-open:hover .thumb, .project-open:focus-visible .thumb{ transform:scale(1.02) }
+.project-body h3{ margin:0 0 6px }
+.project-body .preview{ color:var(--muted); margin:6px 0 0; line-height:1.5 }
 
-/* Safety: zero any inline margins on direct children */
-.page-cad .gallery-grid > *{
-  margin-inline: 0 !important;
+/* Filter chips + tag badges */
+.project-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:0 0 1.25rem}
+.project-filters .chip{
+  border:1px solid var(--border); background:var(--card);
+  padding:.4rem .75rem;border-radius:999px;cursor:pointer;font:inherit;color:#fff
 }
+.project-filters .chip.is-active{
+  box-shadow:0 0 0 2px var(--brand) inset; color:#fff
+}
+.card-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin:.5rem 0}
+.card-tag{font-size:.75rem;line-height:1;border:1px solid var(--border);background:var(--card);padding:.25rem .5rem;border-radius:999px;white-space:nowrap}
+.project-card[hidden]{display:none !important}
+
+/* Case dialog (Projects) */
+.case-dialog{width:min(96vw, 980px); border:0; padding:0; background:transparent}
+.case-dialog::backdrop{ background: rgba(0,0,0,.65) }
+.case-close, .case-prev, .case-next{
+  position:absolute; top:12px; width:36px; height:36px; border:0; border-radius:50%;
+  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1; cursor:pointer;
+}
+.case-close{ right:12px } .case-prev{ left:12px } .case-next{ right:56px }
+.case-close:focus-visible, .case-prev:focus-visible, .case-next:focus-visible{ outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45) }
+.case-media{ display:block; max-height:50vh; overflow:hidden; border-radius:12px; margin-bottom:10px }
+.case-media img{ display:block; width:100%; height:auto; border-radius:12px; box-shadow:var(--shadow-soft) }
+.case-body{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); color:var(--text) }
+.case-body h2{ margin-top:0 } .case-body p{ margin:8px 0 }
+
+/* ===== Contact page ===== */
+.contact-cards{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px }
+.linkish{ text-decoration: none; color: var(--text) }
+.contact-icon{ font-size: 1.6rem; opacity: .95; margin-bottom: 6px }
+
+/* Footer tweaks on narrow */
+@media (max-width:900px){ .feature-card{grid-template-columns:1fr} .feature-media{min-height:240px} .metrics-row{gap:12px} }
