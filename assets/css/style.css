@@ -559,3 +559,15 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 }
 .case-body h2{ margin-top:0 }
 .case-body p{ margin:8px 0 }
+
+/* Place this AFTER your existing chip styles (or at the end of style.css) */
+.project-filters {
+  --accent-ink: #fff;   /* makes .chip.is-active text white */
+}
+.project-filters .chip {
+  color: #fff;          /* makes all chip labels white */
+}
+.project-filters .chip:hover,
+.project-filters .chip:focus-visible {
+  color: #fff;
+}
