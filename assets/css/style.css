@@ -578,7 +578,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 /* PERSONAL PAGE ONLY — bigger 2-column gallery */
 .page-personal .gallery-grid{
   display: grid;
-  gap: 28px;
+  gap: 14px;
   grid-template-columns: repeat(2, minmax(520px, 1fr)); /* nice big cards */
   align-items: stretch;
 }
