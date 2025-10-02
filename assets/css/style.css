@@ -616,3 +616,35 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   object-fit: cover;
   border-radius: var(--radius-lg, 12px);
 }
+
+
+/* PERSONAL PAGE — bigger, roomier 2-column cards */
+.page-personal main .container{
+  max-width: 1280px;        /* widen just the personal page content area */
+}
+
+.page-personal .gallery-grid{
+  display: grid;
+  gap: 32px;
+  grid-template-columns: repeat(2, minmax(640px, 1fr)); /* larger columns */
+  align-items: stretch;
+}
+
+@media (max-width: 1280px){
+  .page-personal .gallery-grid{
+    grid-template-columns: repeat(2, minmax(560px, 1fr));
+  }
+}
+@media (max-width: 980px){
+  .page-personal .gallery-grid{ grid-template-columns: 1fr; } /* phones */
+}
+
+/* Card + image sizing */
+.page-personal .gallery-grid .card{ padding: 24px; }
+.page-personal .gallery-grid .thumb{
+  display:block;
+  width:100%;
+  aspect-ratio: 3 / 2;      /* taller hero image area for more presence */
+  object-fit: cover;
+  border-radius: var(--radius-lg, 12px);
+}
