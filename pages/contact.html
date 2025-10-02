@@ -5,23 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Robert Smith — Reliability & Maintenance Engineer</title>
   <meta name="description" content="Get in touch about reliability engineering, maintenance planning, and condition monitoring." />
-
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
-
-  <!-- Perf -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
-
-  <!-- CSS (bump version if needed) -->
-  <link rel="stylesheet" href="/assets/css/style.css?v=30" />
+  <link rel="stylesheet" href="/assets/css/style.css?v=34" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Header -->
   <header class="site-header" role="banner">
     <div class="container">
       <nav class="nav" aria-label="Primary">
@@ -44,7 +38,6 @@
     </div>
   </header>
 
-  <!-- Sub-hero (matches site look) -->
   <section class="subhero hero" data-aos="fade-up" aria-label="Contact intro">
     <div class="container">
       <p class="overline">Contact</p>
@@ -56,18 +49,12 @@
   <main id="main" class="section" aria-label="Contact options">
     <div class="container">
       <div class="contact-cards">
-        <!-- Email -->
-        <a class="card linkish tilt" href="mailto:robertthemechengineer@gmail.com"
-           aria-label="Send me an email at robertthemechengineer@gmail.com" data-aos="fade-up">
+        <a class="card linkish tilt" href="mailto:robertthemechengineer@gmail.com" aria-label="Send me an email at robertthemechengineer@gmail.com" data-aos="fade-up">
           <div class="contact-icon" aria-hidden="true">✉️</div>
           <h3>Email</h3>
           <p>robertthemechengineer@gmail.com</p>
         </a>
-
-        <!-- LinkedIn -->
-        <a class="card linkish tilt" href="https://www.linkedin.com/in/robert-smith-81b2b1188"
-           target="_blank" rel="noopener"
-           aria-label="Open my LinkedIn profile in a new tab" data-aos="fade-up" data-aos-delay="100">
+        <a class="card linkish tilt" href="https://www.linkedin.com/in/robert-smith-81b2b1188" target="_blank" rel="noopener" aria-label="Open my LinkedIn profile in a new tab" data-aos="fade-up" data-aos-delay="100">
           <div class="contact-icon" aria-hidden="true">🔗</div>
           <h3>LinkedIn</h3>
           <p>linkedin.com/in/robert-smith-81b2b1188</p>
@@ -80,27 +67,7 @@
     <div class="container"><p class="copyright">© 2025 Robert Smith</p></div>
   </footer>
 
-  <!-- AOS (deferred) + safe init + shared nav behavior -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function(){
-      if (window.AOS) AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });
-
-      // Mobile nav toggle
-      const toggle = document.querySelector('.menu-toggle');
-      const links = document.getElementById('nav-links');
-      if (toggle && links) {
-        toggle.addEventListener('click', () => {
-          const open = links.classList.toggle('show');
-          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-        });
-      }
-
-      // Header shadow on scroll
-      const header = document.querySelector('.site-header');
-      const setShadow = () => header.classList.toggle('scrolled', window.scrollY > 8);
-      setShadow(); window.addEventListener('scroll', setShadow, { passive:true });
-    });
-  </script>
+  <script src="/assets/js/navbar.js" defer></script>
 </body>
 </html>
