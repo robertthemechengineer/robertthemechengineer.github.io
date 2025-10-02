@@ -652,6 +652,6 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 /* PERSONAL PAGE — tighten space between the two columns */
 .page-personal .gallery-grid{
   row-gap: 32px;      /* keep vertical spacing */
-  column-gap: 18px;   /* was 32px — make it tighter */
+  column-gap: 3px;   /* was 32px — make it tighter */
 }
 
