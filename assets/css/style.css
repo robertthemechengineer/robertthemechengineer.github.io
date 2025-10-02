@@ -770,3 +770,20 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .page-cad .gallery-link:focus .thumb{ transform: scale(1.02); }
 
 .page-cad .gallery-grid { column-gap: 20px !important; }
+
+/* FINAL OVERRIDE — CAD page: 3 columns, big tiles, 20px column gap */
+.page-cad main .container{ max-width: 1440px; }
+
+.page-cad .gallery-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(440px, 1fr));
+  gap: 28px 20px !important;    /* row-gap 28px, column-gap 20px (forced) */
+  align-items: stretch;
+}
+
+@media (max-width: 1280px){
+  .page-cad .gallery-grid{ grid-template-columns: repeat(2, minmax(480px, 1fr)); }
+}
+@media (max-width: 980px){
+  .page-cad .gallery-grid{ grid-template-columns: 1fr; }
+}
