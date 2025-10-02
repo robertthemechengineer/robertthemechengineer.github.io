@@ -787,3 +787,19 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 @media (max-width: 980px){
   .page-cad .gallery-grid{ grid-template-columns: 1fr; }
 }
+
+/* CAD — remove margins that add to the grid gap */
+.page-cad .gallery-grid figure,
+.page-cad .gallery-grid .card{
+  margin: 0 !important;          /* UA default for <figure> is often 1em 40px */
+}
+
+/* Make sure the grid isn't spreading columns beyond the gap */
+.page-cad .gallery-grid{
+  justify-content: start !important;   /* avoid space-between if set elsewhere */
+}
+
+/* Safety: zero any inline margins on direct children */
+.page-cad .gallery-grid > *{
+  margin-inline: 0 !important;
+}
