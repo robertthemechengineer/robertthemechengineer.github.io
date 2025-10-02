@@ -361,3 +361,12 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 
 /* Footer tweaks on narrow */
 @media (max-width:900px){ .feature-card{grid-template-columns:1fr} .feature-media{min-height:240px} .metrics-row{gap:12px} }
+
+/* Resume PDF embed — make the viewer visible */
+.pdf-embed object,
+.pdf-embed iframe{
+  width: 100% !important;
+  height: 82vh !important;   /* visible, responsive height */
+  min-height: 560px;
+}
+
