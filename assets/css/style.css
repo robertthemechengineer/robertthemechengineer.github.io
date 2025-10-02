@@ -572,18 +572,6 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   color: #fff;
 }
 
-/* Personal page: 3 columns desktop, 2 on tablet, 1 on phone */
-.gallery-grid{
-  display: grid;
-  gap: 24px;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-@media (max-width: 1100px){
-  .gallery-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 640px){
-  .gallery-grid{ grid-template-columns: 1fr; }
-}
 .gallery-grid .card{ padding: 16px; }
 .gallery-grid .thumb{ aspect-ratio: 16 / 10; }
 
@@ -601,32 +589,20 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   }
 }
 @media (max-width: 900px){
-  .page-personal .gallery-grid{
-    grid-template-columns: 1fr; /* single column on phones */
-  }
-}
-
-/* Card + image sizing */
-.page-personal .gallery-grid .card{ padding: 20px; }
-.page-personal .gallery-grid .thumb-wrap{ display:block; }
-.page-personal .gallery-grid .thumb{
-  display:block;
-  width: 100%;
-  aspect-ratio: 16 / 10;     /* taller hero image area */
-  object-fit: cover;
-  border-radius: var(--radius-lg, 12px);
-}
-
-
+  
 /* PERSONAL PAGE — bigger, roomier 2-column cards */
 .page-personal main .container{
   max-width: 1280px;        /* widen just the personal page content area */
 }
 
+.page-personal main .container{
+  max-width: 1280px; /* keep your wider container */
+}
+
 .page-personal .gallery-grid{
   display: grid;
-  gap: 32px;
-  grid-template-columns: repeat(2, minmax(640px, 1fr)); /* larger columns */
+  grid-template-columns: repeat(2, minmax(640px, 1fr));
+  gap: 32px 24px;          /* 32px row-gap, 3px column-gap */
   align-items: stretch;
 }
 
@@ -639,23 +615,21 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   .page-personal .gallery-grid{ grid-template-columns: 1fr; } /* phones */
 }
 
-/* Card + image sizing */
+/* Card + image sizing (keep this version) */
 .page-personal .gallery-grid .card{ padding: 24px; }
 .page-personal .gallery-grid .thumb{
   display:block;
   width:100%;
-  aspect-ratio: 3 / 2;      /* taller hero image area for more presence */
+  aspect-ratio: 3 / 2;     /* nicer presence; change to 16/10 if you prefer */
   object-fit: cover;
   border-radius: var(--radius-lg, 12px);
 }
-
-/* PERSONAL PAGE — tighten space between the two columns */
-.page-personal .gallery-grid{
-  row-gap: 32px;      /* keep vertical spacing */
-  column-gap: 3px;   /* was 32px — make it tighter */
+  
+@media (max-width: 1280px){
+  .page-personal .gallery-grid{
+    grid-template-columns: repeat(2, minmax(560px, 1fr));
+  }
 }
-
-/* PERSONAL page — control vertical & horizontal gaps */
-.page-personal .gallery-grid{
-  gap: 28px 8px;   /* 28px row-gap, 8px column-gap */
+@media (max-width: 980px){
+  .page-personal .gallery-grid{ grid-template-columns: 1fr; } /* phones */
 }
