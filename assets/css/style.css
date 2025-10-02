@@ -575,25 +575,6 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .gallery-grid .card{ padding: 16px; }
 .gallery-grid .thumb{ aspect-ratio: 16 / 10; }
 
-/* PERSONAL PAGE ONLY — bigger 2-column gallery */
-.page-personal .gallery-grid{
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(2, minmax(520px, 1fr)); /* nice big cards */
-  align-items: stretch;
-}
-
-@media (max-width: 1200px){
-  .page-personal .gallery-grid{
-    grid-template-columns: repeat(2, minmax(420px, 1fr));
-  }
-}
-@media (max-width: 900px){
-  
-/* PERSONAL PAGE — bigger, roomier 2-column cards */
-.page-personal main .container{
-  max-width: 1280px;        /* widen just the personal page content area */
-}
 
 .page-personal main .container{
   max-width: 1280px; /* keep your wider container */
