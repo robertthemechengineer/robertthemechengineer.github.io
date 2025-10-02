@@ -655,3 +655,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   column-gap: 3px;   /* was 32px — make it tighter */
 }
 
+/* PERSONAL page — control vertical & horizontal gaps */
+.page-personal .gallery-grid{
+  gap: 28px 8px;   /* 28px row-gap, 8px column-gap */
+}
