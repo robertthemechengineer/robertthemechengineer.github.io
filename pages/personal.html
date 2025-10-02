@@ -3,14 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Robert Smith — Reliability & Maintenance Engineer</title>
-  <meta name="description" content="Reducing downtime and extending component life with RCM, RCA/5-Whys, and condition monitoring for heavy equipment fleets." />
+  <title>Personal Projects — Robert Smith</title>
+  <meta name="description" content="Weekend builds and tinkering — cafe racer, film camera repairs, website design, planted aquarium." />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2">
   <link rel="stylesheet" href="/assets/css/style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Page-scoped tweaks for the lightbox controls -->
+  <style>
+    .gallery-grid h3{ margin: 0 0 4px }
+    .gallery-grid .summary{ color: var(--muted); margin: 0 }
+
+    /* small overlay in bottom-left with image count */
+    .album-count{
+      position:absolute; left:8px; bottom:8px;
+      background:rgba(0,0,0,.55); color:#fff;
+      font-size:.85rem; line-height:1; padding:6px 8px; border-radius:10px;
+      border:1px solid rgba(255,255,255,.15);
+    }
+    .thumb-wrap{ position:relative }
+
+    /* Lightbox prev/next controls (match your close button look) */
+    .lightbox-prev, .lightbox-next{
+      position:absolute; top:50%; transform:translateY(-50%);
+      width:40px; height:40px; border:0; border-radius:50%;
+      background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1;
+      cursor:pointer;
+    }
+    .lightbox-prev{ left:12px }
+    .lightbox-next{ right:12px }
+    .lightbox-caption{
+      margin: 8px 0 0; color: var(--text); text-align:center;
+      padding: 0 12px 12px;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
@@ -27,43 +56,194 @@
           <a href="/">Home</a>
           <a href="/pages/projects.html">Projects</a>
           <a href="/pages/cad.html">CAD</a>
-          <a href="/pages/personal.html">Personal</a>
+          <a href="/pages/personal.html" class="active">Personal</a>
           <a href="/pages/resume.html">Resume</a>
           <a href="/pages/contact.html" class="btn btn-sm">Contact</a>
         </div>
       </nav>
     </div>
   </header>
-  <section class="subhero" data-aos="fade-up">
+
+  <section class="subhero hero" data-aos="fade-up">
     <div class="container">
       <h1>Personal Projects</h1>
-      <p class="lede">Small tools and experiments.</p>
+      <p class="lede">More pictures, fewer words — weekend builds and tinkering.</p>
     </div>
   </section>
+
   <main class="section">
-    <div class="container projects">
-      <article class="project-card card" data-aos="fade-up">
-        <div class="project-body">
-          <h3>Maintenance Tracker</h3>
-          <p>Parses chat logs, produces CSVs for planning dashboards.</p>
-          <ul class="tags"><li>Python</li><li>Automation</li></ul>
-        </div>
-      </article>
-      <article class="project-card card" data-aos="fade-up" data-aos-delay="100">
-        <div class="project-body">
-          <h3>Oil Trend Visualizer</h3>
-          <p>Flags abnormal wear markers in historical data.</p>
-          <ul class="tags"><li>Condition Monitoring</li><li>Visualization</li></ul>
-        </div>
-      </article>
+    <div class="container">
+      <!-- Responsive image-first gallery -->
+      <div class="gallery-grid">
+
+        <!-- Cafe Racer Build -->
+        <figure class="card" data-aos="fade-up">
+          <a class="gallery-link" href="/assets/img/personal/cafe/1.jpg"
+             data-gallery='[
+               "/assets/img/personal/cafe/1.jpg",
+               "/assets/img/personal/cafe/2.jpg",
+               "/assets/img/personal/cafe/3.jpg",
+               "/assets/img/personal/cafe/4.jpg",
+               "/assets/img/personal/cafe/5.jpg",
+               "/assets/img/personal/cafe/6.jpg"
+             ]'
+             aria-label="Open cafe racer gallery">
+            <span class="thumb-wrap">
+              <img class="thumb" loading="lazy" src="/assets/img/personal/cafe/1.jpg" alt="Cafe racer in mock-up stage with tank and seat fitted">
+              <span class="album-count">6 photos</span>
+            </span>
+          </a>
+          <figcaption>
+            <h3>Cafe Racer Build</h3>
+            <p class="summary">From teardown to first ride — wiring, tank fitment, rear loop, and tune.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Film Camera Repairs -->
+        <figure class="card" data-aos="fade-up" data-aos-delay="60">
+          <a class="gallery-link" href="/assets/img/personal/film/1.jpg"
+             data-gallery='[
+               "/assets/img/personal/film/1.jpg",
+               "/assets/img/personal/film/2.jpg",
+               "/assets/img/personal/film/3.jpg",
+               "/assets/img/personal/film/4.jpg"
+             ]'
+             aria-label="Open film camera repairs gallery">
+            <span class="thumb-wrap">
+              <img class="thumb" loading="lazy" src="/assets/img/personal/film/1.jpg" alt="Film SLR camera opened with tools laid out">
+              <span class="album-count">4 photos</span>
+            </span>
+          </a>
+          <figcaption>
+            <h3>Film Camera Repairs</h3>
+            <p class="summary">Light seals, shutter timing, and meter calibration on vintage SLRs.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Portfolio Website -->
+        <figure class="card" data-aos="fade-up" data-aos-delay="120">
+          <a class="gallery-link" href="/assets/img/personal/site/1.png"
+             data-gallery='[
+               "/assets/img/personal/site/1.png",
+               "/assets/img/personal/site/2.png",
+               "/assets/img/personal/site/3.png"
+             ]'
+             aria-label="Open website build gallery">
+            <span class="thumb-wrap">
+              <img class="thumb" loading="lazy" src="/assets/img/personal/site/1.png" alt="Screenshot of personal portfolio website hero section">
+              <span class="album-count">3 photos</span>
+            </span>
+          </a>
+          <figcaption>
+            <h3>Portfolio Website</h3>
+            <p class="summary">Design system, motion polish, and a11y — built and iterated in public.</p>
+          </figcaption>
+        </figure>
+
+        <!-- Planted Aquarium -->
+        <figure class="card" data-aos="fade-up" data-aos-delay="180">
+          <a class="gallery-link" href="/assets/img/personal/aquarium/1.jpg"
+             data-gallery='[
+               "/assets/img/personal/aquarium/1.jpg",
+               "/assets/img/personal/aquarium/2.jpg",
+               "/assets/img/personal/aquarium/3.jpg",
+               "/assets/img/personal/aquarium/4.jpg"
+             ]'
+             aria-label="Open planted aquarium gallery">
+            <span class="thumb-wrap">
+              <img class="thumb" loading="lazy" src="/assets/img/personal/aquarium/1.jpg" alt="Planted 60L tank with hardscape and foreground carpet">
+              <span class="album-count">4 photos</span>
+            </span>
+          </a>
+          <figcaption>
+            <h3>Planted 60L Aquarium</h3>
+            <p class="summary">Lighting, CO₂, and water parameters — growth from week 1 to 8.</p>
+          </figcaption>
+        </figure>
+
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container"><p>© 2025 Robert Smith</p></div>
   </footer>
+
+  <!-- Lightbox dialog (uses your existing .lightbox styles) -->
+  <dialog id="lightbox" class="lightbox" aria-label="Image viewer">
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <button class="lightbox-prev" aria-label="Previous image">‹</button>
+    <button class="lightbox-next" aria-label="Next image">›</button>
+    <img id="lbImg" alt="">
+    <div id="lbCaption" class="lightbox-caption"></div>
+  </dialog>
+
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init({ once:true, duration:700, easing:'ease-out-cubic' });</script>
   <script src="/assets/js/navbar.js"></script>
+
+  <!-- Tiny lightbox script: supports multi-image galleries via data-gallery -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dlg  = document.getElementById('lightbox');
+    const img  = document.getElementById('lbImg');
+    const cap  = document.getElementById('lbCaption');
+    const btnX = dlg.querySelector('.lightbox-close');
+    const btnP = dlg.querySelector('.lightbox-prev');
+    const btnN = dlg.querySelector('.lightbox-next');
+
+    let gallery = [];
+    let idx = 0;
+    let title = '';
+    let lastFocus = null;
+
+    function openAt(i){
+      idx = (i + gallery.length) % gallery.length;
+      const item = gallery[idx];
+      img.src = item.src;
+      img.alt = item.alt || title || 'Photo';
+      cap.textContent = (title ? title + ' — ' : '') + (idx + 1) + '/' + gallery.length;
+    }
+
+    function openFromLink(a){
+      lastFocus = document.activeElement;
+
+      // Title from this card
+      const fig = a.closest('figure');
+      title = fig ? (fig.querySelector('h3')?.textContent || '') : '';
+
+      // Build gallery from data-gallery JSON or single href
+      try {
+        const list = JSON.parse(a.getAttribute('data-gallery') || '[]');
+        gallery = list.map((src, i) => ({ src, alt: a.querySelector('img')?.alt || title + ' photo ' + (i+1) }));
+      } catch {
+        gallery = [{ src: a.href, alt: a.querySelector('img')?.alt || title || 'Photo' }];
+      }
+
+      if (typeof dlg.showModal === 'function') dlg.showModal();
+      openAt(0);
+      btnX.focus();
+    }
+
+    document.querySelectorAll('.gallery-link').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        openFromLink(a);
+      });
+    });
+
+    btnX.addEventListener('click', () => { dlg.close(); if (lastFocus) lastFocus.focus(); });
+    btnP.addEventListener('click', () => openAt(idx - 1));
+    btnN.addEventListener('click', () => openAt(idx + 1));
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+
+    document.addEventListener('keydown', e => {
+      if (!dlg.open) return;
+      if (e.key === 'Escape') dlg.close();
+      if (e.key === 'ArrowLeft')  openAt(idx - 1);
+      if (e.key === 'ArrowRight') openAt(idx + 1);
+    });
+  });
+  </script>
 </body>
 </html>
