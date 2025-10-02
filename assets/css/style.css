@@ -602,7 +602,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .page-personal .gallery-grid{
   display: grid;
   grid-template-columns: repeat(2, minmax(640px, 1fr));
-  gap: 32px 24px;          /* 32px row-gap, 3px column-gap */
+  gap: 32px 10px;          /* 32px row-gap, 3px column-gap */
   align-items: stretch;
 }
 
