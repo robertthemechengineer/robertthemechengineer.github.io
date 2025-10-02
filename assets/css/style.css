@@ -698,7 +698,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .page-cad .gallery-grid{
   display: grid;
   grid-template-columns: repeat(3, minmax(440px, 1fr)); /* big tiles */
-  gap: 28px 20px; /* row-gap 28px, column-gap 20px */
+  gap: 28px 10px; /* row-gap 28px, column-gap 20px */
   align-items: stretch;
 }
 
