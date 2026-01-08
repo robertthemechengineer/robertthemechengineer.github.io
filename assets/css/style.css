@@ -352,6 +352,38 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .case-body{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); color:var(--text) }
 .case-body h2{ margin-top:0 } .case-body p{ margin:8px 0 }
 
+/* ================================
+   PROJECT CASE IMAGE GALLERY
+   ================================ */
+
+.case-gallery{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+
+@media (max-width: 820px){
+  .case-gallery{
+    grid-template-columns: 1fr;
+  }
+}
+
+.case-gallery img{
+  width: 100%;
+  height: auto;
+  max-height: 55vh;
+  object-fit: contain;
+
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Safety net: any image inside case body */
+.case-body img{
+  display: block;
+}
+
 /* ===== Contact page ===== */
 .contact-cards{ display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 10px }
 .linkish{ text-decoration: none; color: var(--text) }
