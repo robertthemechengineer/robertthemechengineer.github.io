@@ -389,6 +389,21 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   box-shadow: var(--shadow-soft);
   cursor:pointer; /* hint you can click to cycle */
 }
+/* Image counter inside project modal */
+.case-counter{
+  position:absolute;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:12px;
+  letter-spacing:.2px;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  pointer-events:none;
+}
+
 .case-body{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); color:var(--text) }
 .case-body h2{ margin-top:0 } .case-body p{ margin:8px 0 }
 
