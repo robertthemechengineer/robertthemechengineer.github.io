@@ -466,8 +466,8 @@
       const dlgImg = dlg.querySelector('.case-media img');
       const dlgBody = dlg.querySelector('.case-body');
       const btnClose = dlg.querySelector('.case-close');
-      const btnPrev = dlg.querySelector('.case-prev');
-      const btnNext = dlg.querySelector('.case-next');
+      const btnImgPrev = dlg.querySelector('.case-img-prev');
+      const btnImgNext = dlg.querySelector('.case-img-next');
       let currentIndex = 0;
       let gallery = []; let galleryIdx = 0; let lastFocus = null;
 
@@ -491,7 +491,6 @@
         if (typeof dlg.showModal === 'function') dlg.showModal();
         setHashForCurrent(); btnClose && btnClose.focus();
       }
-      function stepCase(dir){ openCaseAt(currentIndex + dir); }
       function stepImage(dir){
         if (!gallery.length) return;
         galleryIdx = (galleryIdx + dir + gallery.length) % gallery.length;
@@ -505,15 +504,17 @@
         btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseAt(i); } });
       });
       btnClose.addEventListener('click', () => { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); });
-      btnPrev.addEventListener('click', () => stepCase(-1));
-      btnNext.addEventListener('click', () => stepCase(1));
+      btnImgPrev.addEventListener('click', () => stepImage(-1));
+      btnImgNext.addEventListener('click', () => stepImage(1));
       dlgImg.addEventListener('click', (e) => stepImage(e.shiftKey ? -1 : 1));
       dlg.addEventListener('click', (e) => { if (e.target === dlg) { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); }});
       document.addEventListener('keydown', (e) => {
         if (!dlg.open) return;
         if (e.key === 'Escape') { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); }
-        if (e.key === 'ArrowRight') stepCase(1);
-        if (e.key === 'ArrowLeft') stepCase(-1);
+        // Arrow keys = image nav (no project jumping)
+        if (e.key === 'ArrowRight') stepImage(1);
+        if (e.key === 'ArrowLeft') stepImage(-1);
+        // Keep PageUp/PageDown as optional image nav too
         if (e.key === 'PageDown') stepImage(1);
         if (e.key === 'PageUp') stepImage(-1);
       });
