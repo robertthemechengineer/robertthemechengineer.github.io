@@ -347,8 +347,34 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 }
 .case-close{ right:12px } .case-prev{ left:12px } .case-next{ right:56px }
 .case-close:focus-visible, .case-prev:focus-visible, .case-next:focus-visible{ outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45) }
-.case-media{ display:block; max-height:50vh; overflow:hidden; border-radius:12px; margin-bottom:10px }
-.case-media img{ display:block; width:100%; height:auto; border-radius:12px; box-shadow:var(--shadow-soft) }
+/* Case media (Projects) — show whole image, no weird cropping */
+.case-media{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  max-height:70vh;
+  border-radius:12px;
+  margin-bottom:10px;
+
+  /* IMPORTANT: stop cropping */
+  overflow:visible;
+}
+
+.case-media img{
+  display:block;
+  width:auto;
+  height:auto;
+
+  /* Fit inside viewport nicely */
+  max-width:100%;
+  max-height:70vh;
+  object-fit:contain;
+
+  border-radius:12px;
+  box-shadow: var(--shadow-soft);
+  cursor:pointer; /* hint you can click to cycle */
+}
 .case-body{ background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; box-shadow:var(--shadow); color:var(--text) }
 .case-body h2{ margin-top:0 } .case-body p{ margin:8px 0 }
 
