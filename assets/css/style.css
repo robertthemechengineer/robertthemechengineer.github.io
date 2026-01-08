@@ -340,8 +340,16 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 
 /* Case dialog (Projects) */
 .case-close, .case-img-prev, .case-img-next{
-  position:absolute; width:36px; height:36px; border:0; border-radius:50%;
-  background:rgba(0,0,0,.55); color:#fff; font-size:20px; line-height:1; cursor:pointer;
+  position:absolute;
+  width:36px; height:36px;
+  border:0; border-radius:50%;
+  background:rgba(0,0,0,.55);
+  color:#fff;
+  font-size:20px; line-height:1;
+  cursor:pointer;
+
+  z-index: 5;
+  pointer-events: auto;
 }
 
 .case-close{ top:12px; right:12px }
@@ -378,6 +386,8 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 
 .case-media img{
   display:block;
+  position: relative;
+  z-index: 1;
   width:auto;
   height:auto;
 
@@ -467,7 +477,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
   background: rgba(15, 20, 18, 0.92); /* dark, semi-transparent */
   border: none;
   border-radius: 18px;
-  color: var(--text-main);
+  color: var(--text);
   padding: 1.2rem 1.2rem 1.4rem;
   max-width: min(1100px, 92vw);
 }
