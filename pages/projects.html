@@ -16,8 +16,24 @@
     /* Page-scoped small additions */
     .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
     .preview.paao .sep{opacity:.6;padding:0 .25rem}
-    .case-dialog .case-media{display:flex;justify-content:center;align-items:center;min-height:240px;margin:0 0 .75rem}
-    .case-dialog .case-media img{max-width:100%;height:auto;cursor:pointer}
+    .case-dialog .case-media{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:0 0 .75rem;
+  max-height:70vh;
+  overflow:visible;
+}
+.case-dialog .case-media img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:100%;
+  max-height:70vh;
+  object-fit:contain;
+  border-radius:12px;
+  cursor:pointer
+}
   </style>
 </head>
 <body>
@@ -269,8 +285,13 @@
     <p><strong>Analysis:</strong> Mapped WearCheck severity codes, sample flags, IQR outliers and SMR into a single model. Tested how different weightings changed the ranking of components and checked against real failures.</p>
     <p><strong>Action:</strong> Built a Python tool that ingests raw lab data and configuration CSVs, calculates a risk score per component, and outputs fleet risk rankings and summaries into Excel/PDF for planners and engineers.</p>
     <p><strong>Outcome:</strong> The tool now highlights high-risk machines before failure, enabling targeted inspections and repairs instead of reactive responses.</p>
-    <img src="/assets/img/projects/wearcheck_full_1.jpg" alt="Risk-ranked component list from WearCheck tool">
-    <img src="/assets/img/projects/wearcheck_full_2.jpg" alt="Example of severity and SMR weighting in the tool">
+    <img src="/assets/img/projects/wearcheck_full_1.jpg" alt="wearcheck image 1">
+    <img src="/assets/img/projects/wearcheck_full_2.jpg" alt="wearcheck image 2">
+    <img src="/assets/img/projects/wearcheck_full_3.jpg" alt="wearcheck image 3">
+    <img src="/assets/img/projects/wearcheck_full_4.jpg" alt="wearcheck image 4">
+    <img src="/assets/img/projects/wearcheck_full_5.jpg" alt="wearcheck image 5">
+    <img src="/assets/img/projects/wearcheck_full_6.jpg" alt="wearcheck image 6">
+
   </template>
 
   <template id="case-d6injector">
@@ -279,12 +300,13 @@
     <p><strong>Analysis:</strong> Stripped the injectors on the bench, documented wear and sealing surfaces, compared findings with oil sample trends, fuel quality, and engine operating conditions to pinpoint the real failure drivers.</p>
     <p><strong>Action:</strong> Recommended changes to filtration and handling practices, adjusted injector service intervals, and fed the findings back into the maintenance strategy for similar engines on site.</p>
     <p><strong>Outcome:</strong> Injector performance stabilised, with reduced repeat work and fewer injector-related callouts on the machine.</p>
-    <img src="/assets/img/projects/d6injector_full_1.jpg" alt="D6 injector strip-down layout">
-    <img src="/assets/img/projects/d6injector_full_2.jpg" alt="Close-up of worn injector components">
-    <img src="/assets/img/projects/d6injector_full_3.jpg" alt="Injector tip condition and wear patterns">
-    <img src="/assets/img/projects/d6injector_full_4.jpg" alt="Fuel contamination evidence and filtration findings">
-    <img src="/assets/img/projects/d6injector_full_5.jpg" alt="Corrective actions summary and interval changes">
-    <img src="/assets/img/projects/d6injector_full_6.jpg" alt="Post-fix performance stability / follow-up results">
+    <img src="/assets/img/projects/d6injector_full_1.jpg" alt="d6injector image 1">
+    <img src="/assets/img/projects/d6injector_full_2.jpg" alt="d6injector image 2">
+    <img src="/assets/img/projects/d6injector_full_3.jpg" alt="d6injector image 3">
+    <img src="/assets/img/projects/d6injector_full_4.jpg" alt="d6injector image 4">
+    <img src="/assets/img/projects/d6injector_full_5.jpg" alt="d6injector image 5">
+    <img src="/assets/img/projects/d6injector_full_6.jpg" alt="d6injector image 6">
+
   </template>
 
   <template id="case-intakecleaner">
@@ -293,8 +315,13 @@
     <p><strong>Analysis:</strong> Tracked restriction readings, filter change frequency, and site conditions across several units to understand where the intake system was struggling.</p>
     <p><strong>Action:</strong> Tested upgraded pre-cleaners and revised intake routing, then standardised the successful setup across the fleet, including updated inspection points for operators and service teams.</p>
     <p><strong>Outcome:</strong> Air filter life improved, dust-induced restrictions decreased, and the risk of dust-related engine wear was significantly reduced.</p>
-    <img src="/assets/img/projects/intakecleaner_full_1.jpg" alt="Upgraded intake pre-cleaner fitted to excavator">
-    <img src="/assets/img/projects/intakecleaner_full_2.jpg" alt="Restriction trend before and after upgrade">
+    <img src="/assets/img/projects/intakecleaner_full_1.jpg" alt="intakecleaner image 1">
+    <img src="/assets/img/projects/intakecleaner_full_2.jpg" alt="intakecleaner image 2">
+    <img src="/assets/img/projects/intakecleaner_full_3.jpg" alt="intakecleaner image 3">
+    <img src="/assets/img/projects/intakecleaner_full_4.jpg" alt="intakecleaner image 4">
+    <img src="/assets/img/projects/intakecleaner_full_5.jpg" alt="intakecleaner image 5">
+    <img src="/assets/img/projects/intakecleaner_full_6.jpg" alt="intakecleaner image 6">
+
   </template>
 
   <template id="case-livekpi">
@@ -303,8 +330,13 @@
     <p><strong>Analysis:</strong> Identified key metrics needed for daily control: availability, MTBF, breakdown categories, oil-sample flags, and repeat events by asset and component.</p>
     <p><strong>Action:</strong> Built a live KPI dashboard that consolidates data from existing systems and presents it in a way that planners, supervisors and managers can use in daily meetings.</p>
     <p><strong>Outcome:</strong> Engineering now has an up-to-date picture of fleet health, allowing faster intervention, clearer accountability and better prioritisation of work.</p>
-    <img src="/assets/img/projects/livekpi_full_1.jpg" alt="Overview of live KPI dashboard">
-    <img src="/assets/img/projects/livekpi_full_2.jpg" alt="Detailed KPI tiles for availability and MTBF">
+    <img src="/assets/img/projects/livekpi_full_1.jpg" alt="livekpi image 1">
+    <img src="/assets/img/projects/livekpi_full_2.jpg" alt="livekpi image 2">
+    <img src="/assets/img/projects/livekpi_full_3.jpg" alt="livekpi image 3">
+    <img src="/assets/img/projects/livekpi_full_4.jpg" alt="livekpi image 4">
+    <img src="/assets/img/projects/livekpi_full_5.jpg" alt="livekpi image 5">
+    <img src="/assets/img/projects/livekpi_full_6.jpg" alt="livekpi image 6">
+
   </template>
 
   <template id="case-hitachipcr">
@@ -313,8 +345,13 @@
     <p><strong>Analysis:</strong> Collected injector strip findings, flow-test results, oil and fuel analysis data, and machine histories to build a full picture of the failure pattern.</p>
     <p><strong>Action:</strong> Compiled the evidence into a Product Concern Report (PCR) for Hitachi, supporting the OEM in their investigation and aligning injector strategies and warranty discussions.</p>
     <p><strong>Outcome:</strong> Enabled more structured engagement with the OEM and informed adjustments to injector replacement and monitoring strategies on affected engines.</p>
-    <img src="/assets/img/projects/hitachipcr_full_1.jpg" alt="Hitachi injector components inspection">
-    <img src="/assets/img/projects/hitachipcr_full_2.jpg" alt="Sample of supporting data used in the PCR">
+    <img src="/assets/img/projects/hitachipcr_full_1.jpg" alt="hitachipcr image 1">
+    <img src="/assets/img/projects/hitachipcr_full_2.jpg" alt="hitachipcr image 2">
+    <img src="/assets/img/projects/hitachipcr_full_3.jpg" alt="hitachipcr image 3">
+    <img src="/assets/img/projects/hitachipcr_full_4.jpg" alt="hitachipcr image 4">
+    <img src="/assets/img/projects/hitachipcr_full_5.jpg" alt="hitachipcr image 5">
+    <img src="/assets/img/projects/hitachipcr_full_6.jpg" alt="hitachipcr image 6">
+
   </template>
 
   <template id="case-oiliso">
@@ -323,8 +360,13 @@
     <p><strong>Analysis:</strong> Reviewed sampling techniques, bottle handling, port cleanliness, and work practices in service bays to identify where particles were being introduced.</p>
     <p><strong>Action:</strong> Designed and delivered training on ISO codes, contamination sources and correct sampling, and updated procedures to support better practices in the field and workshop.</p>
     <p><strong>Outcome:</strong> ISO codes improved across key systems, sample quality became more reliable, and technicians had a clearer understanding of how their actions impact component life.</p>
-    <img src="/assets/img/projects/oiliso_full_1.jpg" alt="Technician taking an oil sample correctly">
-    <img src="/assets/img/projects/oiliso_full_2.jpg" alt="ISO cleanliness chart used during training">
+    <img src="/assets/img/projects/oiliso_full_1.jpg" alt="oiliso image 1">
+    <img src="/assets/img/projects/oiliso_full_2.jpg" alt="oiliso image 2">
+    <img src="/assets/img/projects/oiliso_full_3.jpg" alt="oiliso image 3">
+    <img src="/assets/img/projects/oiliso_full_4.jpg" alt="oiliso image 4">
+    <img src="/assets/img/projects/oiliso_full_5.jpg" alt="oiliso image 5">
+    <img src="/assets/img/projects/oiliso_full_6.jpg" alt="oiliso image 6">
+
   </template>
 
   <template id="case-whatsapp">
@@ -333,8 +375,13 @@
     <p><strong>Analysis:</strong> Looked at common failure patterns, repeated mistakes and frequently asked questions from technicians and operators.</p>
     <p><strong>Action:</strong> Created a weekly WhatsApp training series, sending short, focused messages on topics like condition monitoring, oil analysis, RCM, hydraulics and reliability basics, written in practical site language.</p>
     <p><strong>Outcome:</strong> The messages improved awareness, reinforced good practices and helped reduce the frequency of avoidable, repeat problems.</p>
-    <img src="/assets/img/projects/whatsapp_full_1.jpg" alt="Example WhatsApp engineering training message">
-    <img src="/assets/img/projects/whatsapp_full_2.jpg" alt="Series of weekly topics planned out">
+    <img src="/assets/img/projects/whatsapp_full_1.jpg" alt="whatsapp image 1">
+    <img src="/assets/img/projects/whatsapp_full_2.jpg" alt="whatsapp image 2">
+    <img src="/assets/img/projects/whatsapp_full_3.jpg" alt="whatsapp image 3">
+    <img src="/assets/img/projects/whatsapp_full_4.jpg" alt="whatsapp image 4">
+    <img src="/assets/img/projects/whatsapp_full_5.jpg" alt="whatsapp image 5">
+    <img src="/assets/img/projects/whatsapp_full_6.jpg" alt="whatsapp image 6">
+
   </template>
 
   <template id="case-trunnion">
@@ -343,8 +390,13 @@
     <p><strong>Analysis:</strong> Modelled the trunnion in CAD, measured wear patterns, and completed hardness testing to compare OEM and replacement materials and understand stress areas.</p>
     <p><strong>Action:</strong> Proposed design and material changes, documented fitment and bearing-surface improvements, and created visual documentation that can be shared with suppliers and internal teams.</p>
     <p><strong>Outcome:</strong> Provided a clear path to improving trunnion reliability, with better visibility of the mechanical and material drivers behind the failures.</p>
-    <img src="/assets/img/projects/trunnion_full_1.jpg" alt="CAD model of dozer trunnion">
-    <img src="/assets/img/projects/trunnion_full_2.jpg" alt="Hardness test results across trunnion surfaces">
+    <img src="/assets/img/projects/trunnion_full_1.jpg" alt="trunnion image 1">
+    <img src="/assets/img/projects/trunnion_full_2.jpg" alt="trunnion image 2">
+    <img src="/assets/img/projects/trunnion_full_3.jpg" alt="trunnion image 3">
+    <img src="/assets/img/projects/trunnion_full_4.jpg" alt="trunnion image 4">
+    <img src="/assets/img/projects/trunnion_full_5.jpg" alt="trunnion image 5">
+    <img src="/assets/img/projects/trunnion_full_6.jpg" alt="trunnion image 6">
+
   </template>
 
   <template id="case-rsgs">
@@ -353,8 +405,13 @@
     <p><strong>Analysis:</strong> Reviewed how failures were being classified vs. actual impact on safety, production, cost and reliability, and compared this to how teams made decisions in practice.</p>
     <p><strong>Action:</strong> Reworked the RSG structure with clearer severity definitions, better examples, and a closer link between cause, risk level and required actions, and socialised the changes with the engineering team.</p>
     <p><strong>Outcome:</strong> Breakdown reporting became more consistent, priorities were clearer, and the engineering team had a stronger framework for deciding where to focus effort.</p>
-    <img src="/assets/img/projects/rsgs_full_1.jpg" alt="Updated RSG matrix for heavy machinery">
-    <img src="/assets/img/projects/rsgs_full_2.jpg" alt="Example of failures classified using the new RSGs">
+    <img src="/assets/img/projects/rsgs_full_1.jpg" alt="rsgs image 1">
+    <img src="/assets/img/projects/rsgs_full_2.jpg" alt="rsgs image 2">
+    <img src="/assets/img/projects/rsgs_full_3.jpg" alt="rsgs image 3">
+    <img src="/assets/img/projects/rsgs_full_4.jpg" alt="rsgs image 4">
+    <img src="/assets/img/projects/rsgs_full_5.jpg" alt="rsgs image 5">
+    <img src="/assets/img/projects/rsgs_full_6.jpg" alt="rsgs image 6">
+
   </template>
 
 
