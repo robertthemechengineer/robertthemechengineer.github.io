@@ -443,14 +443,21 @@
     <img src="/assets/img/projects/rsg-improvement_full_3.jpg" alt="RSG improvement — image 3">
   </template>
 
-  <!-- ===== Modal dialog with Next/Prev ===== -->
-  <dialog class="case-dialog" aria-label="Project case study">
-    <button class="case-close" aria-label="Close case study">×</button>
-    <button class="case-prev" aria-label="Previous project">‹</button>
-    <button class="case-next" aria-label="Next project">›</button>
-    <div class="case-media"><img alt=""></div>
-    <div class="case-body"><!-- populated from template --></div>
-  </dialog>
+<!-- ===== Modal dialog (Projects) ===== -->
+<dialog class="case-dialog" aria-label="Project case study">
+  <button class="case-close" aria-label="Close case study">×</button>
+
+  <!-- Image navigation (within this project only) -->
+  <button class="case-img-prev" aria-label="Previous image">‹</button>
+  <button class="case-img-next" aria-label="Next image">›</button>
+
+  <div class="case-media">
+    <img alt="">
+    <div class="case-counter" aria-live="polite"></div>
+  </div>
+
+  <div class="case-body"><!-- populated from template --></div>
+</dialog>
 
   <!-- AOS (deferred) + shared navbar behaviors -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
@@ -465,6 +472,7 @@
       const dlg = document.querySelector('.case-dialog');
       const dlgImg = dlg.querySelector('.case-media img');
       const dlgBody = dlg.querySelector('.case-body');
+      const dlgCounter = dlg.querySelector('.case-counter');
       const btnClose = dlg.querySelector('.case-close');
       const btnImgPrev = dlg.querySelector('.case-img-prev');
       const btnImgNext = dlg.querySelector('.case-img-next');
@@ -479,6 +487,12 @@
         frag.querySelectorAll('img').forEach(img => {
           gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
           img.remove();
+          // Show/hide image nav buttons depending on gallery size
+const showImgNav = gallery.length > 1;
+if (btnImgPrev) btnImgPrev.hidden = !showImgNav;
+if (btnImgNext) btnImgNext.hidden = !showImgNav;
+
+updateCounter();
         });
         if (gallery.length) { dlgImg.src = gallery[0].src; dlgImg.alt = gallery[0].alt; galleryIdx = 0; }
         else { dlgImg.src = ''; dlgImg.alt = ''; }
@@ -496,7 +510,19 @@
         galleryIdx = (galleryIdx + dir + gallery.length) % gallery.length;
         dlgImg.src = gallery[galleryIdx].src;
         dlgImg.alt = gallery[galleryIdx].alt || '';
+        updateCounter();
       }
+      function updateCounter(){
+        if (!dlgCounter) return;
+        const total = gallery.length;
+        if (total <= 1){
+        dlgCounter.textContent = '';
+        dlgCounter.hidden = true;
+        return;
+  }
+  dlgCounter.hidden = false;
+  dlgCounter.textContent = `Image ${galleryIdx + 1} / ${total}`;
+}
       cards.forEach((card, i) => {
         const btn = card.querySelector('.project-open');
         if (!btn) return;
@@ -504,8 +530,8 @@
         btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openCaseAt(i); } });
       });
       btnClose.addEventListener('click', () => { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); });
-      btnImgPrev.addEventListener('click', () => stepImage(-1));
-      btnImgNext.addEventListener('click', () => stepImage(1));
+      if (btnImgPrev) btnImgPrev.addEventListener('click', () => stepImage(-1));
+      if (btnImgNext) btnImgNext.addEventListener('click', () => stepImage(1));
       dlgImg.addEventListener('click', (e) => stepImage(e.shiftKey ? -1 : 1));
       dlg.addEventListener('click', (e) => { if (e.target === dlg) { dlg.close(); clearHashCase(); if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); }});
       document.addEventListener('keydown', (e) => {
