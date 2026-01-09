@@ -212,7 +212,7 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 main + .contact-bar,
 .section + .contact-bar,
 main .contact-bar {
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 /* Footer */
