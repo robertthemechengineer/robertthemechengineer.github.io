@@ -176,6 +176,11 @@ h3{font-size:clamp(18px, 2.4vw, 22px);margin:0 0 8px}
 .feature-card:hover .feature-media.fancy img{ transform:scale(1.07) rotate(1.5deg) }
 .feature-media.fancy::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg, rgba(0,0,0,.15), rgba(0,0,0,0) 40%, rgba(0,0,0,.25) 100%);pointer-events:none}
 
+/* Make clickable feature cards feel clickable */
+.feature-card[data-href]{
+  cursor: pointer;
+}
+
 /* Keyboard focus */
 a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-card:focus-visible{
   outline:0; box-shadow:0 0 0 3px rgba(76,175,80,.45), 0 2px 10px rgba(0,0,0,.25); border-radius:12px;
