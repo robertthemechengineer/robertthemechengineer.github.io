@@ -244,8 +244,11 @@
 <section class="section alt" data-aos="fade-up" aria-label="Resume">
   <div class="container container-wide">
     <p class="overline">Resume</p>
-
-    <div class="feature-card feature-wide" role="group" aria-label="Resume links">
+    
+<div class="feature-card feature-wide"
+     role="group"
+     aria-label="Resume links"
+     data-href="/pages/resume.html">
       <div class="feature-text">
         <h2>Robert Smith — Reliability Engineer (Resume)</h2>
         <p>
@@ -298,5 +301,29 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="/assets/js/navbar.js" defer></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.feature-card[data-href]').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // If the click came from a real link/button, let it do its thing
+        if (e.target.closest('a')) return;
+
+        const href = card.getAttribute('data-href');
+        if (href) window.location.href = href;
+      });
+
+      // Accessibility + affordance
+      card.setAttribute('tabindex', '0');
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const href = card.getAttribute('data-href');
+          if (href) window.location.href = href;
+        }
+      });
+    });
+  });
+</script>
+
 </body>
 </html>
