@@ -41,9 +41,9 @@
   <section class="subhero hero" data-aos="fade-up" aria-label="CAD intro">
     <div class="container">
       <h1>Selected Models & Drawings</h1>
-      <p class="lede">Practical, manufacturable components — guards, brackets, fixtures, housings. Click a tile to view larger.</p>
+      <p class="lede">A small selection of practical, manufacturable CAD work — click any tile to view the full set.</p>
       <div class="cta-row">
-        <a class="btn" href="/assets/files/Robert_Smith_CAD_Portfolio.pdf" download>Download CAD Portfolio (PDF)</a>
+        <a class="btn" href="/assets/files/Robert_Smith_CAD_Portfolio.pdf" target="_blank" rel="noopener">Open CAD Portfolio (PDF)</a>
       </div>
     </div>
   </section>
@@ -207,7 +207,7 @@
     <!-- Contact bar -->
     <section class="contact-bar" aria-label="Get in touch">
       <div class="container contact-bar-inner">
-        <p><strong>Like the approach?</strong> Let’s talk reliability, eliminating repeat failures and building systems that stick.</p>
+        <p><strong>Interested in the work?</strong> Happy to chat about CAD design, drawings, and practical engineering problem-solving.</p>
         <div class="contact-actions">
           <a class="btn" href="/pages/contact.html">Contact</a>
           <a class="btn btn-ghost" href="mailto:robertthemechengineer@gmail.com" rel="noopener">Email</a>
@@ -235,5 +235,21 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="/assets/js/navbar.js" defer></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.gallery-link').forEach(link => {
+      const badge = link.querySelector('.album-count');
+      if (!badge) return;
+
+      let arr = [];
+      try { arr = JSON.parse(link.getAttribute('data-gallery') || '[]'); } catch(e) {}
+      const n = Array.isArray(arr) ? arr.length : 0;
+
+      badge.textContent = n > 0 ? `${n} photo${n === 1 ? '' : 's'}` : '';
+    });
+  });
+</script>
+  
 </body>
 </html>
