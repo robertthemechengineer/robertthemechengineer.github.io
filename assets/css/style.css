@@ -208,6 +208,13 @@ a:focus-visible, button:focus-visible, [role="button"]:focus-visible, .feature-c
 .contact-bar-inner{display:flex;gap:16px;justify-content:space-between;align-items:center;flex-wrap:wrap}
 .contact-bar .contact-actions{display:flex;gap:10px;flex-wrap:wrap}
 
+/* Add breathing room before the contact bar */
+main + .contact-bar,
+.section + .contact-bar,
+main .contact-bar {
+  margin-top: 4rem;
+}
+
 /* Footer */
 .site-footer{padding:28px 0;background:#0c1913;border-top:1px solid var(--border);text-align:center}
 .footer-quote{font-style:italic;color:var(--muted);margin:0 0 10px}
