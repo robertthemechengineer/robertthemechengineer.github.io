@@ -166,5 +166,117 @@
 
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="/assets/js/navbar.js" defer></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dlg = document.getElementById('lightbox');
+    if (!dlg) return;
+
+    const imgEl = document.getElementById('lbImg');
+    const capEl = document.getElementById('lbCaption');
+
+    const btnClose = dlg.querySelector('.lightbox-close');
+    const btnPrev  = dlg.querySelector('.lightbox-prev');
+    const btnNext  = dlg.querySelector('.lightbox-next');
+
+    const links = Array.from(document.querySelectorAll('a.gallery-link'));
+
+    let gallery = [];
+    let idx = 0;
+    let lastFocus = null;
+
+    function setFrame() {
+      if (!gallery.length) return;
+      imgEl.src = gallery[idx] || '';
+      // Use the thumb image alt text as a caption fallback
+      const activeLink = dlg.__activeLink;
+      const thumbImg = activeLink ? activeLink.querySelector('img.thumb') : null;
+      const fallbackCaption = thumbImg ? thumbImg.getAttribute('alt') : '';
+      capEl.textContent = fallbackCaption || '';
+    }
+
+    function openGalleryFromLink(link) {
+      try {
+        gallery = JSON.parse(link.getAttribute('data-gallery') || '[]');
+      } catch (e) {
+        gallery = [];
+      }
+      if (!Array.isArray(gallery) || gallery.length === 0) return;
+
+      dlg.__activeLink = link;
+      idx = 0;
+
+      // If the user clicked a different image in the future, start from that one
+      const href = link.getAttribute('href');
+      const startIndex = gallery.indexOf(href);
+      if (startIndex >= 0) idx = startIndex;
+
+      lastFocus = document.activeElement;
+
+      setFrame();
+      if (typeof dlg.showModal === 'function') dlg.showModal();
+
+      // show/hide prev/next if only one image
+      const showNav = gallery.length > 1;
+      btnPrev.hidden = !showNav;
+      btnNext.hidden = !showNav;
+
+      btnClose && btnClose.focus();
+    }
+
+    function closeDlg() {
+      dlg.close();
+      if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus();
+    }
+
+    function step(dir) {
+      if (!gallery.length) return;
+      idx = (idx + dir + gallery.length) % gallery.length;
+      setFrame();
+    }
+
+    // Hook up gallery links
+    links.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openGalleryFromLink(link);
+      });
+    });
+
+    // Controls
+    btnClose && btnClose.addEventListener('click', closeDlg);
+    btnPrev  && btnPrev.addEventListener('click', () => step(-1));
+    btnNext  && btnNext.addEventListener('click', () => step(1));
+
+    dlg.addEventListener('click', (e) => {
+      if (e.target === dlg) closeDlg();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!dlg.open) return;
+      if (e.key === 'Escape') closeDlg();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+
+    // ✅ Auto-open when arriving via hash (from Home feature block)
+    const hash = (location.hash || '').trim();
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        // Scroll to it first (helps if header/AOS makes it feel like it didn't move)
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+        // If it contains a gallery link, auto-open it
+        const link = target.querySelector('a.gallery-link');
+        if (link) {
+          // Let the browser finish layout, then open
+          setTimeout(() => openGalleryFromLink(link), 250);
+        }
+      }
+    }
+  });
+</script>
+
 </body>
 </html>
