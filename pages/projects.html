@@ -20,6 +20,7 @@
     /* Modal media sizing (working fix) */
     .case-dialog .case-media{
       display:flex;
+      position: relative;
       justify-content:center;
       align-items:center;
       margin:0 0 .75rem;
@@ -36,6 +37,26 @@
       border-radius:12px;
       cursor:pointer
     }
+    /* Counter needs a positioning context */
+.case-dialog .case-media{
+  position: relative; /* <-- add this */
+}
+/* Image counter badge */
+.case-dialog .case-counter{
+  position:absolute;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  padding:8px 14px;
+  border-radius:999px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  font-size:14px;
+  font-weight:500;
+  letter-spacing:.3px;
+  pointer-events:none;
+  box-shadow:0 4px 12px rgba(0,0,0,.25);
+}
   </style>
 </head>
 <body>
@@ -495,25 +516,43 @@
       let currentIndex = 0;
       let gallery = []; let galleryIdx = 0; let lastFocus = null;
 
-      function loadCase(id){
-        const tpl = document.getElementById('case-' + id);
-        if (!tpl) return;
-        dlgBody.innerHTML = ''; gallery = []; galleryIdx = 0;
-        const frag = tpl.content.cloneNode(true);
-        frag.querySelectorAll('img').forEach(img => {
-          gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
-          img.remove();
-          // Show/hide image nav buttons depending on gallery size
-const showImgNav = gallery.length > 1;
-if (btnImgPrev) btnImgPrev.hidden = !showImgNav;
-if (btnImgNext) btnImgNext.hidden = !showImgNav;
+function loadCase(id){
+  const tpl = document.getElementById('case-' + id);
+  if (!tpl) return;
 
-updateCounter();
-        });
-        if (gallery.length) { dlgImg.src = gallery[0].src; dlgImg.alt = gallery[0].alt; galleryIdx = 0; }
-        else { dlgImg.src = ''; dlgImg.alt = ''; }
-        dlgBody.appendChild(frag);
-      }
+  dlgBody.innerHTML = '';
+  gallery = [];
+  galleryIdx = 0;
+
+  const frag = tpl.content.cloneNode(true);
+
+  // Build gallery array, then remove template images from the body content
+  frag.querySelectorAll('img').forEach(img => {
+    gallery.push({ src: img.getAttribute('src'), alt: img.getAttribute('alt') || '' });
+    img.remove();
+  });
+
+  // Set first image (or clear)
+  if (gallery.length) {
+    dlgImg.src = gallery[0].src;
+    dlgImg.alt = gallery[0].alt || '';
+    galleryIdx = 0;
+  } else {
+    dlgImg.src = '';
+    dlgImg.alt = '';
+  }
+
+  // Show/hide image nav buttons depending on gallery size (once)
+  const showImgNav = gallery.length > 1;
+  if (btnImgPrev) btnImgPrev.hidden = !showImgNav;
+  if (btnImgNext) btnImgNext.hidden = !showImgNav;
+
+  // Update counter (once, after gallery is final)
+  updateCounter();
+
+  dlgBody.appendChild(frag);
+}
+
       function openCaseAt(index){
         currentIndex = (index + ids.length) % ids.length;
         loadCase(ids[currentIndex]);
