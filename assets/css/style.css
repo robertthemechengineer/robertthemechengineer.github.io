@@ -258,6 +258,34 @@ main .contact-bar {
   opacity:.95;
 }
 
+/* Lightbox: contain large images inside the viewport (desktop + mobile) */
+dialog.lightbox{
+  width: min(1200px, 96vw);
+  height: min(900px, 92vh);
+  padding: 0;
+  border: 0;
+  overflow: hidden; /* prevents scrollbars inside the dialog */
+}
+
+dialog.lightbox #lbImg{
+  display: block;
+  max-width: 96vw;
+  max-height: 78vh;     /* key: prevents tall images forcing scroll */
+  width: auto;
+  height: auto;
+  object-fit: contain;  /* key: scales image down proportionally */
+  margin: 56px auto 0;  /* leaves room for X + arrows */
+}
+
+/* Caption stays readable and doesn’t push image off-screen */
+dialog.lightbox .lightbox-caption,
+dialog.lightbox #lbCaption{
+  max-width: min(1000px, 92vw);
+  margin: 10px auto 18px;
+  padding: 0 16px;
+  text-align: center;
+}
+
 /* Lightbox (native <dialog>) — shared */
 .lightbox{
   width:min(96vw, 1100px);
